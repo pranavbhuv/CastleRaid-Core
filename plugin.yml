@@ -29,11 +29,18 @@ commands:
   description: CastleRaid Core Info Command
   aliases: [information]
   usage: "/info"
- tutorial:
-  permission: castleraid.tutorial
-  description: CastleRaid Core Tutorial Command
-  aliases: [tut]
-  usage: "/tutorial"
+ heal:
+  permission: castleraid.heal
+  description: Heals a player
+  usage: "/heal"
+ fly:
+  permission: castleraid.fly
+  description: Allows you to fly in survival
+  usage: "/fly"
+ clearinv:
+  permission: castleraid.clearinv
+  description: castleraid.clearinv
+  usage: "/clearinv"
 permissions:
  trade.command:
   default: true
@@ -47,5 +54,9 @@ permissions:
   default: true
  castleraid.info:
   default: true
- castleraid.tutorial:
-  default: true
+ castleraid.heal:
+  default: op
+ castleraid.fly:
+  default: op
+ castleraid.clearinv:
+  default: op

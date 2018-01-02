@@ -12,7 +12,10 @@ declare(strict_types=1);
 namespace CRCore;
 
 # CRCore Command uses:
+use CRCore\Commands\ClearInventoryCommand;
 use CRCore\Commands\CustomPots;
+use CRCore\Commands\FlyCommand;
+use CRCore\Commands\HealCommand;
 use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShop;
@@ -76,6 +79,9 @@ class Loader extends PluginBase implements Listener{
         $this->getCommand("mpshop")->setExecutor(new MPShop($this));
         $this->getCommand("nickme")->setExecutor(new NickCommand($this));
         $this->getCommand("trade")->setExecutor(new TradeCommand($this));
+        $this->getCommand("clearinv")->setExecutor(new ClearInventoryCommand($this));
+        $this->getCommand("heal")->setExecutor(new HealCommand($this));
+        $this->getCommand("fly")->setExecutor(new FlyCommand($this));
     }
 
     private function registerTasks()
