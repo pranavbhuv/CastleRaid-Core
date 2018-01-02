@@ -23,6 +23,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsRequestPacket;
@@ -89,6 +90,10 @@ class EventListener implements Listener
                 $this->main->getServer()->broadcastMessage("Wb oh sir lord of our kingdoms!");
                 break;
         }
+    }
+
+    public function onPlayerLogin(PlayerLoginEvent $event){
+        $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
 
     /**
