@@ -1,0 +1,51 @@
+name: CastleRaidCore
+version: 1.3
+author: QuiverlyRivalry, iiFlamiinBlaze
+api: [CLA, 3.0.0-ALPHA9, 3.0.0-ALPHA10]
+main: CRshit\Loader
+commands:
+ trade:
+  permission: trade.command
+  description: CastleRaid Core Trade Command
+  usage: "/trade"
+ nickme:
+  permission: castleraid.nick
+  description: CastleRaid Core Nick Command
+  usage: "/nickme"
+ menu:
+  permission: cp.command
+  description: CastleRaid Core Menu Command
+  usage: "/menu"
+ mpshop:
+  permission: mp.command
+  description: CastleRaid Core MoneyPouch Command
+  usage: "/mpshop"
+ cpshop:
+  permission: cp2.command
+  description: CastleRaid Core CustomPot Command
+  usage: "/cpshop"
+ info:
+  permission: castleraid.info
+  description: CastleRaid Core Info Command
+  aliases: [information]
+  usage: "/info"
+ tutorial:
+  permission: castleraid.tutorial
+  description: CastleRaid Core Tutorial Command
+  aliases: [tut]
+  usage: "/tutorial"
+permissions:
+ trade.command:
+  default: true
+ castleraid.nick:
+  default: true
+ cp.command:
+  default: true
+ mp.command:
+  default: true
+ cp2.command:
+  default: true
+ castleraid.info:
+  default: true
+ castleraid.tutorial:
+  default: true
