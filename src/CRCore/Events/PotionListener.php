@@ -8,5 +8,13 @@
  * @contributors: Nick, Potatoe, and Nice.
  */
 namespace CRCore\PotionListener;
+
 # Loader use:
 use CRCore\Loader;
+
+# PocketMine uses:
+use pocketmine\event\Listener;
+
+class PotionListener implements Listener{
+  
+}
