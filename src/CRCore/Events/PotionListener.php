@@ -7,7 +7,7 @@
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
  * @contributors: Nick, Potatoe, and Nice.
  */
-namespace CRCore\PotionListener;
+namespace CRCore\Events;
 
 # Loader use:
 use CRCore\Loader;
