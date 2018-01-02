@@ -35,7 +35,7 @@ use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
 class EventListener implements Listener
 {
     private $main;  // We store class properties in stuff like this. You say public/private/protected and the variable name.
-    //private means only accessable in this class, public means accessable everywhere. idk protected xD
+                    //private means only accessable in this class, public means accessable everywhere. idk protected xD
 
     /**
      * EventListener constructor.
@@ -76,7 +76,7 @@ class EventListener implements Listener
         $player = $event->getPlayer();
         $player->sendMessage(TextFormat::GREEN . "              -=CastleRaid=-                ");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
-        $player->sendMessage(TextFormat::GRAY . "            A Kingdoms MCPE Server           ");
+        $player->sendMessage(TextFormat::GRAY . "         A Kingdoms Minecraft Pocket Ediition Server        ");
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   VOTE: Soon                    ");
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "DONATE:" . TextFormat::GRAY."castleraid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
@@ -119,7 +119,7 @@ class EventListener implements Listener
                     $tier1 = Item::get(Item::ENDER_CHEST, 101, 1);
                     $tier1win = rand(10000, 25000);
                     EconomyAPI::getInstance()->addMoney($player, $tier1win);
-                    $player->addTitle(C::BOLD . C::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier1win);
+                    $player->addTitle(TextFormat::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier1win);
                     $player->getInventory()->removeItem($tier1);
                     break;
                 case 102:
@@ -133,7 +133,7 @@ class EventListener implements Listener
                     $tier3 = Item::get(Item::ENDER_CHEST, 103, 1);
                     $tier3win = rand(50000, 100000);
                     EconomyAPI::getInstance()->addMoney($player, $tier3win);
-                    $player->addTitle(C::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . C::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier3win);
+                    $player->addTitle(C::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier3win);
                     $player->getInventory()->removeItem($tier3);
                     break;
             }
