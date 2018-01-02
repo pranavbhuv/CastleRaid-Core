@@ -10,19 +10,23 @@
 
 namespace CRCore\Events;
 
+# Loader use:
 use CRCore\Loader;
+
+# PocketMine uses:
 use pocketmine\entity\Effect;
 use pocketmine\event\Listener;
+use pocketmine\item\Item;
+use pocketmine\utils\TextFormat;
+
+# PocketMine event uses:
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
-use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsRequestPacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
-use pocketmine\utils\TextFormat;
 
 /**
  * Class EventListener
@@ -38,8 +42,8 @@ class EventListener implements Listener
      * @param Loader $main
      */
     public function __construct(Loader $main)
-    { //first part = check if something, second part = store something in something
-        $this->main = $main; //gets the main from the class options, and puts it into a private var, $main.
+    {
+        $this->main = $main;
     }
 
     /**
@@ -80,9 +84,9 @@ class EventListener implements Listener
         switch ($player->getName()) {
             case "iiFlamiinBlaze":
                 $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
-                $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
-                $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
-                $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
+                break;
+            case "QuiverlyRivalry":
+                $this->main->getServer()->broadcastMessage("Wb oh sir lord of our kingdoms!");
                 break;
         }
     }
@@ -135,19 +139,4 @@ class EventListener implements Listener
             }
         }
     }
-
-    /**
-     * @param PlayerChatEvent $event
-     */
-
-    public function onChat(PlayerChatEvent $event)
-    {
-        $player = $event->getPlayer();
-        switch ($player->getName()) {
-            case "xXNiceAssasinl0":
-                $event->setFormat(TextFormat::GREEN . "[" . TextFormat::RED . "Godz" . TextFormat::GREEN . "] " . TextFormat::AQUA . $player->getName() . " " . $event->getMessage());
-                break;
-        }
-    }
-
 }

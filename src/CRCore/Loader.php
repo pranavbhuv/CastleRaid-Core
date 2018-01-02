@@ -19,6 +19,7 @@ use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
 use CRCore\Commands\TradeCommand;
 use CRCore\Commands\TutorialCommand;
+
 # CRCore Task uses:
 //TODO: AlertTasks
 
@@ -41,14 +42,14 @@ class Loader extends PluginBase implements Listener{
 
     # Public constants:
     const NO_PERMISSION = C::BOLD . C::GRAY . "(" . C::RED . "!" . C::GRAY . ")" . C::RED . "You don't have permission to use this command";
-    const CORE_VERSION = "v1.3";
+    const CORE_VERSION = "v1.4";
 
     public function onEnable()
     {
         $this->registerEvents(); //Registers Events
         $this->registerCommands(); //Registers Commands
         $this->registerTasks(); //Registers Tasks
-        $this->getLogger()->info(C::GREEN . "Enabled.");
+        $this->getLogger()->info(C::GREEN . "CastleRaidCore Enabled!");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         if (!is_dir($this->getDataFolder())) {
             mkdir($this->getDataFolder());
@@ -58,7 +59,7 @@ class Loader extends PluginBase implements Listener{
 
     public function onDisable()
     {
-        $this->getLogger()->info(C::RED . "Disabled.");
+        $this->getLogger()->info(C::RED . "CastleRaidCore Disabled!");
     }
 
     private function registerEvents()
