@@ -57,6 +57,8 @@ class Loader extends PluginBase implements Listener{
             mkdir($this->getDataFolder());
         }
         $this->saveResource("tsconfig.json");
+
+        API::$main = $this;
     }
 
     public function onDisable()
