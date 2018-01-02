@@ -1,8 +1,20 @@
 <?php
+/**
+ * -==+CastleRaid Core+==-
+ * Originally Created by QuiverlyRivarly
+ * Originally Created for CastleRaidPE
+ *
+ * @authors: QuiverlyRivarly and iiFlamiinBlaze
+ * @contributors: Nick, Potatoe, and Nice.
+ */
+declare(strict_types=1);
 
-namespace CRcore\Events;
+namespace CRCore\Events;
 
-use CRcore\Loader;
+# Loader use:
+use CRCore\Loader;
+
+# Base PocketMine uses:
 use pocketmine\entity\Effect;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemConsumeEvent;
