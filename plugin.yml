@@ -1,7 +1,7 @@
 name: CastleRaidCore
 version: 1.4
 author: QuiverlyRivalry, iiFlamiinBlaze
-api: [CLA, 3.0.0-ALPHA9, 3.0.0-ALPHA10]
+api: [3.0.0-ALPHA9, 3.0.0-ALPHA10]
 main: CRCore\Loader
 commands:
  trade:
