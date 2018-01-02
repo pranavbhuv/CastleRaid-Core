@@ -40,6 +40,7 @@ class TutorialCommand extends PluginCommand implements CommandExecutor
     {
         $this->setPermission("castleraid.tutorial");
         $this->setDescription("Tutorial Command");
+        $this->setAliases(["tut"]);
         parent::__construct("tutorial", $plugin);
     }
 
@@ -66,6 +67,26 @@ class TutorialCommand extends PluginCommand implements CommandExecutor
      * @param Player $player
      */
     public function tutorialForm(Player $player){
-        //TODO: TutorialForm UI (Quiver)
+        $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+        $form = $api->createSimpleForm(function (Player $sender, array $data) {
+            if (isset($data[0])) {
+                switch ($data[0]) {
+                    case 0:
+                        break;
+                    case 1:
+                        //TODO: TP to spots
+                        break;
+                    case 2:
+                        //TODO: TP to spots
+                        break;
+                }
+            }
+        });
+        $form->setTitle("Tutorial");
+        $form->setContent("Start your tutorial below!");
+        $form->addButton(TextFormat::GREEN . "Exit");
+        $form->addButton(TextFormat::GREEN . "Spot 1 | Kingdom Quay");
+        $form->addButton(TextFormat::GREEN . "Blah Blah (Quiver has to add in)");
+        $form->sendToPlayer($player);
     }
 }
