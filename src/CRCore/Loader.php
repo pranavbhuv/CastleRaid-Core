@@ -18,7 +18,6 @@ use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
 use CRCore\Commands\TradeCommand;
-use CRCore\Commands\TutorialCommand;
 
 # CRCore Task uses:
 //TODO: AlertTasks
@@ -77,7 +76,6 @@ class Loader extends PluginBase implements Listener{
         $this->getCommand("mpshop")->setExecutor(new MPShop($this));
         $this->getCommand("nickme")->setExecutor(new NickCommand($this));
         $this->getCommand("trade")->setExecutor(new TradeCommand($this));
-        $this->getCommand("tutorial")->setExecutor(new TutorialCommand($this));
     }
 
     private function registerTasks()
