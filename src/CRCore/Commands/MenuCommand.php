@@ -7,7 +7,6 @@
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
  * @contributors: Nick, Potatoe, and Nice.
  */
-declare(strict_types=1);
 
 namespace CRCore\Commands;
 
@@ -77,33 +76,52 @@ class MenuCommand extends PluginCommand implements CommandExecutor
                         $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command1);
                         break;
                     case 2:
-                        $command2 = "trade";
+                        $command2 = "cpshop";
                         $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command2);
                         break;
-                    case 3;
-                        $command3 = "cpshop";
+                    case 3:
+                        $command3 = "combine";
                         $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command3);
                         break;
-                    case 4;
+                    case 4:
                         $command4 = "k";
                         $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command4);
                         break;
-                    case 5;
+                    case 5:
                         $command5 = "warpme";
                         $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command5);
                         break;
-
+                    case 6:
+                        $command6 = "celist";
+                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command6);
+                        break;
+                    case 7:
+                        $command7 = "ah";
+                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command7);
+                        break;
+                    case 8:
+                        $command8 = "tutorial";
+                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command8);
+                        break;
+                    case 9:
+                        $command9 = "information";
+                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command9);
+                        break;
                 }
             }
         });
         $form->setTitle("Server Menu");
         $form->setContent("List of buttons.");
-        $form->addButton(C::GREEN . "Shop");
-        $form->addButton(C::GREEN . "Money Pouches");
-        $form->addButton(C::GREEN . "Trade");
-        $form->addButton(C::GREEN . "Potion");
-        $form->addButton(C::GREEN . "Kingdom Menu");
-        $form->addButton(C::GREEN . "Kingdom Teleporter");
+        $form->addButton(C::WHITE . "Shop");
+        $form->addButton(C::WHITE . "Money Pouch Shop");
+        $form->addButton(C::WHITE . "Custom Potion Shop");
+        $form->addButton(C::WHITE . "Combiner");
+        $form->addButton(C::WHITE . "Kingdom Menu");
+        $form->addButton(C::WHITE . "Kingdom Teleporter");
+        $form->addButton(C::WHITE . "CE List");
+        $form->addButton(C::WHITE . "Auction House");
+        $form->addButton(C::WHITE . "Tutorial");
+        $form->addButton(C::WHITE . "Information");
         $form->sendToPlayer($sender);
     }
 }
