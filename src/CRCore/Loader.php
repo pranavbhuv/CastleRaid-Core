@@ -20,7 +20,6 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
-use CRCore\Commands\TradeCommand;
 
 # CRCore Task uses:
 //TODO: AlertTasks
@@ -29,6 +28,7 @@ use CRCore\Commands\TradeCommand;
 use CRCore\Events\EventListener;
 
 # Base PocketMine uses:
+use CRCore\Events\PotionListener;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as C;
@@ -70,6 +70,7 @@ class Loader extends PluginBase implements Listener{
     {
         # Register EventListener:
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new PotionListener($this), $this);
     }
 
     private function registerCommands()
@@ -80,7 +81,6 @@ class Loader extends PluginBase implements Listener{
         $this->getCommand("menu")->setExecutor(new MenuCommand($this));
         $this->getCommand("mpshop")->setExecutor(new MPShop($this));
         $this->getCommand("nickme")->setExecutor(new NickCommand($this));
-        $this->getCommand("trade")->setExecutor(new TradeCommand($this));
         $this->getCommand("clearinv")->setExecutor(new ClearInventoryCommand($this));
         $this->getCommand("heal")->setExecutor(new HealCommand($this));
         $this->getCommand("fly")->setExecutor(new FlyCommand($this));
