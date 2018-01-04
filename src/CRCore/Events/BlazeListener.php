@@ -22,10 +22,17 @@ use pocketmine\utils\TextFormat;
 
 class BlazeListener implements Listener{
 
+    /**
+     * BlazeListener constructor.
+     * @param Loader $main
+     */
   public function __construct(Loader $main){
     $this->main = $main;
   }
-  
+
+    /**
+     * @param PlayerJoinEvent $event
+     */
   public function onJoin(PlayerJoinEvent $event){
     $player = $event->getPlayer();
     $player->sendMessage(TextFormat::GOLD . "Blazes are love, Blazes are life");

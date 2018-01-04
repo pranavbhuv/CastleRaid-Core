@@ -88,6 +88,7 @@ class Loader extends PluginBase implements Listener{
         $this->getCommand("fly")->setExecutor(new FlyCommand($this));
     }
 
+
     private function registerTasks()
     {
         # Register Task Files:
