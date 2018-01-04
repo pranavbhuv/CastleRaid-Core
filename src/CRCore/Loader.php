@@ -22,7 +22,7 @@ use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
 
 # CRCore Task uses:
-//TODO: AlertTasks
+use CRCore\Tasks\AlertTask;
 
 # CRCore Event uses:
 use CRCore\Events\EventListener;
@@ -30,7 +30,6 @@ use CRCore\Events\PotionListener;
 use CRCore\Events\BlazeListener;
 
 # Base PocketMine uses:
-use CRCore\Tasks\AlertTask;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as C;
