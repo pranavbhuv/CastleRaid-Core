@@ -1,14 +1,18 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Nek
- * Date: 2.01.2018
- * Time: 09:45
+ * -==+CastleRaid Core+==-
+ * Originally Created by QuiverlyRivarly
+ * Originally Created for CastleRaidPE
+ *
+ * @authors: QuiverlyRivarly and iiFlamiinBlaze
+ * @contributors: Nick, Potatoe, and Nice.
  */
 declare(strict_types=1);
+
 namespace CRCore;
 
 class API{
+
     /** @var Loader $main */
     public static $main;
 
