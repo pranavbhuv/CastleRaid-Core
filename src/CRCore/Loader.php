@@ -30,6 +30,7 @@ use CRCore\Events\PotionListener;
 use CRCore\Events\BlazeListener;
 
 # Base PocketMine uses:
+use CRCore\Tasks\AlertTask;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as C;
@@ -92,6 +93,6 @@ class Loader extends PluginBase implements Listener{
     private function registerTasks()
     {
         # Register Task Files:
-        //TODO: AlertTask
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new AlertTask(), 60 * 20);
     }
 }
