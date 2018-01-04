@@ -25,33 +25,6 @@ use pocketmine\utils\TextFormat as TF;
 
 class PotionListener implements Listener {
 
-	public function onConsume(PlayerIte<?php
-/**
- * -==+CastleRaid Core+==-
- * Originally Created by QuiverlyRivarly
- * Originally Created for CastleRaidPE
- *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Nice.
- */
-
-
-namespace CRCore\Events;
-
-# Loader use:
-use CRCore\Loader;
-
-# Base PocketMine uses:
-use pocketmine\entity\Effect;
-use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerItemConsumeEvent;
-use pocketmine\event\player\PlayerItemHeldEvent;
-use pocketmine\item\Item;
-use pocketmine\Player;
-use pocketmine\utils\TextFormat as TF;
-
-class PotionListener implements Listener
-{
     private $main;
 
     /**
