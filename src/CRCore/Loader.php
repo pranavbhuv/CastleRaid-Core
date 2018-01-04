@@ -26,9 +26,10 @@ use CRCore\Commands\NickCommand;
 
 # CRCore Event uses:
 use CRCore\Events\EventListener;
+use CRCore\Events\PotionListener;
+use CRCore\Events\BlazeListener;
 
 # Base PocketMine uses:
-use CRCore\Events\PotionListener;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as C;
@@ -71,6 +72,7 @@ class Loader extends PluginBase implements Listener{
         # Register EventListener:
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new PotionListener($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new BlazeListener($this), $this);
     }
 
     private function registerCommands()
