@@ -77,7 +77,7 @@ class CustomPots extends PluginCommand implements CommandExecutor
                         if ($money >= 25000) {
                             $itemID = 373;
                             $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 1, 1)->setCustomName("Raiding Potion \n \n*Todo\n *Todo"));
+                            $inv->addItem(Item::get($itemID, 100, 1)->setCustomName("Raiding Potion \n \n*Todo\n *Todo"));
                             EconomyAPI::getInstance()->reduceMoney($sender, 25000);
                         } else {
                             $sender->sendMessage("You Don't Have Enough Money.");
@@ -88,7 +88,7 @@ class CustomPots extends PluginCommand implements CommandExecutor
                         if ($money >= 40000) {
                             $itemID = 373;
                             $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 2, 1)->setCustomName("Kingdom Potion\n \n*Todo\n *Todo"));
+                            $inv->addItem(Item::get($itemID, 101, 1)->setCustomName("Kingdom Potion\n \n*Todo\n *Todo"));
                             EconomyAPI::getInstance()->reduceMoney($sender, 40000);
                         } else {
                             $sender->sendMessage("You Don't Have Enough Money.");
@@ -99,7 +99,7 @@ class CustomPots extends PluginCommand implements CommandExecutor
                         if ($money >= 15000) {
                             $itemID = 373;
                             $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 3, 1)->setCustomName("Farming Potion"));
+                            $inv->addItem(Item::get($itemID, 102, 1)->setCustomName("Farming Potion"));
                             EconomyAPI::getInstance()->reduceMoney($sender, 15000);
                         } else {
                             $sender->sendMessage("You Don't Have Enough Money.");
@@ -110,7 +110,7 @@ class CustomPots extends PluginCommand implements CommandExecutor
                         if ($money >= 30000) {
                             $itemID = 373;
                             $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 4, 1)->setCustomName("PvP Potion"));
+                            $inv->addItem(Item::get($itemID, 103, 1)->setCustomName("PvP Potion"));
                             EconomyAPI::getInstance()->reduceMoney($sender, 30000);
                         } else {
                             $sender->sendMessage("You Don't Have Enough Money.");
@@ -121,7 +121,7 @@ class CustomPots extends PluginCommand implements CommandExecutor
                         if ($money >= 30000) {
                             $itemID = 373;
                             $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 5, 1)->setCustomName("Getaway Potion"));
+                            $inv->addItem(Item::get($itemID, 104, 1)->setCustomName("Getaway Potion"));
                             EconomyAPI::getInstance()->reduceMoney($sender, 30000);
                         } else {
                             $sender->sendMessage("You Don't Have Enough Money.");
@@ -132,7 +132,7 @@ class CustomPots extends PluginCommand implements CommandExecutor
                         if ($money >= 50000) {
                             $itemID = 373;
                             $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 6, 1)->setCustomName("Kings Potion"));
+                            $inv->addItem(Item::get($itemID, 105, 1)->setCustomName("Kings Potion"));
                             EconomyAPI::getInstance()->reduceMoney($sender, 50000);
                         } else {
                             $sender->sendMessage("You Don't Have Enough Money.");
@@ -141,8 +141,8 @@ class CustomPots extends PluginCommand implements CommandExecutor
                 }
             }
         });
-        $form->setTitle("CustomPotions Shop");
-        $form->setContent("CustomPotions avaliable below!");
+        $form->setTitle("Custom Potions Shop");
+        $form->setContent("Custom Potions avaliable below!");
         $form->addButton(C::GREEN . "Raiding Potion | $25k");
         $form->addButton(C::GREEN . "Kingdom Potion | $40k");
         $form->addButton(C::GREEN . "Farming Potion | $15k");

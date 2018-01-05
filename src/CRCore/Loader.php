@@ -20,13 +20,14 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
-use CRCore\Commands\TradeCommand;
 
 # CRCore Task uses:
-//TODO: AlertTasks
+use CRCore\Tasks\AlertTask;
 
 # CRCore Event uses:
 use CRCore\Events\EventListener;
+use CRCore\Events\PotionListener;
+use CRCore\Events\BlazeListener;
 
 # Base PocketMine uses:
 use pocketmine\event\Listener;
@@ -70,6 +71,8 @@ class Loader extends PluginBase implements Listener{
     {
         # Register EventListener:
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new PotionListener($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new BlazeListener($this), $this);
     }
 
     private function registerCommands()
@@ -80,15 +83,15 @@ class Loader extends PluginBase implements Listener{
         $this->getCommand("menu")->setExecutor(new MenuCommand($this));
         $this->getCommand("mpshop")->setExecutor(new MPShop($this));
         $this->getCommand("nickme")->setExecutor(new NickCommand($this));
-        $this->getCommand("trade")->setExecutor(new TradeCommand($this));
         $this->getCommand("clearinv")->setExecutor(new ClearInventoryCommand($this));
         $this->getCommand("heal")->setExecutor(new HealCommand($this));
         $this->getCommand("fly")->setExecutor(new FlyCommand($this));
     }
 
+
     private function registerTasks()
     {
         # Register Task Files:
-        //TODO: AlertTask
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new AlertTask(), 60 * 20);
     }
 }
