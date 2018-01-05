@@ -35,8 +35,7 @@ use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
  */
 class EventListener implements Listener
 {
-    private $main;  // We store class properties in stuff like this. You say public/private/protected and the variable name.
-                    //private means only accessable in this class, public means accessable everywhere. idk protected xD
+    private $main;
 
     /**
      * EventListener constructor.
@@ -63,7 +62,6 @@ class EventListener implements Listener
             $formId = $packet->formId;
             if ($formId !== 5928) {
                 return;
-
             }
         }
     }
@@ -105,7 +103,7 @@ class EventListener implements Listener
         $inv = $player->getInventory();
         $hand = $inv->getItemInHand();
         if ($hand->getId() === 373 && $hand->getDamage() === 1) {
-            $player->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(3)->setDuration(100 * 20));
+            $player->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(3)->setDuration(2000));
             $inv->removeItem($hand);
         }
     }
