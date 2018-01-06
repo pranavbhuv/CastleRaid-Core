@@ -4,10 +4,6 @@ author: QuiverlyRivalry, iiFlamiinBlaze
 api: [3.0.0-ALPHA9, 3.0.0-ALPHA10]
 main: CRCore\Loader
 commands:
- trade:
-  permission: trade.command
-  description: CastleRaid Core Trade Command
-  usage: "/trade"
  nickme:
   permission: castleraid.nick
   description: CastleRaid Core Nick Command
@@ -42,8 +38,6 @@ commands:
   description: castleraid.clearinv
   usage: "/clearinv"
 permissions:
- trade.command:
-  default: true
  castleraid.nick:
   default: true
  cp.command:
