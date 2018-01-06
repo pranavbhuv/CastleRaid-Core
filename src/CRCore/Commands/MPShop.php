@@ -84,7 +84,7 @@ class MPShop extends PluginCommand implements CommandExecutor
                                 TF::DARK_GRAY . " *" . TF::AQUA . " Amount to win: " . TF::GRAY . "$10,000 - $25,000"));
                             EconomyAPI::getInstance()->reduceMoney($sender, 20000);
                         } else {
-                            $player->sendMessage("You Don't Have Enough Money.");
+                            $sender->sendMessage("You Don't Have Enough Money.");
                         }
                         break;
                     case 1:
