@@ -73,7 +73,6 @@ class Loader extends PluginBase implements Listener
         # Register EventListener:
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new PotionListener($this), $this);
-        $this->getServer()->getPluginManager()->registerEvents(new BlazeListener($this), $this);
     }
 
     private function registerCommands()
