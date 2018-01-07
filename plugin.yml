@@ -3,40 +3,8 @@ version: 1.3
 author: QuiverlyRivalry, iiFlamiinBlaze
 api: [3.0.0-ALPHA9, 3.0.0-ALPHA10]
 main: CRCore\Loader
-commands:
- nickme:
-  permission: castleraid.nick
-  description: CastleRaid Core Nick Command
-  usage: "/nickme"
- menu:
-  permission: cp.command
-  description: CastleRaid Core Menu Command
-  usage: "/menu"
- mpshop:
-  permission: mp.command
-  description: CastleRaid Core MoneyPouch Command
-  usage: "/mpshop"
- cpshop:
-  permission: cp2.command
-  description: CastleRaid Core CustomPot Command
-  usage: "/cpshop"
- info:
-  permission: castleraid.info
-  description: CastleRaid Core Info Command
-  aliases: [information]
-  usage: "/info"
- heal:
-  permission: castleraid.heal
-  description: Heals a player
-  usage: "/heal"
- fly:
-  permission: castleraid.fly
-  description: Allows you to fly in survival
-  usage: "/fly"
- clearinv:
-  permission: castleraid.clearinv
-  description: castleraid.clearinv
-  usage: "/clearinv"
+depend:
+- FormAPI
 permissions:
  castleraid.nick:
   default: true

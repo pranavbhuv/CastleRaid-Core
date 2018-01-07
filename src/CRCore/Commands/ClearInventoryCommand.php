@@ -12,18 +12,16 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
-use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\CommandExecutor;
 use pocketmine\command\PluginCommand;
-use pocketmine\inventory\Inventory;
+use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 /**
  * Class ClearInventoryCommand
  * @package CRCore\Commands
  */
-class ClearInventoryCommand extends PluginCommand implements CommandExecutor
+class ClearInventoryCommand extends PluginCommand
 {
     /**
      * ClearInventoryCommand constructor.
@@ -31,30 +29,26 @@ class ClearInventoryCommand extends PluginCommand implements CommandExecutor
      */
     public function __construct(Loader $plugin)
     {
+	    parent::__construct("clearinv", $plugin);
         $this->setDescription("Clears a player's inventory");
         $this->setPermission("castleraid.clearinv");
-        parent::__construct("clearinv", $plugin);
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param Command $command
-     * @param string $label
-     * @param array $args
-     * @return bool
-     */
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
-    {
-        $cmd = strtolower($command->getName());
-        switch ($cmd) {
-            case "clearinv":
-                if($sender->hasPermission("castleraid.clearinv")) {
-                    $sender->getInventory()->clearAll();
-                    $sender->sendMessage(TextFormat::AQUA . "You have now cleared your inventory!");
-                    $sender->addTitle(TextFormat::DARK_RED . "Inventory Cleared!");
-                }
-                break;
-        }
-        return true;
+	/**
+	 * @param CommandSender $sender
+	 * @param string $commandLabel
+	 * @param array $args
+	 *
+	 * @return bool|mixed
+	 */
+    public function execute(CommandSender $sender, string $commandLabel, array $args) {
+	    if($this->testPermission($sender) and $sender instanceof Player) {
+		    $sender->getInventory()->clearAll();
+		    $sender->sendMessage(TextFormat::AQUA . "You have now cleared your inventory!");
+		    $sender->addTitle(TextFormat::DARK_RED . "Inventory Cleared!");
+		    return true;
+	    }else{
+	    	return false;
+	    }
     }
 }

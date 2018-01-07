@@ -14,16 +14,14 @@ namespace CRCore\Commands;
 use CRCore\Loader;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\CommandExecutor;
 use pocketmine\command\PluginCommand;
-use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 /**
  * Class FlyCommand
  * @package CRCore\Commands
  */
-class FlyCommand extends PluginCommand implements CommandExecutor
+class FlyCommand extends PluginCommand
 {
     /**
      * FlyCommand constructor.
@@ -31,9 +29,9 @@ class FlyCommand extends PluginCommand implements CommandExecutor
      */
     public function __construct(Loader $plugin)
     {
-        $this->setDescription("Allows player to fly in survival");
+	    parent::__construct("fly", $plugin);
+        $this->setDescription("Allows you to fly in survival");
         $this->setPermission("castleraid.fly");
-        parent::__construct("fly", $plugin);
     }
 
     /**

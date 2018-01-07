@@ -13,17 +13,7 @@ namespace CRCore;
 
 class API{
 
-    /** @var Loader $main */
-    public static $main;
-
     public static $songs = ["narwhalsong", "narwhal"];
-
-    /**
-     * @return Loader
-     */
-    public static function getMain(): Loader{
-        return self::$main;
-    }
 
     /**
      * @param string $songname

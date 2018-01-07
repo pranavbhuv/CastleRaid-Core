@@ -13,15 +13,14 @@ namespace CRCore\Events;
 
 # Loader use:
 use CRCore\Loader;
-
-# Base PocketMine uses:
 use pocketmine\entity\Effect;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerItemHeldEvent;
 use pocketmine\item\Item;
-use pocketmine\Player;
 use pocketmine\utils\TextFormat as TF;
+
+# Base PocketMine uses:
 
 class PotionListener implements Listener {
 
@@ -34,12 +33,13 @@ class PotionListener implements Listener {
     public function __construct(Loader $main)
     {
         $this->main = $main;
+	    $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
     /**
      * @param PlayerItemConsumeEvent $event
      */
-    public function onConsume(PlayerItemConsumeEvent $event)
+    public function onConsume(PlayerItemConsumeEvent $event) : void
     {
         $player = $event->getPlayer();
         if ($event->getItem()->getId() === 373) {
@@ -111,7 +111,7 @@ class PotionListener implements Listener {
     /**
      * @param PlayerItemHeldEvent $event
      */
-    public function onHeld(PlayerItemHeldEvent $event)
+    public function onHeld(PlayerItemHeldEvent $event) : void
     {
         $player = $event->getPlayer();
         if ($event->getItem()->getId() === 373) {

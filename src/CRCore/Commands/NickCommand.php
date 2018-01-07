@@ -12,9 +12,7 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
-use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\CommandExecutor;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 
@@ -22,7 +20,7 @@ use pocketmine\Player;
  * Class NickCommand
  * @package CRCore\Commands
  */
-class NickCommand extends PluginCommand implements CommandExecutor
+class NickCommand extends PluginCommand
 {
 
     /**
@@ -31,59 +29,34 @@ class NickCommand extends PluginCommand implements CommandExecutor
      */
     public function __construct(Loader $plugin)
     {
+	    parent::__construct("nickme", $plugin);
         $this->setAliases(["nicky"]);
         $this->setPermission("castleraid.nick");
-        $this->setDescription("NickCommand");
-        parent::__construct("nickme", $plugin);
+        $this->setDescription("CastleRaid Core Nick Command");
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param Command $command
-     * @param string $label
-     * @param array $args
-     * @return bool|mixed
-     */
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
-    {
-        $cmd = strtolower($command->getName());
-        switch ($cmd) {
-            case "nickme":
-                if ($sender instanceof Player) {
-                    if ($sender->hasPermission("castleraid.nick")) {
-                        if (!isset($args[0])) {
-                            $sender->sendMessage("Provide a nickname.");
-                            return false;
-                        }
-                        if ($args[0] === "off") {
-                            $this->removeNick($sender);
-                        } else {
-                            $this->setNick($sender, $args[0]);
-                        }
-                    }
-                }
-                break;
-        }
-
-        return true;
-    }
-
-    /**
-     * @param $player
-     * @param $nick
-     */
-    public function setNick(Player $player, $nick)
-    {
-        $player->setDisplayName($nick);
-        $player->sendMessage("§l§7[§a!§7]§r§7 You're Now Nicked As '$nick'");
-    }
-
-    /**
-     * @param $player
-     */
-    public function removeNick(Player $player)
-    {
-        $player->setDisplayName($player->getName());
-
+	/**
+	 * @param CommandSender $sender
+	 * @param string $commandLabel
+	 * @param array $args
+	 *
+	 * @return bool|mixed
+	 */
+    public function execute(CommandSender $sender, string $commandLabel, array $args) {
+	    if($this->testPermission($sender) and $sender instanceof Player) {
+		    if (!isset($args[0])) {
+			    $sender->sendMessage("Provide a nickname.");
+			    return false;
+		    }
+		    if ($args[0] === "off") {
+			    $sender->setDisplayName($sender->getName());
+		    } else {
+			    $sender->setDisplayName($args[0]);
+			    $sender->sendMessage("§l§7[§a!§7]§r§7 You're Now Nicked As '{$args[0]}'");
+		    }
+		    return true;
+	    }else{
+	    	return false;
+	    }
     }
 }

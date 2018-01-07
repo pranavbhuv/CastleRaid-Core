@@ -20,25 +20,24 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
-
-# CRCore Task uses:
-use CRCore\Tasks\AlertTask;
-
-# CRCore Event uses:
+use CRCore\Events\BlazeListener;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
-use CRCore\Events\BlazeListener;
-
-# Base PocketMine uses:
-use pocketmine\event\Listener;
+use CRCore\Tasks\AlertTask;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as C;
+
+# CRCore Task uses:
+
+# CRCore Event uses:
+
+# Base PocketMine uses:
 
 /**
  * Class Loader
  * @package CRCore
  */
-class Loader extends PluginBase implements Listener
+class Loader extends PluginBase
 {
 
     # Public variables:
@@ -48,51 +47,31 @@ class Loader extends PluginBase implements Listener
     const NO_PERMISSION = C::BOLD . C::GRAY . "(" . C::RED . "!" . C::GRAY . ")" . C::RED . "You don't have permission to use this command";
     const CORE_VERSION = "v1.4";
 
-    public function onEnable()
+    public function onLoad() : void
     {
-        $this->registerEvents(); //Registers Events
-        $this->registerCommands(); //Registers Commands
-        $this->registerTasks(); //Registers Tasks
-        $this->getLogger()->info(C::GREEN . "CastleRaidCore Enabled!");
-        $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        if (!is_dir($this->getDataFolder())) {
-            mkdir($this->getDataFolder());
-        }
-        $this->saveResource("tsconfig.json");
-
-        API::$main = $this;
+	    $this->saveDefaultConfig();
+	    $this->saveResource("tsconfig.json");
     }
 
-    public function onDisable()
+	public function onEnable() : void
+    {
+	    new EventListener($this);
+	    new PotionListener($this);
+	    $this->getServer()->getCommandMap()->registerAll("CRCore", [
+		    new CustomPots($this),
+		    new InfoCommand($this),
+		    new MenuCommand($this),
+		    new MPShop($this),
+		    new NickCommand($this),
+		    new ClearInventoryCommand($this),
+		    new HealCommand($this),
+		    new FlyCommand($this)
+	    ]);
+        $this->getLogger()->info(C::GREEN . "CastleRaidCore Enabled!");
+    }
+
+    public function onDisable() : void
     {
         $this->getLogger()->info(C::RED . "CastleRaidCore Disabled!");
-    }
-
-    private function registerEvents()
-    {
-        # Register EventListener:
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-        $this->getServer()->getPluginManager()->registerEvents(new PotionListener($this), $this);
-    }
-
-    private function registerCommands()
-    {
-        # Register Command Files:
-        $this->getCommand("cpshop")->setExecutor(new CustomPots($this));
-        $this->getCommand("info")->setExecutor(new InfoCommand($this));
-        $this->getCommand("menu")->setExecutor(new MenuCommand($this));
-        $this->getCommand("mpshop")->setExecutor(new MPShop($this));
-        $this->getCommand("nickme")->setExecutor(new NickCommand($this));
-        $this->getCommand("clearinv")->setExecutor(new ClearInventoryCommand($this));
-        $this->getCommand("heal")->setExecutor(new HealCommand($this));
-        $this->getCommand("fly")->setExecutor(new FlyCommand($this));
-    }
-
-
-    private function registerTasks()
-    {
-        # Register Task Files:
-
-
     }
 }

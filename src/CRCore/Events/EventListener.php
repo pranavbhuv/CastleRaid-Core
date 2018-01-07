@@ -7,27 +7,29 @@
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
  * @contributors: Nick, Potatoe, and Nice.
  */
+declare(strict_types=1);
 
 namespace CRCore\Events;
 
 # Loader use:
 use CRCore\Loader;
-
-# PocketMine uses:
+use onebone\economyapi\EconomyAPI;
 use pocketmine\entity\Effect;
 use pocketmine\event\Listener;
-use pocketmine\item\Item;
-use pocketmine\utils\TextFormat;
-
-# PocketMine event uses:
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsRequestPacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
+use pocketmine\utils\TextFormat;
+
+# PocketMine uses:
+
+# PocketMine event uses:
 
 /**
  * Class EventListener
@@ -35,27 +37,29 @@ use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
  */
 class EventListener implements Listener
 {
+	/** @var Loader $main */
     private $main;
 
-    /**
-     * EventListener constructor.
-     * @param Loader $main
-     */
+	/**
+	 * EventListener constructor.
+	 *
+	 * @param Loader $main
+	 */
     public function __construct(Loader $main)
     {
         $this->main = $main;
+        $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
     /**
      * @param DataPacketReceiveEvent $event
      */
-
-    public function onDataPacket(DataPacketReceiveEvent $event)
+    public function onDataPacket(DataPacketReceiveEvent $event) : void
     {
         $packet = $event->getPacket();
         if ($packet instanceof ServerSettingsRequestPacket) {
             $packet = new ServerSettingsResponsePacket();
-            $packet->formData = file_get_contents($this->getDataFolder() . "tsconfig.json");
+            $packet->formData = file_get_contents($this->main->getDataFolder() . "tsconfig.json");
             $packet->formId = 5928;
             $event->getPlayer()->dataPacket($packet);
         } elseif ($packet instanceof ModalFormResponsePacket) {
@@ -69,8 +73,7 @@ class EventListener implements Listener
     /**
      * @param PlayerJoinEvent $event
      */
-
-    public function onJoin(PlayerJoinEvent $event)
+    public function onJoin(PlayerJoinEvent $event) : void
     {
         $player = $event->getPlayer();
         $player->sendMessage(TextFormat::GREEN . "              -=CastleRaid=-                ");
@@ -90,14 +93,18 @@ class EventListener implements Listener
         }
     }
 
-    public function onPlayerLogin(PlayerLoginEvent $event){
+	/**
+	 * @param PlayerLoginEvent $event
+	 */
+    public function onPlayerLogin(PlayerLoginEvent $event) : void
+    {
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
 
     /**
      * @param PlayerItemConsumeEvent $event
      */
-    public function onConsume(PlayerItemConsumeEvent $event)
+    public function onConsume(PlayerItemConsumeEvent $event) : void
     {
         $player = $event->getPlayer();
         $inv = $player->getInventory();
@@ -108,11 +115,10 @@ class EventListener implements Listener
         }
     }
 
-
     /**
      * @param PlayerInteractEvent $event
      */
-    public function onInteract(PlayerInteractEvent $event)
+    public function onInteract(PlayerInteractEvent $event) : void
     {
         $player = $event->getPlayer();
         if ($event->getItem()->getId() === 130) {
@@ -136,7 +142,7 @@ class EventListener implements Listener
                     $tier3 = Item::get(Item::ENDER_CHEST, 103, 1);
                     $tier3win = rand(50000, 100000);
                     EconomyAPI::getInstance()->addMoney($player, $tier3win);
-                    $player->addTitle(C::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier3win);
+                    $player->addTitle(TextFormat::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier3win);
                     $player->getInventory()->removeItem($tier3);
                     break;
             }
