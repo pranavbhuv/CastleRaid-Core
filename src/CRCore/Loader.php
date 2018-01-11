@@ -21,41 +21,31 @@ use CRCore\Commands\MenuCommand;
 use CRCore\Commands\VaultCommand;
 use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
+# CRCore Task uses:
+use CRCore\Tasks\AlertTask;
+# CRCore Event uses:
 use CRCore\Events\BlazeListener;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
-use CRCore\Tasks\AlertTask;
-use pocketmine\plugin\PluginBase;
-use pocketmine\utils\TextFormat as C;
-
-# CRCore Task uses:
-
-# CRCore Event uses:
-
 # Base PocketMine uses:
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
 
-/**
- * Class Loader
- * @package CRCore
- */
-class Loader extends PluginBase
-{
+class Loader extends PluginBase{
 
     # Public variables:
     public $tutorial;
 
     # Public constants:
-    const NO_PERMISSION = C::BOLD . C::GRAY . "(" . C::RED . "!" . C::GRAY . ")" . C::RED . "You don't have permission to use this command";
+    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
     const CORE_VERSION = "v1.4";
 
-    public function onLoad() : void
-    {
+    public function onLoad() : void{
 	    $this->saveDefaultConfig();
 	    $this->saveResource("tsconfig.json");
     }
 
-	public function onEnable() : void
-    {
+    public function onEnable() : void{
 	    new EventListener($this);
 	    new PotionListener($this);
 	    $this->getServer()->getCommandMap()->registerAll("CRCore", [
@@ -69,11 +59,10 @@ class Loader extends PluginBase
 		    new FlyCommand($this),
 		    new VaultCommand($this)
 	    ]);
-        $this->getLogger()->info(C::GREEN . "CastleRaidCore Enabled!");
+        $this->getLogger()->info(TextFormat::GREEN . "CastleRaidCore Enabled!");
     }
 
-    public function onDisable() : void
-    {
-        $this->getLogger()->info(C::RED . "CastleRaidCore Disabled!");
+    public function onDisable() : void{
+        $this->getLogger()->info(TextFormat::RED . "CastleRaidCore Disabled!");
     }
 }
