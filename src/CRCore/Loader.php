@@ -18,6 +18,7 @@ use CRCore\Commands\FlyCommand;
 use CRCore\Commands\HealCommand;
 use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
+use CRCore\Commands\VaultCommand;
 use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
 use CRCore\Events\BlazeListener;
@@ -65,7 +66,8 @@ class Loader extends PluginBase
 		    new NickCommand($this),
 		    new ClearInventoryCommand($this),
 		    new HealCommand($this),
-		    new FlyCommand($this)
+		    new FlyCommand($this),
+		    new VaultCommand($this)
 	    ]);
         $this->getLogger()->info(C::GREEN . "CastleRaidCore Enabled!");
     }
