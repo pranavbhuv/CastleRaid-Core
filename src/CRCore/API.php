@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace CRCore;
 
 class API{
+    /** @var Loader $main */
+    public static $main;
 
     public static $songs = ["narwhalsong", "narwhal"];
 
@@ -22,7 +24,7 @@ class API{
     public static function singasong(string $songname) : string{
         if(!in_array($songname, self::$songs)) return "Hello darkness my old friend\n I've come to talk to you again";
         if(strtolower($songname) === "narwhalsong" || strtolower($songname) === "narwhal") return
-            "§bNarwhals narwhals\n
+        "§bNarwhals narwhals\n
         Swimming in the ocean\n
         Causing a commotion\n
         Coz they are so awesome\n\n

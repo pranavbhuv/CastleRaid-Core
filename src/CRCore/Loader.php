@@ -46,6 +46,7 @@ class Loader extends PluginBase{
     }
 
     public function onEnable() : void{
+        API::$main = $this;
 	    new EventListener($this);
 	    new PotionListener($this);
 	    $this->getServer()->getCommandMap()->registerAll("CRCore", [

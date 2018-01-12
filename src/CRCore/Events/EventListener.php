@@ -80,7 +80,7 @@ class EventListener implements Listener
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GRAY . "         A Kingdoms Minecraft Pocket Ediition Server        ");
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   VOTE:".TextFormat::GRAY." http://bit.do/castleraid                   ");
-        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . " DO:".TextFormat::GRAY." /menu                               ")
+        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . " DO:".TextFormat::GRAY." /menu                               ");
 	$player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY." castleraid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GREEN . "                    -=-                     ");
