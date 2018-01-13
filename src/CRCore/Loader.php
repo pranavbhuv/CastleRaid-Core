@@ -24,7 +24,7 @@ use CRCore\Commands\NickCommand;
 # CRCore Task uses:
 use CRCore\Tasks\HealthBar;
 # CRCore Event uses:
-use CRCore\Events\BlazeListener;
+use CRCore\Events\KillMoney;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 # Base PocketMine uses:
