@@ -1,5 +1,5 @@
 name: CastleRaidCore
-version: 1.3
+version: 1.4.2
 author: QuiverlyRivalry, iiFlamiinBlaze
 api: [3.0.0-ALPHA9, 3.0.0-ALPHA10]
 main: CRCore\Loader

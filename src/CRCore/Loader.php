@@ -18,18 +18,20 @@ use CRCore\Commands\FlyCommand;
 use CRCore\Commands\HealCommand;
 use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
-//use CRCore\Commands\VaultCommand;
 use CRCore\Commands\MPShop;
 use CRCore\Commands\NickCommand;
+
 # CRCore Task uses:
+//TODO: AlertTask
+
 # CRCore Event uses:
 //use CRCore\Events\KillMoney;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
+
 # Base PocketMine uses:
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
-use pocketmine\scheduler\PluginTask;
 
 class Loader extends PluginBase
 {
@@ -38,7 +40,7 @@ class Loader extends PluginBase
 
     # Public constants:
     const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
-    const CORE_VERSION = "v1.4";
+    const CORE_VERSION = "v1.4.2";
 
     public function onLoad(): void{
         $this->saveDefaultConfig();
@@ -47,9 +49,21 @@ class Loader extends PluginBase
 
     public function onEnable(): void{
         API::$main = $this;
+        
+        #Register Events:
         new EventListener($this);
         new PotionListener($this);
-        $this->getServer()->getCommandMap()->registerAll("CRCore", [new CustomPots($this), new InfoCommand($this), new MenuCommand($this), new MPShop($this), new NickCommand($this), new ClearInventoryCommand($this), new HealCommand($this), new FlyCommand($this),//new VaultCommand($this)
+        
+        # Register Commands:
+        $this->getServer()->getCommandMap()->registerAll("CRCore", [
+            new CustomPots($this), 
+            new InfoCommand($this), 
+            new MenuCommand($this),
+            new MPShop($this),
+            new NickCommand($this),
+            new ClearInventoryCommand($this),
+            new HealCommand($this), 
+            new FlyCommand($this)
         ]);
     }
 }

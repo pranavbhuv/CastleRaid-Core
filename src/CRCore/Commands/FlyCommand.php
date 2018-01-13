@@ -22,13 +22,12 @@ use pocketmine\utils\TextFormat;
  * Class FlyCommand
  * @package CRCore\Commands
  */
-class FlyCommand extends PluginCommand
-{
+class FlyCommand extends PluginCommand {
     /**
      * FlyCommand constructor.
      * @param Loader $plugin
      */
-    public function __construct(Loader $plugin){
+    public function __construct(Loader $plugin) {
         parent::__construct("fly", $plugin);
         $this->setDescription("Allows you to fly in survival");
         $this->setPermission("castleraid.fly");
@@ -41,16 +40,16 @@ class FlyCommand extends PluginCommand
      * @param array $args
      * @return bool
      */
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool{
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         $cmd = strtolower($command->getName());
-        switch($cmd){
+        switch ($cmd) {
             case "fly":
-                if($sender->hasPermission("castleraid.fly") and $sender instanceof Player){
-                    if(!$sender->getAllowFlight()){
+                if ($sender->hasPermission("castleraid.fly") and $sender instanceof Player) {
+                    if (!$sender->getAllowFlight()) {
                         $sender->setAllowFlight(true);
                         $sender->sendMessage(TextFormat::GREEN . "Fly mode enabled.");
-                    }else{
-                        if($sender->getAllowFlight()){
+                    } else {
+                        if ($sender->getAllowFlight()) {
                             $sender->setAllowFlight(false);
                             $sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
                         }

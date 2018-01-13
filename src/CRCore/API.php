@@ -13,7 +13,7 @@ namespace CRCore;
 
 use pocketmine\utils\TextFormat;
 
-class API{
+class API {
     /** @var Loader $main */
     public static $main;
 
@@ -23,10 +23,10 @@ class API{
      * @param string $songname
      * @return string
      */
-    public static function singasong(string $songname) : string{
-        if(!in_array($songname, self::$songs)) return "Hello darkness my old friend\n I've come to talk to you again";
-        if(strtolower($songname) === "narwhalsong" || strtolower($songname) === "narwhal") return TextFormat::AQUA.
-        "Narwhals narwhals\n
+    public static function singasong(string $songname): string {
+        if (!in_array($songname, self::$songs)) return "Hello darkness my old friend\n I've come to talk to you again";
+        if (strtolower($songname) === "narwhalsong" || strtolower($songname) === "narwhal") return TextFormat::AQUA .
+            "Narwhals narwhals\n
         Swimming in the ocean\n
         Causing a commotion\n
         Coz they are so awesome\n\n

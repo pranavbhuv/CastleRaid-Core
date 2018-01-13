@@ -21,14 +21,13 @@ use pocketmine\utils\TextFormat;
  * Class NickCommand
  * @package CRCore\Commands
  */
-class NickCommand extends PluginCommand
-{
+class NickCommand extends PluginCommand {
 
     /**
      * NickCommand constructor.
      * @param Loader $plugin
      */
-    public function __construct(Loader $plugin){
+    public function __construct(Loader $plugin) {
         parent::__construct("nickme", $plugin);
         $this->setAliases(["nicky"]);
         $this->setPermission("castleraid.nick");
@@ -42,20 +41,20 @@ class NickCommand extends PluginCommand
      *
      * @return bool|mixed
      */
-    public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if($this->testPermission($sender) and $sender instanceof Player){
-            if(!isset($args[0])){
+    public function execute(CommandSender $sender, string $commandLabel, array $args) {
+        if ($this->testPermission($sender) and $sender instanceof Player) {
+            if (!isset($args[0])) {
                 $sender->sendMessage("Please provide a nickname.");
                 return false;
             }
-            if($args[0] === "off"){
+            if ($args[0] === "off") {
                 $sender->setDisplayName($sender->getName());
-            }else{
+            } else {
                 $sender->setDisplayName($args[0]);
                 $sender->sendMessage(TextFormat::BOLD . TextFormat::GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::GRAY . "]" . TextFormat::RESET . TextFormat::GRAY . " You're now nicked as " . TextFormat::RED . "$args[0]" . TextFormat::GRAY . "!");
             }
             return true;
-        }else{
+        } else {
             return false;
         }
     }

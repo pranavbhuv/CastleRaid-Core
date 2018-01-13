@@ -30,17 +30,15 @@ class PotionListener implements Listener {
      * EventListener constructor.
      * @param Loader $main
      */
-    public function __construct(Loader $main)
-    {
+    public function __construct(Loader $main) {
         $this->main = $main;
-	    $main->getServer()->getPluginManager()->registerEvents($this, $main);
+        $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
     /**
      * @param PlayerItemConsumeEvent $event
      */
-    public function onConsume(PlayerItemConsumeEvent $event) : void
-    {
+    public function onConsume(PlayerItemConsumeEvent $event): void {
         $player = $event->getPlayer();
         if ($event->getItem()->getId() === 373) {
             $damage = $event->getItem()->getDamage();
@@ -111,8 +109,7 @@ class PotionListener implements Listener {
     /**
      * @param PlayerItemHeldEvent $event
      */
-    public function onHeld(PlayerItemHeldEvent $event) : void
-    {
+    public function onHeld(PlayerItemHeldEvent $event): void {
         $player = $event->getPlayer();
         if ($event->getItem()->getId() === 373) {
             $damage = $event->getItem()->getDamage();

@@ -37,18 +37,16 @@ use pocketmine\utils\TextFormat;
  * Class EventListener
  * @package CRCore\Events
  */
-class EventListener implements Listener
-{
-	/** @var Loader $main */
+class EventListener implements Listener {
+    /** @var Loader $main */
     private $main;
 
-	/**
-	 * EventListener constructor.
-	 *
-	 * @param Loader $main
-	 */
-    public function __construct(Loader $main)
-    {
+    /**
+     * EventListener constructor.
+     *
+     * @param Loader $main
+     */
+    public function __construct(Loader $main) {
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
@@ -56,8 +54,7 @@ class EventListener implements Listener
     /**
      * @param DataPacketReceiveEvent $event
      */
-    public function onDataPacket(DataPacketReceiveEvent $event) : void
-    {
+    public function onDataPacket(DataPacketReceiveEvent $event): void {
         $packet = $event->getPacket();
         if ($packet instanceof ServerSettingsRequestPacket) {
             $packet = new ServerSettingsResponsePacket();
@@ -75,15 +72,14 @@ class EventListener implements Listener
     /**
      * @param PlayerJoinEvent $event
      */
-    public function onJoin(PlayerJoinEvent $event) : void
-    {
+    public function onJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
         $player->sendMessage(TextFormat::GREEN . "                     -=CastleRaid=-                ");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GRAY . "         A Kingdoms Minecraft Pocket Ediition Server        ");
-        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   VOTE:".TextFormat::GRAY." http://bit.do/castleraid                   ");
-        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . " DO:".TextFormat::GRAY." /menu                               ");
-	$player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY." castleraid.buycraft.net");
+        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   VOTE:" . TextFormat::GRAY . " http://bit.do/castleraid                   ");
+        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . " DO:" . TextFormat::GRAY . " /menu                               ");
+        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " castleraid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GREEN . "                    -=-                     ");
         switch ($player->getName()) {
@@ -95,22 +91,20 @@ class EventListener implements Listener
                 break;
         }
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
-        $player->setNameTag($player->getDisplayName()."\n".TextFormat::RED.$h."%");
+        $player->setNameTag($player->getDisplayName() . "\n" . TextFormat::RED . $h . "%");
     }
 
-	/**
-	 * @param PlayerLoginEvent $event
-	 */
-    public function onPlayerLogin(PlayerLoginEvent $event) : void
-    {
+    /**
+     * @param PlayerLoginEvent $event
+     */
+    public function onPlayerLogin(PlayerLoginEvent $event): void {
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
 
     /**
      * @param PlayerItemConsumeEvent $event
      */
-    public function onConsume(PlayerItemConsumeEvent $event) : void
-    {
+    public function onConsume(PlayerItemConsumeEvent $event): void {
         $player = $event->getPlayer();
         $inv = $player->getInventory();
         $hand = $inv->getItemInHand();
@@ -123,8 +117,7 @@ class EventListener implements Listener
     /**
      * @param PlayerInteractEvent $event
      */
-    public function onInteract(PlayerInteractEvent $event) : void
-    {
+    public function onInteract(PlayerInteractEvent $event): void {
         $player = $event->getPlayer();
         if ($event->getItem()->getId() === 130) {
             $damage = $event->getItem()->getDamage();
@@ -154,11 +147,11 @@ class EventListener implements Listener
         }
     }
 
-    public function onEntityDamage(EntityDamageEvent $e){
+    public function onEntityDamage(EntityDamageEvent $e) {
         $p = $e->getEntity();
-        if($p instanceof Player){
+        if ($p instanceof Player) {
             $h = round($p->getHealth()) / $p->getMaxHealth() * 100;
-            $p->setNameTag($p->getDisplayName()."\n".TextFormat::RED.$h."%");
+            $p->setNameTag($p->getDisplayName() . "\n" . TextFormat::RED . $h . "%");
         }
     }
 }
