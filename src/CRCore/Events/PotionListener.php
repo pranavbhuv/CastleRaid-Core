@@ -13,14 +13,14 @@ namespace CRCore\Events;
 
 # Loader use:
 use CRCore\Loader;
+
+# Base PocketMine uses:
 use pocketmine\entity\Effect;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerItemHeldEvent;
 use pocketmine\item\Item;
-use pocketmine\utils\TextFormat as TF;
-
-# Base PocketMine uses:
+use pocketmine\utils\TextFormat;
 
 class PotionListener implements Listener {
 
@@ -49,7 +49,7 @@ class PotionListener implements Listener {
                     $player->addEffect(Effect::getEffect(Effect::NIGHT_VISION)->setDuration(180 * 20)->setAmplifier(1));
                     $player->getInventory()->removeItem(Item::get(Item::POTION, 100, 1));
                     $player->getInventory()->addItem(Item::get(Item::GLASS_BOTTLE, 0, 1));
-                    $player->addTitle(TF::DARK_GRAY . TF::BOLD . "(" . TF::GREEN . "!" . TF::DARK_GRAY . ") " . TF::RESET . TF::GRAY . "Consumed:", TF::RED . TF::BOLD . "Raiding Potion");
+                    $player->addTitle(TextFormat::DARK_GRAY . TextFormat::BOLD . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "Consumed:", TextFormat::RED . TextFormat::BOLD . "Raiding Potion");
                     break;
 
                 case 101:
@@ -59,7 +59,7 @@ class PotionListener implements Listener {
                     $player->addEffect(Effect::getEffect(Effect::FIRE_RESISTANCE)->setDuration(360 * 20)->setAmplifier(1));
                     $player->getInventory()->removeItem(Item::get(Item::POTION, 101, 1));
                     $player->getInventory()->addItem(Item::get(Item::GLASS_BOTTLE, 0, 1));
-                    $player->addTitle(TF::DARK_GRAY . TF::BOLD . "(" . TF::GREEN . "!" . TF::DARK_GRAY . ") " . TF::RESET . TF::GRAY . "Consumed:", TF::AQUA . TF::BOLD . "Kingdom Potion");
+                    $player->addTitle(TextFormat::DARK_GRAY . TextFormat::BOLD . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "Consumed:", TextFormat::AQUA . TextFormat::BOLD . "Kingdom Potion");
                     break;
 
                 case 102:
@@ -69,7 +69,7 @@ class PotionListener implements Listener {
                     $player->addEffect(Effect::getEffect(Effect::NIGHT_VISION)->setDuration(360 * 20)->setAmplifier(1));
                     $player->getInventory()->removeItem(Item::get(Item::POTION, 102, 1));
                     $player->getInventory()->addItem(Item::get(Item::GLASS_BOTTLE, 0, 1));
-                    $player->addTitle(TF::DARK_GRAY . TF::BOLD . "(" . TF::GREEN . "!" . TF::DARK_GRAY . ") " . TF::RESET . TF::GRAY . "Consumed:", TF::AQUA . TF::BOLD . "Farming Potion");
+                    $player->addTitle(TextFormat::DARK_GRAY . TextFormat::BOLD . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "Consumed:", TextFormat::AQUA . TextFormat::BOLD . "Farming Potion");
                     break;
 
                 case 103:
@@ -79,7 +79,7 @@ class PotionListener implements Listener {
                     $player->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTANCE)->setDuration(360 * 20)->setAmplifier(1));
                     $player->getInventory()->removeItem(Item::get(Item::POTION, 103, 1));
                     $player->getInventory()->addItem(Item::get(Item::GLASS_BOTTLE, 0, 1));
-                    $player->addTitle(TF::DARK_GRAY . TF::BOLD . "(" . TF::GREEN . "!" . TF::DARK_GRAY . ") " . TF::RESET . TF::GRAY . "Consumed:", TF::AQUA . TF::BOLD . "PvP Potion");
+                    $player->addTitle(TextFormat::DARK_GRAY . TextFormat::BOLD . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "Consumed:", TextFormat::AQUA . TextFormat::BOLD . "PvP Potion");
                     break;
 
                 case 104:
@@ -89,7 +89,7 @@ class PotionListener implements Listener {
                     $player->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTANCE)->setDuration(360 * 20)->setAmplifier(1));
                     $player->getInventory()->removeItem(Item::get(Item::POTION, 104, 1));
                     $player->getInventory()->addItem(Item::get(Item::GLASS_BOTTLE, 0, 1));
-                    $player->addTitle(TF::DARK_GRAY . TF::BOLD . "(" . TF::GREEN . "!" . TF::DARK_GRAY . ") " . TF::RESET . TF::GRAY . "Consumed:", TF::AQUA . TF::BOLD . "Getaway Potion");
+                    $player->addTitle(TextFormat::DARK_GRAY . TextFormat::BOLD . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "Consumed:", TextFormat::AQUA . TextFormat::BOLD . "Getaway Potion");
                     break;
 
                 case 105:
@@ -99,7 +99,7 @@ class PotionListener implements Listener {
                     $player->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTANCE)->setDuration(360 * 20)->setAmplifier(1));
                     $player->getInventory()->removeItem(Item::get(Item::POTION, 104, 1));
                     $player->getInventory()->addItem(Item::get(Item::GLASS_BOTTLE, 0, 1));
-                    $player->addTitle(TF::DARK_GRAY . TF::BOLD . "(" . TF::GREEN . "!" . TF::DARK_GRAY . ") " . TF::RESET . TF::GRAY . "Consumed:", TF::AQUA . TF::BOLD . "Kings Potion");
+                    $player->addTitle(TextFormat::DARK_GRAY . TextFormat::BOLD . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "Consumed:", TextFormat::AQUA . TextFormat::BOLD . "Kings Potion");
                     break;
 
             }
@@ -118,65 +118,65 @@ class PotionListener implements Listener {
                 case 100:
                     $item = Item::get(Item::POTION, 100, 1);
                     $player->getInventory()->removeItem($item);
-                    $item->setCustomName(TF::RESET . TF::RED . TF::BOLD . "Raiding Potion" . PHP_EOL . PHP_EOL .
-                        TF::RESET . TF::DARK_GRAY . " * " . TF::GREEN . "Speed I" . TF::GRAY . " (6:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Haste II" . TF::GRAY . " (6:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Night Vision" . TF::GRAY . " (3:00)");
+                    $item->setCustomName(TextFormat::RESET . TextFormat::RED . TextFormat::BOLD . "Raiding Potion" . PHP_EOL . PHP_EOL .
+                        TextFormat::RESET . TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Speed I" . TextFormat::GRAY . " (6:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Haste II" . TextFormat::GRAY . " (6:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Night Vision" . TextFormat::GRAY . " (3:00)");
                     $player->getInventory()->addItem($item);
                     break;
 
                 case 101:
                     $item = Item::get(Item::POTION, 101, 1);
                     $player->getInventory()->removeItem($item);
-                    $item->setCustomName(TF::RESET . TF::AQUA . TF::BOLD . "Kingdom Potion" . PHP_EOL . PHP_EOL .
-                        TF::RESET . TF::DARK_GRAY . " * " . TF::GREEN . "Jump Boost I" . TF::GRAY . " (3:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Strength I" . TF::GRAY . " (0:30)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Night Vision" . TF::GRAY . " (6:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Fire Resistance" . TF::GRAY . " (6:00)");
+                    $item->setCustomName(TextFormat::RESET . TextFormat::AQUA . TextFormat::BOLD . "Kingdom Potion" . PHP_EOL . PHP_EOL .
+                        TextFormat::RESET . TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Jump Boost I" . TextFormat::GRAY . " (3:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Strength I" . TextFormat::GRAY . " (0:30)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Night Vision" . TextFormat::GRAY . " (6:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Fire Resistance" . TextFormat::GRAY . " (6:00)");
                     $player->getInventory()->addItem($item);
                     break;
 
                 case 102:
                     $item = Item::get(Item::POTION, 102, 1);
                     $player->getInventory()->removeItem($item);
-                    $item->setCustomName(TF::RESET . TF::AQUA . TF::BOLD . "Farming Potion" . PHP_EOL . PHP_EOL .
-                        TF::RESET . TF::DARK_GRAY . " * " . TF::GREEN . "Jump Boost I" . TF::GRAY . " (3:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Water Breathing I" . TF::GRAY . " (0:30)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Saturation 1" . TF::GRAY . " (6:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Night Vision 1" . TF::GRAY . " (6:00)");
+                    $item->setCustomName(TextFormat::RESET . TextFormat::AQUA . TextFormat::BOLD . "Farming Potion" . PHP_EOL . PHP_EOL .
+                        TextFormat::RESET . TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Jump Boost I" . TextFormat::GRAY . " (3:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Water Breathing I" . TextFormat::GRAY . " (0:30)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Saturation 1" . TextFormat::GRAY . " (6:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Night Vision 1" . TextFormat::GRAY . " (6:00)");
                     $player->getInventory()->addItem($item);
                     break;
 
                 case 103:
                     $item = Item::get(Item::POTION, 103, 1);
                     $player->getInventory()->removeItem($item);
-                    $item->setCustomName(TF::RESET . TF::AQUA . TF::BOLD . "PvP Potion" . PHP_EOL . PHP_EOL .
-                        TF::RESET . TF::DARK_GRAY . " * " . TF::GREEN . "Speed I" . TF::GRAY . " (3:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Jump I" . TF::GRAY . " (0:30)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Resistance 1" . TF::GRAY . " (6:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Night Vision 1" . TF::GRAY . " (6:00)");
+                    $item->setCustomName(TextFormat::RESET . TextFormat::AQUA . TextFormat::BOLD . "PvP Potion" . PHP_EOL . PHP_EOL .
+                        TextFormat::RESET . TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Speed I" . TextFormat::GRAY . " (3:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Jump I" . TextFormat::GRAY . " (0:30)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Resistance 1" . TextFormat::GRAY . " (6:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Night Vision 1" . TextFormat::GRAY . " (6:00)");
                     $player->getInventory()->addItem($item);
                     break;
 
                 case 104:
                     $item = Item::get(Item::POTION, 104, 1);
                     $player->getInventory()->removeItem($item);
-                    $item->setCustomName(TF::RESET . TF::AQUA . TF::BOLD . "Getaway Potion" . PHP_EOL . PHP_EOL .
-                        TF::RESET . TF::DARK_GRAY . " * " . TF::GREEN . "Swiftness II" . TF::GRAY . " (3:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Jump Boost II" . TF::GRAY . " (0:30)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Night Vision 1" . TF::GRAY . " (6:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Resistance 1" . TF::GRAY . " (6:00)");
+                    $item->setCustomName(TextFormat::RESET . TextFormat::AQUA . TextFormat::BOLD . "Getaway Potion" . PHP_EOL . PHP_EOL .
+                        TextFormat::RESET . TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Swiftness II" . TextFormat::GRAY . " (3:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Jump Boost II" . TextFormat::GRAY . " (0:30)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Night Vision 1" . TextFormat::GRAY . " (6:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Resistance 1" . TextFormat::GRAY . " (6:00)");
                     $player->getInventory()->addItem($item);
                     break;
 
                 case 105:
                     $item = Item::get(Item::POTION, 105, 1);
                     $player->getInventory()->removeItem($item);
-                    $item->setCustomName(TF::RESET . TF::AQUA . TF::BOLD . "Kings Potion" . PHP_EOL . PHP_EOL .
-                        TF::RESET . TF::DARK_GRAY . " * " . TF::GREEN . "Swiftness II" . TF::GRAY . " (3:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Strength II" . TF::GRAY . " (0:30)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Jump Boost II" . TF::GRAY . " (6:00)" . PHP_EOL .
-                        TF::DARK_GRAY . " * " . TF::GREEN . "Resistance 1" . TF::GRAY . " (6:00)");
+                    $item->setCustomName(TextFormat::RESET . TextFormat::AQUA . TextFormat::BOLD . "Kings Potion" . PHP_EOL . PHP_EOL .
+                        TextFormat::RESET . TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Swiftness II" . TextFormat::GRAY . " (3:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Strength II" . TextFormat::GRAY . " (0:30)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Jump Boost II" . TextFormat::GRAY . " (6:00)" . PHP_EOL .
+                        TextFormat::DARK_GRAY . " * " . TextFormat::GREEN . "Resistance 1" . TextFormat::GRAY . " (6:00)");
                     $player->getInventory()->addItem($item);
                     break;
             }

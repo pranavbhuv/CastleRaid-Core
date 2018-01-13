@@ -13,25 +13,27 @@ namespace CRCore\Events;
 
 # Loader use:
 use CRCore\Loader;
+
+# Plugin Dependencies:
 use onebone\economyapi\EconomyAPI;
-use pocketmine\entity\Effect;
+
+# PocketMine event uses:
 use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
-use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsRequestPacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
+
+# Base PocketMine uses:
 use pocketmine\Player;
-use pocketmine\utils\TextFormat;
-
-# PocketMine uses:
-
-# PocketMine event uses:
+use pocketmine\utils\TexTextFormatormat;
+use pocketmine\item\Item;
+use pocketmine\event\Listener;
+use pocketmine\entity\Effect;
 
 /**
  * Class EventListener

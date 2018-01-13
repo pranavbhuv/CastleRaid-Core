@@ -17,7 +17,7 @@ use pocketmine\command\PluginCommand;
 use pocketmine\item\Item;
 use pocketmine\item\WrittenBook;
 use pocketmine\Player;
-use pocketmine\utils\TextFormat as C;
+use pocketmine\utils\TextFormat;
 
 /**
  * Class InfoCommand
@@ -46,14 +46,14 @@ class InfoCommand extends PluginCommand {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             /** @var WrittenBook $book */
             $book = Item::get(Item::WRITTEN_BOOK, 0, 1);
-            $book->setTitle(C::GREEN . C::UNDERLINE . "Information Booklet");
-            $book->setPageText(0, C::GREEN . C::UNDERLINE . "Whats a Kingdom?" . C::BLACK . "\n - A kingdom, is your home, its like a fations. Except bigger! \n - Kingdoms, have many members and a custom world! \n - Each kingdom has a king, this king is who you shall fight for!");
-            $book->setPageText(1, C::GREEN . C::UNDERLINE . "How can my Kingdom win?" . C::BLACK . "\n - You can earn power in the weekly wars, and from PvPing enemy kingdoms! \n - You can earn power in our KOTH at warzone.");
-            $book->setPageText(2, C::GREEN . c::UNDERLINE . "How do I store my loot, and get loot?" . C::BLACK . "\n - Try doing /pv 1, for a vault! \n - Go to your kingdoms world, and make a base, skybase, or lair! \n - Make sure you raid other kingdoms bases!");
-            $book->setPageText(3, C::GREEN . c::UNDERLINE . "Helpful Commands" . C::BLACK . "\n- /k \n - /warpme \n - /pv \n - /shop \n - /cpshop \n - /mpshop \n - /menu");
+            $book->setTitle(TextFormat::GREEN . TextFormat::UNDERLINE . "Information Booklet");
+            $book->setPageText(0, TextFormat::GREEN . TextFormat::UNDERLINE . "Whats a Kingdom?" . TextFormat::BLACK . "\n - A kingdom, is your home, its like a fations. Except bigger! \n - Kingdoms, have many members and a custom world! \n - Each kingdom has a king, this king is who you shall fight for!");
+            $book->setPageText(1, TextFormat::GREEN . TextFormat::UNDERLINE . "How can my Kingdom win?" . TextFormat::BLACK . "\n - You can earn power in the weekly wars, and from PvPing enemy kingdoms! \n - You can earn power in our KOTH at warzone.");
+            $book->setPageText(2, TextFormat::GREEN . TextFormat::UNDERLINE . "How do I store my loot, and get loot?" . TextFormat::BLACK . "\n - Try doing /pv 1, for a vault! \n - Go to your kingdoms world, and make a base, skybase, or lair! \n - Make sure you raid other kingdoms bases!");
+            $book->setPageText(3, TextFormat::GREEN . TextFormat::UNDERLINE . "Helpful Commands" . TextFormat::BLACK . "\n- /k \n - /warpme \n - /pv \n - /shop \n - /cpshop \n - /mpshop \n - /menu");
             $book->setAuthor("CastleRaid Network");
             $sender->getInventory()->addItem($book);
-            $sender->sendMessage(C::GREEN . "You received an Information Book!");
+            $sender->sendMessage(TextFormat::GREEN . "You received an Information Book!");
             return true;
         } else {
             return false;

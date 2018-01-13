@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
-use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
@@ -35,28 +34,21 @@ class FlyCommand extends PluginCommand {
 
     /**
      * @param CommandSender $sender
-     * @param Command $command
-     * @param string $label
+     * @param string $commandLabel
      * @param array $args
-     * @return bool
+     * @return bool|mixed|void
      */
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
-        $cmd = strtolower($command->getName());
-        switch ($cmd) {
-            case "fly":
-                if ($sender->hasPermission("castleraid.fly") and $sender instanceof Player) {
-                    if (!$sender->getAllowFlight()) {
-                        $sender->setAllowFlight(true);
-                        $sender->sendMessage(TextFormat::GREEN . "Fly mode enabled.");
-                    } else {
-                        if ($sender->getAllowFlight()) {
-                            $sender->setAllowFlight(false);
-                            $sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
-                        }
-                    }
+    public function execute(CommandSender $sender, string $commandLabel, array $args) {
+        if ($this->testPermission($sender) and $sender instanceof Player) {
+            if (!$sender->getAllowFlight()) {
+                $sender->setAllowFlight(true);
+                $sender->sendMessage(TextFormat::GREEN . "Fly mode enabled.");
+            } else {
+                if ($sender->getAllowFlight()) {
+                    $sender->setAllowFlight(false);
+                    $sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
                 }
-                break;
+            }
         }
-        return true;
     }
 }

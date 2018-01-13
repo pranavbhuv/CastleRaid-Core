@@ -40,7 +40,7 @@ class Loader extends PluginBase
 
     # Public constants:
     const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
-    const CORE_VERSION = "v1.4.2";
+    const CORE_VERSION = "v1.4.3";
 
     public function onLoad(): void{
         $this->saveDefaultConfig();

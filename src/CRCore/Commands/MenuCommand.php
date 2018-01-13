@@ -14,7 +14,7 @@ use CRCore\Loader;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
-use pocketmine\utils\TextFormat as C;
+use pocketmine\utils\TextFormat;
 
 /**
  * Class MenuCommand
@@ -90,16 +90,16 @@ class MenuCommand extends PluginCommand {
             });
             $form->setTitle("Server Menu");
             $form->setContent("List of buttons.");
-            $form->addButton(C::WHITE . "Shop");
-            $form->addButton(C::WHITE . "Money Pouch Shop");
-            $form->addButton(C::WHITE . "Custom Potion Shop");
-            $form->addButton(C::WHITE . "Combiner");
-            $form->addButton(C::WHITE . "Kingdom Menu");
-            $form->addButton(C::WHITE . "Kingdom Teleporter");
-            $form->addButton(C::WHITE . "CE List");
-            $form->addButton(C::WHITE . "Auction House");
-            $form->addButton(C::WHITE . "Tutorial");
-            $form->addButton(C::WHITE . "Information");
+            $form->addButton(TextFormat::WHITE . "Shop");
+            $form->addButton(TextFormat::WHITE . "Money Pouch Shop");
+            $form->addButton(TextFormat::WHITE . "Custom Potion Shop");
+            $form->addButton(TextFormat::WHITE . "Combiner");
+            $form->addButton(TextFormat::WHITE . "Kingdom Menu");
+            $form->addButton(TextFormat::WHITE . "Kingdom Teleporter");
+            $form->addButton(TextFormat::WHITE . "CE List");
+            $form->addButton(TextFormat::WHITE . "Auction House");
+            $form->addButton(TextFormat::WHITE . "Tutorial");
+            $form->addButton(TextFormat::WHITE . "Information");
             $form->sendToPlayer($sender);
         }
     }

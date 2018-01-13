@@ -18,7 +18,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\item\Item;
 use pocketmine\Player;
-use pocketmine\utils\TextFormat as C;
+use pocketmine\utils\TextFormat;
 
 /**
  * Class MenuCommand
@@ -121,12 +121,12 @@ class CustomPots extends PluginCommand {
             });
             $form->setTitle("Custom Potions Shop");
             $form->setContent("Custom Potions available below!");
-            $form->addButton(C::GREEN . "Raiding Potion | $25k");
-            $form->addButton(C::GREEN . "Kingdom Potion | $40k");
-            $form->addButton(C::GREEN . "Farming Potion | $15k");
-            $form->addButton(C::GREEN . "Pvp Potion | $30k");
-            $form->addButton(C::GREEN . "Getaway Potion | $30k");
-            $form->addButton(C::GREEN . "Kings Potion | $50k");
+            $form->addButton(TextFormat::GREEN . "Raiding Potion | $25k");
+            $form->addButton(TextFormat::GREEN . "Kingdom Potion | $40k");
+            $form->addButton(TextFormat::GREEN . "Farming Potion | $15k");
+            $form->addButton(TextFormat::GREEN . "Pvp Potion | $30k");
+            $form->addButton(TextFormat::GREEN . "Getaway Potion | $30k");
+            $form->addButton(TextFormat::GREEN . "Kings Potion | $50k");
             $form->sendToPlayer($sender);
             return true;
         } else {
