@@ -15,6 +15,7 @@ namespace CRCore\Events;
 use CRCore\Loader;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\entity\Effect;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
@@ -25,6 +26,7 @@ use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsRequestPacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
+use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 # PocketMine uses:
@@ -92,6 +94,8 @@ class EventListener implements Listener
                 $this->main->getServer()->broadcastMessage("Wb oh sir lord of our kingdoms!");
                 break;
         }
+        $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
+        $player->setNameTag($player->getDisplayName()."\n".TextFormat::RED.$h."%");
     }
 
 	/**
@@ -147,6 +151,14 @@ class EventListener implements Listener
                     $player->getInventory()->removeItem($tier3);
                     break;
             }
+        }
+    }
+
+    public function onEntityDamage(EntityDamageEvent $e){
+        $p = $e->getEntity();
+        if($p instanceof Player){
+            $h = round($p->getHealth()) / $p->getMaxHealth() * 100;
+            $p->setNameTag($p->getDisplayName()."\n".TextFormat::RED.$h."%");
         }
     }
 }
