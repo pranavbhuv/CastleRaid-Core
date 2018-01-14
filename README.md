@@ -7,7 +7,7 @@ The official CasteRaid Core made by the CR Dev Team
 | [ClearInventory](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/ClearInventoryCommand.php) | Command | Clears a player's inventory |
 | [CustomPotions](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/CustomPotionsCommand.php) | Command | CastleRaid Core CustomPot Command |
 | [FakePlayer](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/FakePlayerTask.php) | Task | Undefined |
-| [Fly](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/FlyCommand.php) | Fly | Allows you to fly in survival |
+| [Fly](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/FlyCommand.php) | Command | Allows you to fly in survival |
 | [Heal](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/HealCommand.php) | Command | Heals a player |
 | [Info](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/InfoCommand.php) | Command | CastleRaid Core Info Command |
 | [KillMoney](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/KillMoney.php) | Event | Give a player money when they get a kill |
