@@ -44,4 +44,5 @@ class Relics implements Listener
         }
 
     }
+    //TODO, REWARDS
 }
