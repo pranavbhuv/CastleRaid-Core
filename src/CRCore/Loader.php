@@ -21,7 +21,7 @@ use CRCore\Commands\MPShopCommand;
 use CRCore\Commands\NickCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
-use CRCore\Events\RelicsTask;
+use CRCore\Events\RelicListener;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
