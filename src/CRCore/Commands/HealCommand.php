@@ -30,6 +30,8 @@ class HealCommand extends PluginCommand {
             $sender->setHealth(20);
             $sender->sendMessage(TextFormat::AQUA . "You have been healed!");
             $sender->addTitle(TextFormat::DARK_RED . "You have been healed!");
+        } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
         }
     }
 }
