@@ -7,4 +7,4 @@
 
 ## Credits:
 * Core Authors: iiFlamiinBlaze and QuiverlyRivalry.
-* Contributors: Nick, Nice and Potatoe.
+* Contributors: Nick, Drew, Jason and Potatoe.
