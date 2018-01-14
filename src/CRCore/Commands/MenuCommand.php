@@ -16,15 +16,9 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class MenuCommand
- * @package CRCore\Commands
- */
+
 class MenuCommand extends PluginCommand {
-    /**
-     * MenuCommand constructor.
-     * @param Loader $plugin
-     */
+
     public function __construct(Loader $plugin) {
         parent::__construct("menu", $plugin);
         $this->setPermission("cp.command");
@@ -32,13 +26,6 @@ class MenuCommand extends PluginCommand {
         $this->setAliases(["cp"]);
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param string $commandLabel
-     * @param array $args
-     *
-     * @return bool|mixed|void
-     */
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");

@@ -17,28 +17,14 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class FlyCommand
- * @package CRCore\Commands
- */
 class FlyCommand extends PluginCommand {
 
-    /**
-     * FlyCommand constructor.
-     * @param Loader $plugin
-     */
     public function __construct(Loader $plugin) {
         parent::__construct("fly", $plugin);
         $this->setDescription("Allows you to fly in survival");
         $this->setPermission("castleraid.fly");
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param string $commandLabel
-     * @param array $args
-     * @return bool|mixed|void
-     */
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             if (!$sender->isCreative()) {

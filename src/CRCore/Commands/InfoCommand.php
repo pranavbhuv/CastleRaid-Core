@@ -19,15 +19,8 @@ use pocketmine\item\WrittenBook;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class InfoCommand
- * @package CRCore\Commands
- */
 class InfoCommand extends PluginCommand {
-    /**
-     * InfoCommand constructor.
-     * @param Loader $plugin
-     */
+
     public function __construct(Loader $plugin) {
         parent::__construct("info", $plugin);
         $this->setDescription("CastleRaid Core Info Command");
@@ -35,13 +28,6 @@ class InfoCommand extends PluginCommand {
         $this->setPermission("castleraid.info");
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param string $commandLabel
-     * @param array $args
-     *
-     * @return bool|mixed
-     */
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             /** @var WrittenBook $book */

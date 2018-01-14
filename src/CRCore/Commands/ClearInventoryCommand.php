@@ -17,28 +17,15 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class ClearInventoryCommand
- * @package CRCore\Commands
- */
+
 class ClearInventoryCommand extends PluginCommand {
-    /**
-     * ClearInventoryCommand constructor.
-     * @param Loader $plugin
-     */
+
     public function __construct(Loader $plugin) {
         parent::__construct("clearinv", $plugin);
         $this->setDescription("Clears a player's inventory");
         $this->setPermission("castleraid.clearinv");
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param string $commandLabel
-     * @param array $args
-     *
-     * @return bool|mixed
-     */
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             $sender->getInventory()->clearAll();

@@ -20,29 +20,14 @@ use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class CustomPotionsCommand
- * @package CRCore\Commands
- */
 class CustomPotionsCommand extends PluginCommand {
 
-    /**
-     * CustomPotionsCommand constructor.
-     * @param Loader $plugin
-     */
     public function __construct(Loader $plugin) {
         parent::__construct("cpshop", $plugin);
         $this->setPermission("cp2.command");
         $this->setDescription("CastleRaid Core CustomPot Command");
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param string $commandLabel
-     * @param array $args
-     *
-     * @return bool|mixed
-     */
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");

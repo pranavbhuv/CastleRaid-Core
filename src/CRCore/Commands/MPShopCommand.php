@@ -19,16 +19,8 @@ use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class MPShopCommand
- * @package CRCore\Commands
- */
 class MPShopCommand extends PluginCommand {
 
-    /**
-     * MPShopCommand constructor.
-     * @param Loader $plugin
-     */
     public function __construct(Loader $plugin) {
         parent::__construct("mpshop", $plugin);
         $this->setPermission("mp.command");
@@ -36,12 +28,6 @@ class MPShopCommand extends PluginCommand {
         $this->setAliases(["mpshop"]);
     }
 
-    /**
-     * @param CommandSender $sender
-     * @param string $commandLabel
-     * @param array $args
-     * @return bool|mixed
-     */
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");

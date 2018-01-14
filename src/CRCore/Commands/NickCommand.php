@@ -17,30 +17,15 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class NickCommand
- * @package CRCore\Commands
- */
 class NickCommand extends PluginCommand {
 
-    /**
-     * NickCommand constructor.
-     * @param Loader $plugin
-     */
     public function __construct(Loader $plugin) {
         parent::__construct("nickme", $plugin);
         $this->setAliases(["nicky"]);
         $this->setPermission("castleraid.nick");
         $this->setDescription("CastleRaid Core Nick Command");
     }
-
-    /**
-     * @param CommandSender $sender
-     * @param string $commandLabel
-     * @param array $args
-     *
-     * @return bool|mixed
-     */
+    
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             if (!isset($args[0])) {

@@ -26,10 +26,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
 class Loader extends PluginBase{
-	# Public variables:
 	public $tutorial;
 
-	# Public constants:
 	const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
 	const CORE_VERSION = "v1.4.4";
 
@@ -39,13 +37,9 @@ class Loader extends PluginBase{
 	}
 
 	public function onEnable() : void{
-		API::$main = $this;
-
-		#Register Events:
 		new EventListener($this);
 		new PotionListener($this);
 
-		# Register Commands:
 		$this->getServer()->getCommandMap()->registerAll("CRCore", [
 			new CustomPotionsCommand($this),
 			new InfoCommand($this),

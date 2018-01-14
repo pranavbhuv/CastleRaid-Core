@@ -28,26 +28,15 @@ use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-/**
- * Class EventListener
- * @package CRCore\Events
- */
 class EventListener implements Listener {
 
     private $main;
 
-    /**
-     * EventListener constructor.
-     * @param Loader $main
-     */
     public function __construct(Loader $main) {
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    /**
-     * @param DataPacketReceiveEvent $event
-     */
     public function onDataPacket(DataPacketReceiveEvent $event): void {
         $packet = $event->getPacket();
         if ($packet instanceof ServerSettingsRequestPacket) {
@@ -63,9 +52,6 @@ class EventListener implements Listener {
         }
     }
 
-    /**
-     * @param PlayerJoinEvent $event
-     */
     public function onJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
         $player->sendMessage(TextFormat::GREEN . "                     -=CastleRaid=-              ");
@@ -88,16 +74,10 @@ class EventListener implements Listener {
         $player->setNameTag($player->getDisplayName() . "\n " . TextFormat::GREEN . "♥" . $h . "%");
     }
 
-    /**
-     * @param PlayerLoginEvent $event
-     */
     public function onPlayerLogin(PlayerLoginEvent $event): void {
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
 
-    /**
-     * @param PlayerItemConsumeEvent $event
-     */
     public function onConsume(PlayerItemConsumeEvent $event): void {
         $player = $event->getPlayer();
         $inv = $player->getInventory();
@@ -108,9 +88,6 @@ class EventListener implements Listener {
         }
     }
 
-    /**
-     * @param PlayerInteractEvent $event
-     */
     public function onInteract(PlayerInteractEvent $event): void {
         $player = $event->getPlayer();
         if ($event->getItem()->getId() === 130) {
@@ -141,9 +118,6 @@ class EventListener implements Listener {
         }
     }
 
-    /**
-     * @param EntityDamageEvent $event
-     */
     public function onEntityDamage(EntityDamageEvent $event) : void{
         $p = $event->getEntity();
         if ($p instanceof Player) {
