@@ -1,10 +1,8 @@
 name: CastleRaidCore
-version: 1.4.3
+version: 1.4.4
 author: QuiverlyRivalry, iiFlamiinBlaze
 api: [3.0.0-ALPHA9, 3.0.0-ALPHA10]
 main: CRCore\Loader
-depend:
-- FormAPI
 permissions:
  castleraid.nick:
   default: true
