@@ -4,7 +4,7 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
+ * @authors     : QuiverlyRivarly and iiFlamiinBlaze
  * @contributors: Nick, Potatoe, and Nice.
  */
 declare(strict_types=1);
@@ -13,22 +13,22 @@ namespace CRCore;
 
 use pocketmine\utils\TextFormat;
 
-class API {
+class API{
 
-    /** @var Loader $main */
-    public static $main;
+	/** @var Loader $main */
+	public static $main;
 
-    public static $songs = ["narwhalsong", "narwhal"];
+	public static $songs = ["narwhalsong", "narwhal"];
 
-    /**
-     * @param string $songname
-     * @return string
-     */
+	/**
+	 * @param string $songname
+	 * @return string
+	 */
 
-    public static function singasong(string $songname): string {
-        if (!in_array($songname, self::$songs)) return "Hello darkness my old friend\n I've come to talk to you again";
-        if (strtolower($songname) === "narwhalsong" || strtolower($songname) === "narwhal") return TextFormat::AQUA .
-            "Narwhals narwhals\n
+	public static function singasong(string $songname) : string{
+		if(!in_array($songname, self::$songs)) return "Hello darkness my old friend\n I've come to talk to you again";
+		if(strtolower($songname) === "narwhalsong" || strtolower($songname) === "narwhal") return TextFormat::AQUA .
+			"Narwhals narwhals\n
         Swimming in the ocean\n
         Causing a commotion\n
         Coz they are so awesome\n\n
@@ -47,6 +47,6 @@ class API {
         Narwhals\n
         They are narwhals\n
         Inventors of the shish kebab";
-        return "Error.";
-    }
+		return "Error.";
+	}
 }
