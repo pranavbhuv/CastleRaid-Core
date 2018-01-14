@@ -29,7 +29,6 @@ use pocketmine\utils\TextFormat;
 class Loader extends PluginBase{
 	//TODO: Remove this or at least move it...
 	const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
-	const CORE_VERSION = "v1.4.3";
 
 	public function onLoad() : void{
 		$this->saveResource("tsconfig.json");
