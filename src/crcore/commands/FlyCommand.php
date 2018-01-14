@@ -39,6 +39,7 @@ class FlyCommand extends PluginCommand{
 			}else{
 				if($sender->getAllowFlight()){
 					$sender->setAllowFlight(false);
+					$sender->setFlying(false);
 					$sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
 				}
 			}

@@ -19,7 +19,7 @@ use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class MPShop extends PluginCommand{
+class MPShopCommand extends PluginCommand{
 
 	public function __construct(Loader $plugin){
 		parent::__construct("mpshop", $plugin);
@@ -82,7 +82,7 @@ class MPShop extends PluginCommand{
 				}
 			});
 			$form->setTitle("Money Pouch Shop");
-			$form->setContent("Money Pouchs avaliable below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
+			$form->setContent("Money Pouches available below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
 			$form->addButton(TextFormat::GREEN . "Tier 1 | $20k");
 			$form->addButton(TextFormat::GREEN . "Tier 2 | $40k");
 			$form->addButton(TextFormat::GREEN . "Tier 3 | $80k");

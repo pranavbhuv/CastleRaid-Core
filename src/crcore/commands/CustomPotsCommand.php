@@ -20,7 +20,7 @@ use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class CustomPots extends PluginCommand{
+class CustomPotsCommand extends PluginCommand{
 
 	public function __construct(Loader $plugin){
 		parent::__construct("cpshop", $plugin);
