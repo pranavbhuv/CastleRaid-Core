@@ -30,7 +30,7 @@ class Loader extends PluginBase {
 
     public $tutorial;
 
-    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
+    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . " You don't have permission to use this command";
     const CORE_VERSION = "v1.4.5";
 
     public function onLoad(): void {

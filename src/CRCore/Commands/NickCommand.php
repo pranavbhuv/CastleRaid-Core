@@ -40,6 +40,7 @@ class NickCommand extends PluginCommand {
             }
             return true;
         } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
             return false;
         }
     }

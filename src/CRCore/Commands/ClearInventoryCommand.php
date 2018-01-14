@@ -32,6 +32,7 @@ class ClearInventoryCommand extends PluginCommand {
             $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
             return true;
         } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
             return false;
         }
     }

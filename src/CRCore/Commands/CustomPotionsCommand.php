@@ -114,6 +114,7 @@ class CustomPotionsCommand extends PluginCommand {
             $form->sendToPlayer($sender);
             return true;
         } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
             return false;
         }
     }

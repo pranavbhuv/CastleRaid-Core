@@ -42,6 +42,7 @@ class InfoCommand extends PluginCommand {
             $sender->sendMessage(TextFormat::GREEN . "You received an Information Book!");
             return true;
         } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
             return false;
         }
     }

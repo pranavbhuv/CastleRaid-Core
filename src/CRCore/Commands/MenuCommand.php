@@ -87,6 +87,8 @@ class MenuCommand extends PluginCommand {
             $form->addButton(TextFormat::WHITE . "Tutorial");
             $form->addButton(TextFormat::WHITE . "Information");
             $form->sendToPlayer($sender);
+        } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
         }
     }
 }
