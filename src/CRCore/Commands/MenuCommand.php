@@ -21,7 +21,7 @@ class MenuCommand extends PluginCommand {
 
     public function __construct(Loader $plugin) {
         parent::__construct("menu", $plugin);
-        $this->setPermission("cp.command");
+        $this->setPermission("castleraid.cp");
         $this->setDescription("CastleRaid Core Menu Command");
         $this->setAliases(["cp"]);
     }

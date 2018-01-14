@@ -6,11 +6,11 @@ main: CRCore\Loader
 permissions:
  castleraid.nick:
   default: true
- cp.command:
+ castleraid.cp:
   default: true
- mp.command:
+ castleraid.mp:
   default: true
- cp2.command:
+ castleraid.cp2:
   default: true
  castleraid.info:
   default: true

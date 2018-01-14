@@ -23,7 +23,7 @@ class MPShopCommand extends PluginCommand {
 
     public function __construct(Loader $plugin) {
         parent::__construct("mpshop", $plugin);
-        $this->setPermission("mp.command");
+        $this->setPermission("castleraid.mp");
         $this->setDescription("CastleRaid Core MoneyPouch Command");
         $this->setAliases(["mpshop"]);
     }

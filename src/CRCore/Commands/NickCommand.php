@@ -25,7 +25,7 @@ class NickCommand extends PluginCommand {
         $this->setPermission("castleraid.nick");
         $this->setDescription("CastleRaid Core Nick Command");
     }
-    
+
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($this->testPermission($sender) and $sender instanceof Player) {
             if (!isset($args[0])) {

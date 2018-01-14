@@ -24,7 +24,7 @@ class CustomPotionsCommand extends PluginCommand {
 
     public function __construct(Loader $plugin) {
         parent::__construct("cpshop", $plugin);
-        $this->setPermission("cp2.command");
+        $this->setPermission("castleraid.cp2");
         $this->setDescription("CastleRaid Core CustomPot Command");
     }
 
