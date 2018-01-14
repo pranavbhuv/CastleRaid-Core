@@ -25,30 +25,31 @@ use CRCore\Events\PotionListener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
-class Loader extends PluginBase{
-	public $tutorial;
+class Loader extends PluginBase {
 
-	const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
-	const CORE_VERSION = "v1.4.4";
+    public $tutorial;
 
-	public function onLoad() : void{
-		$this->saveDefaultConfig();
-		$this->saveResource("tsconfig.json");
-	}
+    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
+    const CORE_VERSION = "v1.4.5";
 
-	public function onEnable() : void{
-		new EventListener($this);
-		new PotionListener($this);
+    public function onLoad(): void {
+        $this->saveDefaultConfig();
+        $this->saveResource("tsconfig.json");
+    }
 
-		$this->getServer()->getCommandMap()->registerAll("CRCore", [
-			new CustomPotionsCommand($this),
-			new InfoCommand($this),
-			new MenuCommand($this),
-			new MPShopCommand($this),
-			new NickCommand($this),
-			new ClearInventoryCommand($this),
-			new HealCommand($this),
-			new FlyCommand($this)
-		]);
-	}
+    public function onEnable(): void {
+        new EventListener($this);
+        new PotionListener($this);
+
+        $this->getServer()->getCommandMap()->registerAll("CRCore", [
+            new CustomPotionsCommand($this),
+            new InfoCommand($this),
+            new MenuCommand($this),
+            new MPShopCommand($this),
+            new NickCommand($this),
+            new ClearInventoryCommand($this),
+            new HealCommand($this),
+            new FlyCommand($this)
+        ]);
+    }
 }

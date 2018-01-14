@@ -119,9 +119,9 @@ class EventListener implements Listener {
     }
 
     public function onEntityDamage(EntityDamageEvent $event) : void{
-        $p = $event->getEntity();
-        if ($p instanceof Player) {
-            $h = round($p->getHealth()) / $p->getMaxHealth() * 100;
+        $player = $event->getEntity();
+        if ($player instanceof Player) {
+            $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
             switch ($h) { // "Borrowed" from @Thunder33345!
                 case $h <= 100 && $h >= 80;
                     $thing = TextFormat::GREEN . "♥ " . $h . "%";
@@ -142,7 +142,7 @@ class EventListener implements Listener {
                     $thing = "♥ " . $h . "%";
                     break;
             }
-            $p->setNameTag($p->getDisplayName() . "\n " . $thing);
+            $player->setNameTag($player->getDisplayName() . "\n " . $thing);
         }
     }
 }

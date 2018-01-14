@@ -16,7 +16,6 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-
 class MenuCommand extends PluginCommand {
 
     public function __construct(Loader $plugin) {

@@ -14,7 +14,6 @@ use CRCore\Loader;
 use pocketmine\block\Stone;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
-use pocketmine\event\Block;
 use pocketmine\item\Compass;
 use pocketmine\item\Item;
 
@@ -30,16 +29,12 @@ class RelicListener implements Listener {
     public function onBreak(BlockBreakEvent $break) {
         $loot = Item::get(Compass::COMPASS);
         $loot->setCustomName("Relic");
-
-        $p = $break->getPlayer();
-
+        $player = $break->getPlayer();
         if ($break->getBlock()->getId() == Stone::STONE) {
             if (mt_rand(1, 100) === 8) {
-                $p->getInventory()->addItem($loot);
+                $player->getInventory()->addItem($loot);
             }
-
         }
-
     }
     //TODO, REWARDS
 }
