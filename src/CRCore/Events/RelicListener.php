@@ -7,6 +7,7 @@
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
  * @contributors: Nick, Potatoe, and Nice.
  */
+declare(strict_types=1);
 
 namespace CRCore\Events;
 
