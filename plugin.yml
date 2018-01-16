@@ -1,5 +1,5 @@
 name: CastleRaidCore
-version: 1.4.5
+version: 1.4.6
 author: QuiverlyRivalry, iiFlamiinBlaze
 api: [3.0.0-ALPHA9, 3.0.0-ALPHA10]
 main: CRCore\Loader
@@ -20,3 +20,7 @@ permissions:
   default: op
  castleraid.clearinv:
   default: op
+ castleraid.feed:
+  default: op
+ castleraid.quests:
+  default: true

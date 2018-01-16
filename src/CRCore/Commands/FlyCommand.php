@@ -40,7 +40,6 @@ class FlyCommand extends PluginCommand {
             } else {
                 $sender->sendMessage(TextFormat::RED . "You are already in creative mode!");
             }
-
         }
     }
 }
