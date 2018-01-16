@@ -45,6 +45,9 @@ class Loader extends PluginBase {
         new PotionListener($this);
         new RelicListener($this);
 
+        $task = new FakePlayerTask($this); 
+        $this->getServer()->getScheduler()->scheduleDelayedTask($task, rand(10, 50)); 
+
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
             new CustomPotionsCommand($this),
