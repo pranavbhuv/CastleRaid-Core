@@ -26,6 +26,8 @@ use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
 
+use CRCore\Tasks\Bcast;
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
