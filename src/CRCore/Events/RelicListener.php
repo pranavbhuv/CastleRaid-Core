@@ -42,14 +42,13 @@ class RelicListener implements Listener {
     }
 
     public function onClick(PlayerInteractEvent $event) {
-        $p = $event->getPlayer();
-        $pii = $event->getPlayer()->getInventory();
-        $pi = $event->getPlayer()->getInventory()->getItemInHand();
-
-        if ($pi->getName() == "Relic") {
+        $player = $event->getPlayer();
+        $pii = $player->getInventory();
+        $pi = $player->getInventory()->getItemInHand();
+        if ($pi->getName() === "Relic") {
             $pii->remove(Compass::COMPASS);
-            $p->sendMessage(TextFormat::GRAY . "Opening your Relic...");
-            $p->sendMessage(TextFormat::GREEN . "Opened!");
+            $player->sendMessage(TextFormat::GRAY . "Opening your Relic...");
+            $player->sendMessage(TextFormat::GREEN . "Opened!");
             $pii->addItem(Diamond::DIAMOND_BLOCK);
         }
     }
