@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\Tasks;
 
 use CRCore\Loader;
 use pocketmine\Server;
