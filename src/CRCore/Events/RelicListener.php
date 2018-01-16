@@ -12,14 +12,11 @@ declare(strict_types=1);
 namespace CRCore\Events;
 
 use CRCore\Loader;
-use pocketmine\block\Diamond;
 use pocketmine\block\Stone;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Compass;
 use pocketmine\item\Item;
-use pocketmine\utils\TextFormat;
 
 class RelicListener implements Listener {
 
@@ -40,16 +37,5 @@ class RelicListener implements Listener {
             }
         }
     }
-
-    public function onClick(PlayerInteractEvent $event) {
-        $player = $event->getPlayer();
-        $pii = $player->getInventory();
-        $pi = $player->getInventory()->getItemInHand();
-        if ($pi->getName() === "Relic") {
-            $pii->remove(Compass::COMPASS);
-            $player->sendMessage(TextFormat::GRAY . "Opening your Relic...");
-            $player->sendMessage(TextFormat::GREEN . "Opened!");
-            $pii->addItem(Diamond::DIAMOND_BLOCK);
-        }
-    }
+    //TODO, REWARDS
 }
