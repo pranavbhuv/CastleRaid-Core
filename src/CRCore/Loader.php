@@ -45,6 +45,8 @@ class Loader extends PluginBase {
         new EventListener($this);
         new PotionListener($this);
         new RelicListener($this);
+        
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new Bcast($this), 2400);
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
