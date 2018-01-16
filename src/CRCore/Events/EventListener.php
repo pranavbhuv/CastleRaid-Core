@@ -53,6 +53,7 @@ class EventListener implements Listener {
 
     public function onJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
+        $player->addTitle(TextFormat::GREEN . TextFormat::BOLD . "CastleRaidPE", TextFormat::GOLD . "Kingdoms MCPE Server");
         $player->sendPopup(TextFormat::GREEN . "CastleRaid\n". TextFormat::GRAY . "The Only Kingdoms Server");
         $player->sendMessage(TextFormat::GREEN . "                     -=CastleRaid=-              ");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
