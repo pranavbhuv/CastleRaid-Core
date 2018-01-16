@@ -7,6 +7,7 @@ The official CasteRaid Core made by the CR Dev Team
 ## Features
 | Name | Type | Description |
 | :---: | :---: | :---: |
+| [BroadcastTask](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/BroadcastTask.php) | Task | Broadcast a message every 4 minutes |
 | [ClearInventory](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/ClearInventoryCommand.php) | Command | Clears a player's inventory |
 | [CustomPotions](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/CustomPotionsCommand.php) | Command | CastleRaid Core CustomPot Command |
 | [FakePlayer](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/FakePlayerTask.php) | Task | Undefined |
