@@ -19,6 +19,8 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShopCommand;
 use CRCore\Commands\NickCommand;
+use CRCore\Commands\FeedCommand;
+use CRCore\Commands\QuestsCommand;
 
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
@@ -32,7 +34,7 @@ class Loader extends PluginBase {
     public $tutorial;
 
     const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
-    const CORE_VERSION = "v1.4.5";
+    const CORE_VERSION = "v1.4.6";
 
     public function onLoad(): void {
         $this->saveDefaultConfig();
@@ -42,7 +44,7 @@ class Loader extends PluginBase {
     public function onEnable(): void {
         new EventListener($this);
         new PotionListener($this);
-        //TODO: RelicListener
+        new RelicListener($this);
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
@@ -52,7 +54,9 @@ class Loader extends PluginBase {
             new InfoCommand($this),
             new MenuCommand($this),
             new MPShopCommand($this),
-            new NickCommand($this)
+            new NickCommand($this),
+            new FeedCommand($this),
+            new QuestsCommand($this)
         ]);
     }
 }

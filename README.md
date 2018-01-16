@@ -19,6 +19,8 @@ The official CasteRaid Core made by the CR Dev Team
 | [Nick](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/NickCommand.php) | Command | CastleRaid Core Nick Command |
 | [PotionListener](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/PotionListener.php) | Event | Makes custom potions work |
 | [RelicListener](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/RelicListener.php) | Event | 1 - 100 Chance to get a relic when mining |
+| [Feed](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/FeedCommand.php) | Command | Feeds a player |
+| [Quests](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/QuestsCommand.php) | Command | Quest Command |
 
 ## Credits
 | User | Level |
