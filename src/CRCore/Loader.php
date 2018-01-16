@@ -19,6 +19,7 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShopCommand;
 use CRCore\Commands\NickCommand;
+
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
@@ -41,16 +42,17 @@ class Loader extends PluginBase {
     public function onEnable(): void {
         new EventListener($this);
         new PotionListener($this);
+        //TODO: RelicListener
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
+            new ClearInventoryCommand($this),
             new CustomPotionsCommand($this),
+            new FlyCommand($this),
+            new HealCommand($this),
             new InfoCommand($this),
             new MenuCommand($this),
             new MPShopCommand($this),
-            new NickCommand($this),
-            new ClearInventoryCommand($this),
-            new HealCommand($this),
-            new FlyCommand($this)
+            new NickCommand($this)
         ]);
     }
 }
