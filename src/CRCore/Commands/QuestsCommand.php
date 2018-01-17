@@ -49,22 +49,22 @@ class QuestsCommand extends PluginCommand {
                         break;
                     case 1:
                         $inv = $sender->getInventory();
-                        if($inv->contains(Item::get(Item::DIAMOND,0,10))){
+                        if ($inv->contains(Item::get(Item::DIAMOND, 0, 10))) { //Quiver edit this for items for quests
                             $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
-                            $inv->removeItem(Item::get(Item::DIAMOND,0,10));
-                            $inv->addItem(Item::get(Item::CHEST,10,1)->setCustomName("Knights Quest Rewards (Tap anywhere)"));
-                        }else {
-                            $sender->sendMessage("You do not have the correct items to complete this quest!");
+                            $inv->removeItem(Item::get(Item::DIAMOND, 0, 10)); //Quiver edit this for items for quests
+                            $inv->addItem(Item::get(Item::CHEST, 10, 1)->setCustomName(TextFormat::GREEN . "Knights Quest Rewards " . TextFormat::GRAY .  " (Tap anywhere)"));
+                        } else {
+                            $sender->sendMessage(TextFormat::RED . "You do not have the correct items to complete this quest!");
                         }
                         break;
                     case 2:
                         $inv = $sender->getInventory();
-                        if($inv->contains(Item::get(Item::DIAMOND,0,10))){
+                        if ($inv->contains(Item::get(Item::DIAMOND, 0, 10))) { //Quiver edit this for items for quests
                             $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
-                            $inv->removeItem(Item::get(Item::DIAMOND,0,10));
-                            $inv->addItem(Item::get(Item::CHEST,11,1)->setCustomName("Raiding Quest Rewards (Tap anywhere)"));
-                        }else {
-                            $sender->sendMessage("You do not have the correct items to complete this quest!");
+                            $inv->removeItem(Item::get(Item::DIAMOND, 0, 10)); //Quiver edit this for items for quests
+                            $inv->addItem(Item::get(Item::CHEST, 11, 1)->setCustomName(TextFormat::GREEN . "Raiding Quest Rewards " . TextFormat::GRAY .  " (Tap anywhere)"));
+                        } else {
+                            $sender->sendMessage(TextFormat::RED . "You do not have the correct items to complete this quest!");
                         }
                         break;
                 }
