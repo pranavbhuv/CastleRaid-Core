@@ -12,13 +12,19 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\item\Item;
+use pocketmine\inventory\Inventory;
+
 use jojoe77777\FormAPI;
 
 class QuestsCommand extends PluginCommand {
+
+    public $inv;
 
     public function __construct(Loader $plugin) {
         parent::__construct("quests", $plugin);
@@ -38,13 +44,13 @@ class QuestsCommand extends PluginCommand {
             if (isset($data[0])) {
                 switch ($data[0]) {
                     case 0:
-                        $sender->sendMessage(TextFormat::RED . "Exiting QuestUI...");
+                        $sender->sendMessage(TextFormat::DARK_RED . Loader::QUEST_PREFIX . " Exiting QuestUI...");
                         break;
                     case 1:
-                        $sender->sendMessage(TextFormat::RED . "Coming Soon!");
+                        $sender->sendMessage(TextFormat::RED . Loader::QUEST_PREFIX . " Coming Soon!");
                         break;
                     case 2:
-                        $sender->sendMessage(TextFormat::RED . "Coming Soon!");
+                        $sender->sendMessage(TextFormat::RED . Loader::QUEST_PREFIX . " Coming Soon!");
                         break;
                 }
             }

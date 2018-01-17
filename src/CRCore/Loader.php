@@ -35,6 +35,7 @@ class Loader extends PluginBase {
 
     const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
     const CORE_VERSION = "v1.4.6";
+    const QUEST_PREFIX = TextFormat::GREEN . "Quests " . TextFormat::AQUA . ">";
 
     public function onLoad(): void {
         $this->saveDefaultConfig();
