@@ -22,6 +22,8 @@ use pocketmine\utils\TextFormat;
 
 class CustomPotionsCommand extends PluginCommand {
 
+    public $nomoney = TextFormat::RED . "You don't have enough money.";
+
     public function __construct(Loader $plugin) {
         parent::__construct("cpshop", $plugin);
         $this->setPermission("castleraid.cp2");
@@ -42,7 +44,7 @@ class CustomPotionsCommand extends PluginCommand {
                                 $inv->addItem(Item::get($itemID, 100, 1)->setCustomName("Raiding Potion \n \n*Todo\n *Todo"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 25000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                         case 1:
@@ -53,7 +55,7 @@ class CustomPotionsCommand extends PluginCommand {
                                 $inv->addItem(Item::get($itemID, 101, 1)->setCustomName("Kingdom Potion\n \n*Todo\n *Todo"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 40000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                         case 2:
@@ -64,7 +66,7 @@ class CustomPotionsCommand extends PluginCommand {
                                 $inv->addItem(Item::get($itemID, 102, 1)->setCustomName("Farming Potion"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 15000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                         case 3;
@@ -75,7 +77,7 @@ class CustomPotionsCommand extends PluginCommand {
                                 $inv->addItem(Item::get($itemID, 103, 1)->setCustomName("PvP Potion"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 30000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                         case 4;
@@ -86,7 +88,7 @@ class CustomPotionsCommand extends PluginCommand {
                                 $inv->addItem(Item::get($itemID, 104, 1)->setCustomName("Getaway Potion"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 30000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                         case 5;
@@ -97,7 +99,7 @@ class CustomPotionsCommand extends PluginCommand {
                                 $inv->addItem(Item::get($itemID, 105, 1)->setCustomName("Kings Potion"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 50000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                     }
@@ -105,12 +107,12 @@ class CustomPotionsCommand extends PluginCommand {
             });
             $form->setTitle("Custom Potions Shop");
             $form->setContent("Custom Potions available below!");
-            $form->addButton(TextFormat::GREEN . "Raiding Potion | $25k");
-            $form->addButton(TextFormat::GREEN . "Kingdom Potion | $40k");
-            $form->addButton(TextFormat::GREEN . "Farming Potion | $15k");
-            $form->addButton(TextFormat::GREEN . "Pvp Potion | $30k");
-            $form->addButton(TextFormat::GREEN . "Getaway Potion | $30k");
-            $form->addButton(TextFormat::GREEN . "Kings Potion | $50k");
+            $form->addButton(TextFormat::DARK_AQUA . "Raiding Potion | $25k");
+            $form->addButton(TextFormat::DARK_RED . "Kingdom Potion | $40k");
+            $form->addButton(TextFormat::DARK_GREEN . "Farming Potion | $15k");
+            $form->addButton(TextFormat::DARK_AQUA . "Pvp Potion | $30k");
+            $form->addButton(TextFormat::DARK_AQUA . "Getaway Potion | $30k");
+            $form->addButton(TextFormat::DARK_RED . "Kings Potion | $50k");
             $form->sendToPlayer($sender);
             return true;
         } else {
