@@ -13,19 +13,21 @@ namespace CRCore;
 
 use CRCore\Commands\ClearInventoryCommand;
 use CRCore\Commands\CustomPotionsCommand;
+use CRCore\Commands\FeedCommand;
 use CRCore\Commands\FlyCommand;
 use CRCore\Commands\HealCommand;
 use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShopCommand;
 use CRCore\Commands\NickCommand;
-
+use CRCore\Commands\QuestsCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
 use CRCore\Tasks\FakePlayerTask;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
 class Loader extends PluginBase {
@@ -36,8 +38,13 @@ class Loader extends PluginBase {
     const CORE_VERSION = "v1.4.5";
 
     public function onLoad(): void {
+        API::$main = $this;
+
         $this->saveDefaultConfig();
         $this->saveResource("tsconfig.json");
+
+        if (file_exists($this->getDataFolder() . "names.json") == true)
+            API::$names = new Config($this->getDataFolder() . "names.json", Config::JSON);
     }
 
     public function onEnable(): void {
@@ -45,8 +52,8 @@ class Loader extends PluginBase {
         new PotionListener($this);
         new RelicListener($this);
 
-        $task = new FakePlayerTask($this); 
-        $this->getServer()->getScheduler()->scheduleDelayedTask($task, rand(10, 50)); 
+        $task = new FakePlayerTask($this);
+        $this->getServer()->getScheduler()->scheduleDelayedTask($task, rand(10, 50));
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
