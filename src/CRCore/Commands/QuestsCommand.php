@@ -45,13 +45,15 @@ class QuestsCommand extends PluginCommand {
             if (isset($data[0])) {
                 switch ($data[0]) {
                     case 0:
-                        $sender->sendMessage(TextFormat::DARK_RED . Loader::QUEST_PREFIX . " Exiting QuestUI...");
+                        $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " Exiting QuestUI...");
                         break;
                     case 1:
-                        $sender->sendMessage(TextFormat::RED . Loader::QUEST_PREFIX . " Coming Soon!");
+                        $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " Coming Soon!");
+                        //TODO: Reward chest giving + inventory contains
                         break;
                     case 2:
-                        $sender->sendMessage(TextFormat::RED . Loader::QUEST_PREFIX . " Coming Soon!");
+                        $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " Coming Soon!");
+                        //TODO: Reward chest giving + inventory contains
                         break;
                 }
             }

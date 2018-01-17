@@ -15,6 +15,9 @@ use CRCore\Loader;
 
 use pocketmine\utils\TextFormat;
 use pocketmine\event\Listener;
+use pocketmine\item\Item;
+use pocketmine\inventory\Inventory;
+use pocketmine\event\player\PlayerInteractEvent;
 
 class QuestListener implements Listener {
 
@@ -23,5 +26,27 @@ class QuestListener implements Listener {
     public function __construct(Loader $main) {
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
+    }
+
+    public function onInteract(PlayerInteractEvent $event): void {
+        $player = $event->getPlayer();
+        $inv = $player->getInventory();
+        if ($event->getItem()->getId() === 54) {
+            $damage = $event->getItem()->getDamage();
+            switch ($damage) {
+                case 10:
+                    $player->sendMessage(TextFormat::AQUA . "Congrats, you have completed the quest, here are your rewards!");
+                    //TODO: Rewards for 1st quest!
+                    $inv->removeItem(Item::get(54, 10, 1));
+                    $this->main->getServer()->broadcastMessage(Loader::QUEST_PREFIX . TextFormat::GOLD . $player . " has completed the quest!");
+                    break;
+                case 11:
+                    $player->sendMessage(TextFormat::AQUA . "Congrats, you have completed the quest, here are your rewards!");
+                    //TODO: Rewards for 2nd quest!
+                    $inv->removeItem(Item::get(54, 11, 1));
+                    $this->main->getServer()->broadcastMessage(Loader::QUEST_PREFIX . TextFormat::GOLD . $player . " has completed the quest!");
+                    break;
+            }
+        }
     }
 }
