@@ -45,15 +45,27 @@ class QuestsCommand extends PluginCommand {
             if (isset($data[0])) {
                 switch ($data[0]) {
                     case 0:
-                        $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " Exiting QuestUI...");
+                        $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::DARK_RED . " Exiting QuestUI...");
                         break;
                     case 1:
-                        $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " Coming Soon!");
-                        //TODO: Reward chest giving + inventory contains
+                        $inv = $sender->getInventory();
+                        if($inv->contains(Item::get(Item::DIAMOND,0,10))){
+                            $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
+                            $inv->removeItem(Item::get(Item::DIAMOND,0,10));
+                            $inv->addItem(Item::get(Item::CHEST,10,1)->setCustomName("Knights Quest Rewards (Tap anywhere)"));
+                        }else {
+                            $sender->sendMessage("You do not have the correct items to complete this quest!");
+                        }
                         break;
                     case 2:
-                        $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " Coming Soon!");
-                        //TODO: Reward chest giving + inventory contains
+                        $inv = $sender->getInventory();
+                        if($inv->contains(Item::get(Item::DIAMOND,0,10))){
+                            $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
+                            $inv->removeItem(Item::get(Item::DIAMOND,0,10));
+                            $inv->addItem(Item::get(Item::CHEST,11,1)->setCustomName("Raiding Quest Rewards (Tap anywhere)"));
+                        }else {
+                            $sender->sendMessage("You do not have the correct items to complete this quest!");
+                        }
                         break;
                 }
             }
