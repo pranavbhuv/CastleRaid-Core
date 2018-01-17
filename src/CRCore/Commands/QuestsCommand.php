@@ -52,8 +52,8 @@ class QuestsCommand extends PluginCommand {
         $form->setTitle("Quest UI");
         $form->setContent(TextFormat::AQUA . "Tap any of the available quests below!");
         $form->addButton(TextFormat::DARK_RED . "Exit");
-        $form->addButton(TextFormat::GREEN . "Quest | Knights");
-        $form->addButton(TextFormat::GREEN . "Quest | Raiding");
+        $form->addButton(TextFormat::RED . "Quest | Knights");
+        $form->addButton(TextFormat::RED . "Quest | Raiding");
         $form->sendToPlayer($player);
     }
 }
