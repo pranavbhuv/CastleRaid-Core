@@ -83,10 +83,10 @@ class MPShopCommand extends PluginCommand {
                 }
             });
             $form->setTitle("Money Pouch Shop");
-            $form->setContent("Money Pouchs avaliable below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
-            $form->addButton(TextFormat::GREEN . "Tier 1 | $20k");
-            $form->addButton(TextFormat::GREEN . "Tier 2 | $40k");
-            $form->addButton(TextFormat::GREEN . "Tier 3 | $80k");
+            $form->setContent("Money Pouches available below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
+            $form->addButton(TextFormat::DARK_BLUE . "Tier 1 | $20k");
+            $form->addButton(TextFormat::DARK_GREEN . "Tier 2 | $40k");
+            $form->addButton(TextFormat::DARK_RED . "Tier 3 | $80k");
             $form->sendToPlayer($sender);
             return true;
         } else {
