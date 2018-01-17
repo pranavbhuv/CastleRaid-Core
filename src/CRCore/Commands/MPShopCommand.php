@@ -21,6 +21,8 @@ use pocketmine\utils\TextFormat;
 
 class MPShopCommand extends PluginCommand {
 
+    public $nomoney = TextFormat::RED . "You don't have enough money.";
+
     public function __construct(Loader $plugin) {
         parent::__construct("mpshop", $plugin);
         $this->setPermission("castleraid.mp");
@@ -46,7 +48,7 @@ class MPShopCommand extends PluginCommand {
                                     TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$10,000 - $25,000"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 20000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                         case 1:
@@ -61,7 +63,7 @@ class MPShopCommand extends PluginCommand {
                                     TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$25,000 - $50,000"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 40000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                         case 2:
@@ -76,17 +78,17 @@ class MPShopCommand extends PluginCommand {
                                     TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$50,000 - $100,000"));
                                 EconomyAPI::getInstance()->reduceMoney($sender, 80000);
                             } else {
-                                $sender->sendMessage("You Don't Have Enough Money.");
+                                $sender->sendMessage($this->nomoney);
                             }
                             break;
                     }
                 }
             });
             $form->setTitle("Money Pouch Shop");
-            $form->setContent("Money Pouchs avaliable below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
-            $form->addButton(TextFormat::GREEN . "Tier 1 | $20k");
-            $form->addButton(TextFormat::GREEN . "Tier 2 | $40k");
-            $form->addButton(TextFormat::GREEN . "Tier 3 | $80k");
+            $form->setContent("Money Pouches available below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
+            $form->addButton(TextFormat::DARK_AQUA . "Tier 1 | $20k");
+            $form->addButton(TextFormat::DARK_GREEN . "Tier 2 | $40k");
+            $form->addButton(TextFormat::DARK_RED . "Tier 3 | $80k");
             $form->sendToPlayer($sender);
             return true;
         } else {

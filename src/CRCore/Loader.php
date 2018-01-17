@@ -27,6 +27,8 @@ use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
 use CRCore\Events\QuestListener;
 
+use CRCore\Tasks\BroadcastTask;
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
@@ -48,6 +50,8 @@ class Loader extends PluginBase {
         new PotionListener($this);
         new RelicListener($this);
         new QuestListener($this);
+        
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
