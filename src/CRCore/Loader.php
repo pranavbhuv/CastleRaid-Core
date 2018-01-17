@@ -25,6 +25,7 @@ use CRCore\Commands\QuestsCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
+use CRCore\Events\QuestListener;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
@@ -46,6 +47,7 @@ class Loader extends PluginBase {
         new EventListener($this);
         new PotionListener($this);
         new RelicListener($this);
+        new QuestListener($this);
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),

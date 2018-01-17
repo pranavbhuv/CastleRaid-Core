@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+use CRCore\Events\QuestListener;
 
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
