@@ -5,7 +5,7 @@
  * Originally Created for CastleRaidPE
  *
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Nice.
+ * @contributors: Nick, Potatoe, and Jason.
  */
 
 namespace CRCore\Commands;

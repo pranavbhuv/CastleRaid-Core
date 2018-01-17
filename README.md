@@ -30,4 +30,3 @@ The official CasteRaid Core made by the CR Dev Team
 | [PotatoeTrainYT](https://github.com/PotatoeTrainYT) | Contributor |
 | [NickTehUnicorn](https://github.com/NickTehUnicorn) | Contributor |
 | [jasonwynn10](https://github.com/jasonwynn10) | Contributor |
-| [DrewD3V](https://github.com/DrewD3V) | Contributor |
