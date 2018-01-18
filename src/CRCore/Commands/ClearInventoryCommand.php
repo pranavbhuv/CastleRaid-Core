@@ -26,13 +26,18 @@ class ClearInventoryCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($this->testPermission($sender) and $sender instanceof Player) {
-            $sender->getInventory()->clearAll();
-            $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
-            $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
-            return true;
+        if ($sender->hasPermission("castleraid.clearinv")) {
+            if ($sender instanceof Player) {
+                $sender->getInventory()->clearAll();
+                $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
+                $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
+                return true;
+            } else {
+                $sender->sendMessage(Loader::NOT_PLAYER);
+            }
         } else {
-            return false;
+            $sender->sendMessage(Loader::NO_PERMISSION);
         }
+        return true;
     }
 }

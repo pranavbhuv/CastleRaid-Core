@@ -27,20 +27,25 @@ class NickCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($this->testPermission($sender) and $sender instanceof Player) {
-            if (!isset($args[0])) {
-                $sender->sendMessage("Please provide a nickname.");
-                return false;
-            }
-            if ($args[0] === "off") {
-                $sender->setDisplayName($sender->getName());
+        if ($sender->hasPermission("castleraid.nick")) {
+            if ($sender instanceof Player) {
+                if (!isset($args[0])) {
+                    $sender->sendMessage("Please provide a nickname.");
+                    return false;
+                }
+                if ($args[0] === "off") {
+                    $sender->setDisplayName($sender->getName());
+                } else {
+                    $sender->setDisplayName($args[0]);
+                    $sender->sendMessage(TextFormat::BOLD . TextFormat::GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::GRAY . "]" . TextFormat::RESET . TextFormat::GRAY . " You're now nicked as " . TextFormat::RED . "$args[0]" . TextFormat::GRAY . "!");
+                }
+                return true;
             } else {
-                $sender->setDisplayName($args[0]);
-                $sender->sendMessage(TextFormat::BOLD . TextFormat::GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::GRAY . "]" . TextFormat::RESET . TextFormat::GRAY . " You're now nicked as " . TextFormat::RED . "$args[0]" . TextFormat::GRAY . "!");
+                $sender->sendMessage(Loader::NOT_PLAYER);
             }
-            return true;
         } else {
-            return false;
+            $sender->sendMessage(Loader::NO_PERMISSION);
         }
+        return true;
     }
 }

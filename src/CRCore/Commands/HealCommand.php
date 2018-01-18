@@ -26,10 +26,16 @@ class HealCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($this->testPermission($sender) and $sender instanceof Player) {
-            $sender->setHealth(20);
-            $sender->sendMessage(TextFormat::AQUA . "You have been healed!");
-            $sender->addTitle(TextFormat::DARK_RED . "You have been healed!");
+        if ($sender->hasPermission("castleraid.heal")) {
+            if ($sender instanceof Player) {
+                $sender->setHealth(20);
+                $sender->sendMessage(TextFormat::AQUA . "You have been healed!");
+                $sender->addTitle(TextFormat::DARK_RED . "You have been healed!");
+            } else {
+                $sender->sendMessage(Loader::NOT_PLAYER);
+            }
+        } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
         }
     }
 }
