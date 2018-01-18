@@ -15,20 +15,17 @@ use CRCore\API;
 
 use pocketmine\plugin\Plugin;
 use pocketmine\scheduler\PluginTask;
+use specter\api\DummyPlayer;
 
 class FakePlayerTask extends PluginTask {
 
-    public $owner;
-
     public function __construct(Plugin $owner) {
-        $this->owner = $owner;
         parent::__construct($owner);
     }
 
 
     public function onRun(int $currentTick) {
-        $peep = new \specter\api\DummyPlayer(API::getRandomName());
-        $peep->getPlayer()->chat("Hello everyone!");
-        // TODO: make chat more reaListic. (ARRAYS, ARRAYS, ARRAYS.)
+        $peep = new DummyPlayer(API::getRandomName(), "SPECTER", mt_rand(10000, 20000));
+        $peep->getPlayer()->chat(API::getRandomChat());
     }
 }

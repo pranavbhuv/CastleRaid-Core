@@ -20,8 +20,16 @@ class API {
     /** @var Config $names */
     public static $names;
 
-    public static function getRandomName() : ?string{
+    /** @var Config $chat */
+    public static $chat;
+
+    public static function getRandomName() : string{
         $n = self::$names->getNested("names");
-        return $n[array_rand(self::$names->getNested("names"))];
+        return $n[array_rand($n)];
+    }
+
+    public static function getRandomChat() : string{
+        $c = self::$chat->getNested("chat");
+        return $c[array_rand($c)];
     }
 }
