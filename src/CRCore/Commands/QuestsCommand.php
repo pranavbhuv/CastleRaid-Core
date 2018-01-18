@@ -34,8 +34,14 @@ class QuestsCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($this->testPermission($sender) and $sender instanceof Player) {
-            $this->mainForm($sender);
+        if ($sender->hasPermission("castleraid.quests")) {
+            if ($sender instanceof Player) {
+                $this->mainForm($sender);
+            } else {
+                $sender->sendMessage(Loader::NOT_PLAYER);
+            }
+        } else {
+            $sender->sendMessage(Loader::NO_PERMISSION);
         }
     }
 
