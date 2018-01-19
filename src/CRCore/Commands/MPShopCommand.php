@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+use CRCore\API;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
@@ -93,10 +94,10 @@ class MPShopCommand extends PluginCommand {
                 $form->sendToPlayer($sender);
                 return true;
             } else {
-                $sender->sendMessage(Loader::NOT_PLAYER);
+                $sender->sendMessage(API::NOT_PLAYER);
             }
         } else {
-            $sender->sendMessage(Loader::NO_PERMISSION);
+            $sender->sendMessage(API::NO_PERMISSION);
         }
         return true;
     }

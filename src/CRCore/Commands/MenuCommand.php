@@ -11,6 +11,7 @@
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
@@ -89,10 +90,10 @@ class MenuCommand extends PluginCommand {
                 $form->addButton(TextFormat::WHITE . "Information");
                 $form->sendToPlayer($sender);
             } else {
-                $sender->sendMessage(Loader::NOT_PLAYER);
+                $sender->sendMessage(API::NOT_PLAYER);
             }
         } else {
-            $sender->sendMessage(Loader::NO_PERMISSION);
+            $sender->sendMessage(API::NO_PERMISSION);
         }
     }
 }

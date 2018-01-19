@@ -34,12 +34,6 @@ use pocketmine\utils\TextFormat;
 
 class Loader extends PluginBase {
 
-    public $tutorial;
-
-    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
-    const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "Use this command in-game";
-    const CORE_VERSION = "v1.4.6";
-
     public function onLoad(): void {
         API::$main = $this;
 

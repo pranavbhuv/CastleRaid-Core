@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CRCore;
 
 use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
 
 class API {
     /** @var Loader $main */
@@ -22,6 +23,10 @@ class API {
 
     /** @var Config $chat */
     public static $chat;
+
+    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
+    const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "Use this command in-game";
+    const CORE_VERSION = "v1.4.6";
 
     public static function getRandomName() : string{
         $n = self::$names->getNested("names");

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
@@ -32,10 +33,10 @@ class FeedCommand extends PluginCommand {
                 $sender->setSaturation(20);
                 $sender->sendMessage(TextFormat::GREEN . "You have been fed");
             } else {
-                $sender->sendMessage(Loader::NOT_PLAYER);
+                $sender->sendMessage(API::NOT_PLAYER);
             }
         } else {
-            $sender->sendMessage(Loader::NO_PERMISSION);
+            $sender->sendMessage(API::NO_PERMISSION);
         }
     }
 }
