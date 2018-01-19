@@ -5,7 +5,7 @@
  * Originally Created for CastleRaidPE
  *
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Nice.
+ * @contributors: Nick, Potatoe, and Jason.
  */
 declare(strict_types=1);
 
@@ -42,11 +42,11 @@ class Loader extends PluginBase {
 
         $this->saveDefaultConfig();
         $this->saveResource("tsconfig.json");
-        $this->saveResource("names2.json");
+        $this->saveResource("names.json");
         $this->saveResource("chat.json");
 
-        if (file_exists($this->getDataFolder() . "names2.json") == true)
-            API::$names = new Config($this->getDataFolder() . "names2.json", Config::JSON);
+        if (file_exists($this->getDataFolder() . "names.json") == true)
+            API::$names = new Config($this->getDataFolder() . "names.json", Config::JSON);
 
         if (file_exists($this->getDataFolder() . "chat.json") == true)
             API::$chat = new Config($this->getDataFolder() . "chat.json", Config::JSON);
@@ -58,7 +58,7 @@ class Loader extends PluginBase {
         new RelicListener($this);
 
         $task = new FakePlayerTask($this);
-        $this->getServer()->getScheduler()->scheduleRepeatingTask($task, mt_rand(1200, 2000));
+        $this->getServer()->getScheduler()->scheduleRepeatingTask($task, mt_rand(600, 2000));
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
