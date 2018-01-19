@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
@@ -26,13 +27,18 @@ class ClearInventoryCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($this->testPermission($sender) and $sender instanceof Player) {
-            $sender->getInventory()->clearAll();
-            $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
-            $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
-            return true;
+        if ($sender->hasPermission("castleraid.clearinv")) {
+            if ($sender instanceof Player) {
+                $sender->getInventory()->clearAll();
+                $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
+                $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
+                return true;
+            } else {
+                $sender->sendMessage(API::NOT_PLAYER);
+            }
         } else {
-            return false;
+            $sender->sendMessage(API::NO_PERMISSION);
         }
+        return true;
     }
 }

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
@@ -26,10 +27,16 @@ class FeedCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($this->testPermission($sender) and $sender instanceof Player) {
-            $sender->setFood(20);
-            $sender->setSaturation(20);
-            $sender->sendMessage(TextFormat::GREEN . "You have been fed");
+        if ($sender->hasPermission("castleraid.feed")) {
+            if ($sender instanceof Player) {
+                $sender->setFood(20);
+                $sender->setSaturation(20);
+                $sender->sendMessage(TextFormat::GREEN . "You have been fed");
+            } else {
+                $sender->sendMessage(API::NOT_PLAYER);
+            }
+        } else {
+            $sender->sendMessage(API::NO_PERMISSION);
         }
     }
 }
