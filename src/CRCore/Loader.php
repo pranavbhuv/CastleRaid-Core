@@ -20,13 +20,12 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShopCommand;
 use CRCore\Commands\NickCommand;
-use CRCore\Commands\QuestsCommand;
+use CRCore\Commands\QuestCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
-use CRCore\Events\QuestListener;
-
 use CRCore\Tasks\FakePlayerTask;
+
 use CRCore\Tasks\BroadcastTask;
 
 use pocketmine\plugin\PluginBase;
@@ -34,6 +33,8 @@ use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
 class Loader extends PluginBase {
+    
+    const QUEST_PREFIX = TextFormat::GREEN . "Quests" . TextFormat::AQUA . "> ";
 
     public function onLoad(): void {
         API::$main = $this;
@@ -71,7 +72,7 @@ class Loader extends PluginBase {
             new MPShopCommand($this),
             new NickCommand($this),
             new FeedCommand($this),
-            new QuestsCommand($this)
+            new QuestCommand($this)
         ]);
     }
 }
