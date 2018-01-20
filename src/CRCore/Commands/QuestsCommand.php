@@ -1,4 +1,3 @@
-
 <?php
 /**
  * -==+CastleRaid Core+==-
