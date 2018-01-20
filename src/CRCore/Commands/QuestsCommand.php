@@ -9,7 +9,9 @@
  * @contributors: Nick, Potatoe, and Jason.
  */
 declare(strict_types=1);
+
 namespace CRCore\Commands;
+
 use CRCore\Loader;
 use CRCore\Events\QuestListener;
 use pocketmine\command\CommandSender;
@@ -19,13 +21,17 @@ use pocketmine\utils\TextFormat;
 use pocketmine\item\Item;
 use pocketmine\inventory\Inventory;
 use jojoe77777\FormAPI;
+
 class QuestsCommand extends PluginCommand {
+
     public $inv;
+
     public function __construct(Loader $plugin) {
         parent::__construct("quests", $plugin);
         $this->setDescription("Quests Command");
         $this->setPermission("castleraid.quests");
     }
+
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         if ($sender->hasPermission("castleraid.quests")) {
             if ($sender instanceof Player) {
@@ -37,6 +43,7 @@ class QuestsCommand extends PluginCommand {
             $sender->sendMessage(API::NO_PERMISSION);
         }
     }
+
     public function mainForm(Player $player) {
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function (Player $sender, array $data) {
@@ -48,7 +55,7 @@ class QuestsCommand extends PluginCommand {
                     case 1:
                         $inv = $sender->getInventory();
                         if ($inv->contains(Item::get(Item::DIAMOND, 0, 10))) { //Quiver edit this for items for quests
-                            $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
+                            $sender->sendMessage(API::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
                             $inv->removeItem(Item::get(Item::DIAMOND, 0, 10)); //Quiver edit this for items for quests
                             $inv->addItem(Item::get(Item::CHEST, 10, 1)->setCustomName(TextFormat::GREEN . "Knights Quest Rewards " . TextFormat::GRAY .  " (Tap anywhere)"));
                         } else {
@@ -58,7 +65,7 @@ class QuestsCommand extends PluginCommand {
                     case 2:
                         $inv = $sender->getInventory();
                         if ($inv->contains(Item::get(Item::DIAMOND, 0, 10))) { //Quiver edit this for items for quests
-                            $sender->sendMessage(Loader::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
+                            $sender->sendMessage(API::QUEST_PREFIX . TextFormat::RED . " You have now received the quest rewards chest!");
                             $inv->removeItem(Item::get(Item::DIAMOND, 0, 10)); //Quiver edit this for items for quests
                             $inv->addItem(Item::get(Item::CHEST, 11, 1)->setCustomName(TextFormat::GREEN . "Raiding Quest Rewards " . TextFormat::GRAY .  " (Tap anywhere)"));
                         } else {
