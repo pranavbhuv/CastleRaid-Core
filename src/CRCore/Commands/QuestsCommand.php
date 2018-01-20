@@ -38,10 +38,10 @@ class QuestsCommand extends PluginCommand {
             if ($sender instanceof Player) {
                 $this->mainForm($sender);
             } else {
-                $sender->sendMessage(Loader::NOT_PLAYER);
+                $sender->sendMessage(API::NOT_PLAYER);
             }
         } else {
-            $sender->sendMessage(Loader::NO_PERMISSION);
+            $sender->sendMessage(API::NO_PERMISSION);
         }
     }
 
