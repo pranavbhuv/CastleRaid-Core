@@ -20,7 +20,7 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShopCommand;
 use CRCore\Commands\NickCommand;
-use CRCore\Commands\QuestCommand;
+use CRCore\Commands\QuestsCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
@@ -71,7 +71,7 @@ class Loader extends PluginBase {
             new MPShopCommand($this),
             new NickCommand($this),
             new FeedCommand($this),
-            new QuestCommand($this)
+            new QuestsCommand($this)
         ]);
     }
 }
