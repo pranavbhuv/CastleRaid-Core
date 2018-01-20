@@ -33,8 +33,6 @@ use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
 class Loader extends PluginBase {
-    
-    const QUEST_PREFIX = TextFormat::GREEN . "Quests" . TextFormat::AQUA . "> ";
 
     public function onLoad(): void {
         API::$main = $this;
