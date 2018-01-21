@@ -20,9 +20,7 @@ use CRCore\Commands\{
     InfoCommand,
     MenuCommand,
     MPShopCommand,
-    NickCommand,
-    Quests\QuestsCommand,
-    Quests\Quests
+    NickCommand
 };
 use CRCore\Events\{
     EventListener,
