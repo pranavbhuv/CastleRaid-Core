@@ -80,5 +80,8 @@ class Loader extends PluginBase {
             new FeedCommand($this),
             new QuestsCommand($this)
         ]);
+        
+        $quests = new Quests();
+        $quests->registerQuests();
     }
 }
