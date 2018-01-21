@@ -32,8 +32,10 @@ use CRCore\Tasks\{
     BroadcastTask,
     FakePlayerTask
 };
-use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
+use pocketmine\{
+    plugin\PluginBase,
+    utils\Config
+};
 
 class Loader extends PluginBase {
 
