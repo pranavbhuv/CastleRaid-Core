@@ -67,7 +67,7 @@ class Loader extends PluginBase {
         
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
 
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(600, 2000));
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400,8400));
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
