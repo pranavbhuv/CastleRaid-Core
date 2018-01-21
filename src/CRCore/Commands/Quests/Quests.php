@@ -30,12 +30,6 @@ class Quests{
         self::$quests = $quests;
     }
 
-    /**
-     * @param int $id
-     * @param array $neededItems
-     * @param array $rewardedItems
-     * @param string $name
-     */
     public static function addQuest(int $id, array $neededItems, array $rewardedItems, string $name){
         if (isset(self::$quests[$id]) == false){
             self::$quests[] = [
@@ -47,10 +41,6 @@ class Quests{
         }
     }
 
-    /**
-     * @param int $id
-     * @return bool|mixed|null
-     */
     public function getQuestById(int $id) {
         $r = null;
         if (self::$quests[$id] !== null) {
@@ -59,10 +49,6 @@ class Quests{
         return $r !== null ? $r : false;
     }
 
-    /**
-     * @param string $name
-     * @return bool|mixed|null
-     */
     public static function getQuestByName(string $name) {
         $r = null;
         for ($i = 0; $i < count(self::$quests); $i++) {
@@ -74,9 +60,6 @@ class Quests{
         return $r !== null ? $r : false;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getQuestUI() {
         $ui = null;
         $api = API::$main->getServer()->getPluginManager()->getPlugin("FormAPI");
