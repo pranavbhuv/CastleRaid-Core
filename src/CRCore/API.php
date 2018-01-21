@@ -24,6 +24,9 @@ class API {
     /** @var Config $chat */
     public static $chat;
 
+    /** @var Config $msg */
+    public static $msg;
+
     const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
     const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "Use this command in-game";
     const CORE_VERSION = "v1.4.6";
@@ -37,5 +40,10 @@ class API {
     public static function getRandomChat() : string{
         $c = self::$chat->getNested("chat");
         return $c[array_rand($c)];
+    }
+
+    public static function getRandomBcast() : string{
+        $b = self::$msg->getNested("broadcast");
+        return $b[array_rand($b)];
     }
 }

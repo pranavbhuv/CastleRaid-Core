@@ -11,26 +11,19 @@ declare(strict_types=1);
 
 namespace CRCore\Tasks;
 
+use CRCore\API;
 use CRCore\Loader;
-use pocketmine\Server;
 use pocketmine\scheduler\PluginTask;
-use pocketmine\utils\TextFormat;
+use pocketmine\Server;
 
 class BroadcastTask extends PluginTask {
 
-    private $main;
 
     public function __construct(Loader $main) {
-        $this->main = $main;
+        parent::__construct($main);
     }
 
     public function onRun(int $currentTick) {
-        $input = [
-            "Message 1",
-		    	  "Message 2",
-            "Message 3"
-        ];
-		   $details = array_rand($input);
-		   Server::getInstance()->broadcastMessage($input[$details]);
+        Server::getInstance()->broadcastMessage(API::getRandomBcast());
     }
 }

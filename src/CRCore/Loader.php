@@ -40,6 +40,10 @@ class Loader extends PluginBase {
         $this->saveResource("tsconfig.json");
         $this->saveResource("names.json");
         $this->saveResource("chat.json");
+        $this->saveResource("config.yml");
+
+        if (file_exists($this->getDataFolder() . "config.yml") == true)
+            API::$msg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
 
         if (file_exists($this->getDataFolder() . "names.json") == true)
             API::$names = new Config($this->getDataFolder() . "names.json", Config::JSON);
