@@ -11,27 +11,32 @@ declare(strict_types=1);
 
 namespace CRCore;
 
-use CRCore\Commands\ClearInventoryCommand;
-use CRCore\Commands\CustomPotionsCommand;
-use CRCore\Commands\FeedCommand;
-use CRCore\Commands\FlyCommand;
-use CRCore\Commands\HealCommand;
-use CRCore\Commands\InfoCommand;
-use CRCore\Commands\MenuCommand;
-use CRCore\Commands\MPShopCommand;
-use CRCore\Commands\NickCommand;
-use CRCore\Commands\Quests\Quests;
-use CRCore\Commands\Quests\QuestsCommand;
-use CRCore\Events\EventListener;
-use CRCore\Events\PotionListener;
-use CRCore\Events\RelicListener;
-use CRCore\Events\QuestListener;
-use CRCore\Tasks\FakePlayerTask;
-
-use CRCore\Tasks\BroadcastTask;
-
-use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
+use CRCore\Commands\{
+    ClearInventoryCommand,
+    CustomPotionsCommand,
+    FeedCommand,
+    FlyCommand,
+    HealCommand,
+    InfoCommand,
+    MenuCommand,
+    MPShopCommand,
+    NickCommand,
+    Quests\QuestsCommand,
+    Quests\Quests
+};
+use CRCore\Events\{
+    EventListener,
+    PotionListener,
+    RelicListener
+};
+use CRCore\Tasks\{
+    BroadcastTask,
+    FakePlayerTask
+};
+use pocketmine\{
+    plugin\PluginBase,
+    utils\Config
+};
 
 class Loader extends PluginBase {
 
