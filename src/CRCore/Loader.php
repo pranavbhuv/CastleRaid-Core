@@ -24,7 +24,6 @@ use CRCore\Commands\QuestsCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
-use CRCore\Events\QuestListener;
 use CRCore\Tasks\FakePlayerTask;
 
 use CRCore\Tasks\BroadcastTask;
@@ -53,7 +52,6 @@ class Loader extends PluginBase {
         new EventListener($this);
         new PotionListener($this);
         new RelicListener($this);
-        new QuestListener($this);
         
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
 

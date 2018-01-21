@@ -5,7 +5,7 @@
  * Originally Created for CastleRaidPE
  *
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @contributors: Nick, Potatoe, and Nice.
  */
 declare(strict_types=1);
 
@@ -22,8 +22,6 @@ use pocketmine\item\Item;
 
 class QuestsCommand extends PluginCommand {
 
-    public $inv;
-
     public function __construct(Loader $plugin) {
         parent::__construct("quests", $plugin);
         $this->setDescription("Quests Command");
@@ -31,14 +29,8 @@ class QuestsCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.quests")) {
-            if ($sender instanceof Player) {
-                $this->mainForm($sender);
-            } else {
-                $sender->sendMessage(API::NOT_PLAYER);
-            }
-        } else {
-            $sender->sendMessage(API::NO_PERMISSION);
+        if ($this->testPermission($sender) and $sender instanceof Player) {
+            $sender->sendMessage(TextFormat::RED . "Coming Soon");
         }
     }
 
