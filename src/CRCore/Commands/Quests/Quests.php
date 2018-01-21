@@ -21,7 +21,7 @@ class Quests{
 
     public static function registerQuests(){
         $quests = [
-            0 => [
+            1 => [
                 'Needed-Items' => [Item::get(Item::DIAMOND, 0, 10)],
                 'Rewarded-Items' => [Item::get(Item::CHEST, 0, 1)->setCustomName(TextFormat::GREEN . "Raiding Quest Rewards " . TextFormat::GRAY .  " (Tap anywhere)")],
                 'Quest-Name' => 'Knights'
