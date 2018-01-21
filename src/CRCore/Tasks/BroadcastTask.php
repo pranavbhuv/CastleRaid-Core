@@ -21,7 +21,6 @@ class BroadcastTask extends PluginTask {
     private $main;
 
     public function __construct(Loader $main) {
-	parent::__construct($main);
         $this->main = $main;
     }
 
