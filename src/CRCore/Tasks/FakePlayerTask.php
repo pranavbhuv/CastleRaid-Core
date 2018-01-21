@@ -21,6 +21,7 @@ class FakePlayerTask extends PluginTask {
 
     public function __construct(Plugin $owner, Player $player) {
         parent::__construct($owner);
+        $this->player = $player;
     }
 
 
