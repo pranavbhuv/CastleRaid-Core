@@ -143,7 +143,7 @@ class EventListener implements Listener {
                     $thing = "♥ " . $h . "%";
                     break;
             }
-            $player->setNameTag($player->getDisplayName() . "\n " . $thing);
+            $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . $thing);
         }
     }
 }
