@@ -1,13 +1,15 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: angel
- * Date: 1/21/18
- * Time: 12:30 PM
+ * -==+CastleRaid Core+==-
+ * Originally Created by QuiverlyRivarly
+ * Originally Created for CastleRaidPE
+ *
+ * @authors: QuiverlyRivarly and iiFlamiinBlaze
+ * @contributors: Nick, Potatoe, and Jason.
  */
+declare(strict_types=1);
 
 namespace CRCore\Commands\Quests;
-
 
 use pocketmine\item\Item;
 use pocketmine\Player;
