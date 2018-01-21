@@ -20,7 +20,7 @@ use CRCore\Commands\InfoCommand;
 use CRCore\Commands\MenuCommand;
 use CRCore\Commands\MPShopCommand;
 use CRCore\Commands\NickCommand;
-use CRCore\Commands\QuestsCommand;
+use CRCore\Commands\Quests\QuestsCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
