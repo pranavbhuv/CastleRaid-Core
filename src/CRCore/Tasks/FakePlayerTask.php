@@ -30,5 +30,6 @@ class FakePlayerTask extends PluginTask {
     public function onRun(int $currentTick) {
         $peep = new DummyPlayer(API::getRandomName(), "SPECTER", mt_rand(10000, 20000));
         $this->plugin->getServer()->getScheduler()->scheduleDelayedTask(new FakePlayerChatTask(API::$main, $peep->getPlayer()), 50);
+        $this->plugin->getServer()->getScheduler()->scheduleDelayedTask(new FakePlayerMovement(API::$main, $peep->getPlayer()), 20);
     }
 }
