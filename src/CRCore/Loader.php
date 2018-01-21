@@ -24,7 +24,6 @@ use CRCore\Commands\QuestCommand;
 use CRCore\Events\EventListener;
 use CRCore\Events\PotionListener;
 use CRCore\Events\RelicListener;
-use CRCore\Events\QuestListener;
 use CRCore\Tasks\FakePlayerTask;
 
 use CRCore\Tasks\BroadcastTask;
