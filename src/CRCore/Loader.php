@@ -11,23 +11,27 @@ declare(strict_types=1);
 
 namespace CRCore;
 
-use CRCore\Commands\ClearInventoryCommand;
-use CRCore\Commands\CustomPotionsCommand;
-use CRCore\Commands\FeedCommand;
-use CRCore\Commands\FlyCommand;
-use CRCore\Commands\HealCommand;
-use CRCore\Commands\InfoCommand;
-use CRCore\Commands\MenuCommand;
-use CRCore\Commands\MPShopCommand;
-use CRCore\Commands\NickCommand;
-use CRCore\Commands\QuestsCommand;
-use CRCore\Events\EventListener;
-use CRCore\Events\PotionListener;
-use CRCore\Events\RelicListener;
-use CRCore\Tasks\FakePlayerTask;
-
-use CRCore\Tasks\BroadcastTask;
-
+use CRCore\Commands\{
+    ClearInventoryCommand,
+    CustomPotionsCommand,
+    FeedCommand,
+    FlyCommand,
+    HealCommand,
+    InfoCommand,
+    MenuCommand,
+    MPShopCommand,
+    NickCommand,
+    QuestsCommand
+};
+use CRCore\Events\{
+    EventListener,
+    PotionListener,
+    RelicListener
+};
+use CRCore\Tasks\{
+    BroadcastTask,
+    FakePlayerTask
+};
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
@@ -40,16 +44,18 @@ class Loader extends PluginBase {
         $this->saveResource("tsconfig.json");
         $this->saveResource("names.json");
         $this->saveResource("chat.json");
-        $this->saveResource("config.yml");
+        $this->saveResource("config.json");
 
-        if (file_exists($this->getDataFolder() . "config.yml") == true)
-            API::$msg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        if (file_exists($this->getDataFolder() . "config.json") == true)
+            API::$msg = new Config($this->getDataFolder() . "config.json", Config::JSON);
 
         if (file_exists($this->getDataFolder() . "names.json") == true)
             API::$names = new Config($this->getDataFolder() . "names.json", Config::JSON);
 
         if (file_exists($this->getDataFolder() . "chat.json") == true)
             API::$chat = new Config($this->getDataFolder() . "chat.json", Config::JSON);
+
+        if (!is_dir($this->getDataFolder() . "/feedback")) @mkdir($this->getDataFolder() . "/feedback");
     }
 
     public function onEnable(): void {

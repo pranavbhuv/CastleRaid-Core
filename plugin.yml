@@ -24,3 +24,5 @@ permissions:
   default: op
  castleraid.quests:
   default: true
+ castleraid.quests:
+  default: true
