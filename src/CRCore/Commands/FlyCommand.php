@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
+use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
@@ -26,20 +27,26 @@ class FlyCommand extends PluginCommand {
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($this->testPermission($sender) and $sender instanceof Player) {
-            if (!$sender->isCreative()) {
-                if (!$sender->getAllowFlight()) {
-                    $sender->setAllowFlight(true);
-                    $sender->setFlying(true);
-                    $sender->sendMessage(TextFormat::GREEN . "Fly mode enabled.");
+        if ($sender->hasPermission("castleraid.fly")) {
+            if ($sender instanceof Player) {
+                if (!$sender->isCreative()) {
+                    if (!$sender->getAllowFlight()) {
+                        $sender->setAllowFlight(true);
+                        $sender->setFlying(true);
+                        $sender->sendMessage(TextFormat::GREEN . "Fly mode enabled.");
+                    } else {
+                        $sender->setAllowFlight(false);
+                        $sender->setFlying(false);
+                        $sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
+                    }
                 } else {
-                    $sender->setAllowFlight(false);
-                    $sender->setFlying(false);
-                    $sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
+                    $sender->sendMessage(TextFormat::RED . "You are already in creative mode!");
                 }
             } else {
-                $sender->sendMessage(TextFormat::RED . "You are already in creative mode!");
+                $sender->sendMessage(API::NOT_PLAYER);
             }
+        } else {
+            $sender->sendMessage(API::NO_PERMISSION);
         }
     }
 }
