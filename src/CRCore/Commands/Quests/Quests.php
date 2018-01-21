@@ -79,7 +79,7 @@ class Quests{
      */
     public function getQuestUI() {
         $ui = null;
-        $api = API::$main->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+        $api = API::$main->getServer()->getPluginManager()->getPlugin("FormAPI");
         if ($api !== null) {
             $form = $api->createSimpleForm(function (Player $player, array $data){
                 if (empty($data) == false) {
