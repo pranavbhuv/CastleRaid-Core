@@ -1,11 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: angel
- * Date: 1/21/18
- * Time: 12:57 PM
- */
-/**
  * -==+CastleRaid Core+==-
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
@@ -13,22 +7,18 @@
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
  * @contributors: Nick, Potatoe, and Jason.
  */
-
 declare(strict_types=1);
 
 namespace CRCore\Commands\Quests;
 
-
 use CRCore\Loader;
 use CRCore\API;
-
 
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\item\Item;
-
 
 class QuestsCommand extends PluginCommand {
 
@@ -53,5 +43,4 @@ class QuestsCommand extends PluginCommand {
             $sender->sendMessage(API::NO_PERMISSION);
         }
     }
-
 }
