@@ -19,9 +19,8 @@ use specter\api\DummyPlayer;
 
 class FakePlayerTask extends PluginTask {
 
-    public function __construct(Plugin $owner, Player $player) {
+    public function __construct(Plugin $owner) {
         parent::__construct($owner);
-        $this->player = $player;
     }
 
 
