@@ -20,7 +20,7 @@ use CRCore\Commands\{
     InfoCommand,
     MenuCommand,
     MPShopCommand,
-    NickCommand
+    NickCommand,
 };
 use CRCore\Events\{
     EventListener,
