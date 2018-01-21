@@ -13,9 +13,10 @@ namespace CRCore\Events;
 
 use CRCore\Loader;
 use onebone\economyapi\EconomyAPI;
-use pocketmine\event\Listener;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class KillMoney implements Listener {
@@ -28,11 +29,12 @@ class KillMoney implements Listener {
     
     public function onDeath(PlayerDeathEvent $event) {
         $player = $event->getPlayer();
-        if($player->getLastDamageCause() instanceof EntityDamageByEntityEvent) {
-            $killer = $player->getLastDamageCause()->getDamager();
-            if($killer instanceof Player) {
+        $ldc = $player->getLastDamageCause();
+        if ($ldc instanceof EntityDamageByEntityEvent) {
+            $killer = $ldc->getDamager();
+            if ($killer instanceof Player) {
                 $reward = 250;
-                EconomyAPI::getInstance()->addMoney($killer, $reward);#
+                EconomyAPI::getInstance()->addMoney($killer, $reward);
                 $killer->sendMessage(TextFormat::BOLD . TextFormat::GREEN . "+ $" . $reward);
             }
         }
