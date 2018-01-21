@@ -38,13 +38,13 @@ class QuestListener implements Listener {
                     $player->sendMessage(TextFormat::AQUA . "Congrats, you have completed the quest, here are your rewards!");
                     $inv->addItem(Item::get(Item::DIAMOND,0,10)); //Quiver edit this depending on the quest rewards
                     $inv->removeItem(Item::get(54, 10, 1));
-                    $this->main->getServer()->broadcastMessage(API::QUEST_PREFIX . TextFormat::GOLD . $player . " has completed the quest!");
+                    $this->main->getServer()->broadcastMessage(Loader::QUEST_PREFIX . TextFormat::GOLD . $player . " has completed the quest!");
                     break;
                 case 11:
                     $player->sendMessage(TextFormat::AQUA . "Congrats, you have completed the quest, here are your rewards!");
                     $inv->addItem(Item::get(Item::DIAMOND,0,10)); //Quiver edit this depending on the quest rewards
                     $inv->removeItem(Item::get(54, 11, 1));
-                    $this->main->getServer()->broadcastMessage(API::QUEST_PREFIX . TextFormat::GOLD . $player . " has completed the quest!");
+                    $this->main->getServer()->broadcastMessage(Loader::QUEST_PREFIX . TextFormat::GOLD . $player . " has completed the quest!");
                     break;
             }
         }
