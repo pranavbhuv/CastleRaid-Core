@@ -21,7 +21,8 @@ use CRCore\Commands\{
     MenuCommand,
     MPShopCommand,
     NickCommand,
-    QuestsCommand
+    Quests\Quests,
+    Quests\QuestsCommand
 };
 use CRCore\Events\{
     EventListener,
