@@ -14,7 +14,7 @@ namespace CRCore;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
-class API {
+class API{
     /** @var Loader $main */
     public static $main;
 

@@ -26,7 +26,7 @@ class Quests{
         $quests = [
             1 => [
                 'Needed-Items' => [Item::get(Item::DIAMOND, 0, 10)],
-                'Rewarded-Items' => [Item::get(Item::CHEST, 0, 1)->setCustomName(TextFormat::GREEN . "Raiding Quest Rewards " . TextFormat::GRAY .  " (Tap anywhere)")],
+                'Rewarded-Items' => [Item::get(Item::CHEST, 0, 1)->setCustomName(TextFormat::GREEN . "Raiding Quest Rewards " . TextFormat::GRAY . " (Tap anywhere)")],
                 'Quest-Name' => 'Knights'
             ]
         ];
@@ -34,58 +34,58 @@ class Quests{
     }
 
     public static function addQuest(int $id, array $neededItems, array $rewardedItems, string $name){
-        if (isset(self::$quests[$id]) == false){
+        if(isset(self::$quests[$id]) == false){
             self::$quests[] = [
                 $id => [
-                'Needed-Items' => $neededItems,
-                'Rewarded-Items' => $rewardedItems,
-                'Quest-Name' => $name
-            ]];
+                    'Needed-Items' => $neededItems,
+                    'Rewarded-Items' => $rewardedItems,
+                    'Quest-Name' => $name
+                ]];
         }
     }
 
-    public function getQuestById(int $id) {
+    public function getQuestById(int $id){
         $r = null;
-        if (self::$quests[$id] !== null) {
+        if(self::$quests[$id] !== null){
             $r = self::$quests[$id];
         }
         return $r !== null ? $r : false;
     }
 
-    public static function getQuestByName(string $name) {
+    public static function getQuestByName(string $name){
         $r = null;
-        for ($i = 0; $i < count(self::$quests); $i++) {
+        for($i = 0; $i < count(self::$quests); $i++){
             $id = self::$quests[$i];
-            if ($id['Quest-Name'] == $name){
+            if($id['Quest-Name'] == $name){
                 $r = self::$quests[$i];
             }
         }
         return $r !== null ? $r : false;
     }
 
-    public function getQuestUI() {
+    public function getQuestUI(){
         $ui = null;
         $api = API::$main->getServer()->getPluginManager()->getPlugin("FormAPI");
-        if ($api !== null) {
+        if($api !== null){
             $form = $api->createSimpleForm(function (Player $player, array $data){
-                if (empty($data) == false) {
+                if(empty($data) == false){
 
-                    foreach ($data as $value) {
+                    foreach($data as $value){
 
-                        if ($value == 0) $player->sendMessage(API::QUEST_PREFIX . TextFormat::DARK_RED . " Exiting QuestUI...");
+                        if($value == 0) $player->sendMessage(API::QUEST_PREFIX . TextFormat::DARK_RED . " Exiting QuestUI...");
 
-                        foreach (self::$quests as $id => $index) {
+                        foreach(self::$quests as $id => $index){
 
-                            if ($value == $id) {
-                                foreach ($index['Needed-Items'] as $items) {
+                            if($value == $id){
+                                foreach($index['Needed-Items'] as $items){
 
-                                    if ($player->getInventory()->contains($items) == true){
+                                    if($player->getInventory()->contains($items) == true){
                                         $player->getInventory()->removeItem($items);
-                                        foreach ($index['Rewarded-Items'] as $reward){
+                                        foreach($index['Rewarded-Items'] as $reward){
                                             $player->getInventory()->addItem($reward);
-                                            $player->sendMessage(API::QUEST_PREFIX . 'Finished quest '.$index['Quest-Name'] . '!');
+                                            $player->sendMessage(API::QUEST_PREFIX . 'Finished quest ' . $index['Quest-Name'] . '!');
                                         }
-                                    } else {
+                                    }else{
                                         $player->sendMessage(API::QUEST_PREFIX . 'You dont have all the items needed to complete this quest!');
                                     }
                                 }
@@ -98,7 +98,7 @@ class Quests{
             $form->setTitle("Quest UI");
             $form->setContent(TextFormat::AQUA . "Tap any of the available quests below!");
             $form->addButton(TextFormat::DARK_RED . "Exit");
-            foreach (self::$quests as $id => $index) {
+            foreach(self::$quests as $id => $index){
                 $form->addButton(TextFormat::GREEN . $index['Quest-Name']);
             }
             $ui = $form;

@@ -17,22 +17,22 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class MenuCommand extends PluginCommand {
+class MenuCommand extends PluginCommand{
 
-    public function __construct(Loader $plugin) {
+    public function __construct(Loader $plugin){
         parent::__construct("menu", $plugin);
         $this->setPermission("castleraid.cp");
         $this->setDescription("CastleRaid Core Menu Command");
         $this->setAliases(["cp"]);
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.cp")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.cp")){
+            if($sender instanceof Player){
                 $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-                $form = $api->createSimpleForm(function (Player $sender, array $data) {
-                    if (isset($data[0])) {
-                        switch ($data[0]) {
+                $form = $api->createSimpleForm(function (Player $sender, array $data){
+                    if(isset($data[0])){
+                        switch($data[0]){
                             case 0:
                                 $command = "shopui";
                                 $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command);
@@ -89,10 +89,10 @@ class MenuCommand extends PluginCommand {
                 $form->addButton(TextFormat::WHITE . "Tutorial");
                 $form->addButton(TextFormat::WHITE . "Information");
                 $form->sendToPlayer($sender);
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
     }

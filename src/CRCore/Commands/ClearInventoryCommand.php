@@ -18,25 +18,25 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class ClearInventoryCommand extends PluginCommand {
+class ClearInventoryCommand extends PluginCommand{
 
-    public function __construct(Loader $plugin) {
+    public function __construct(Loader $plugin){
         parent::__construct("clearinv", $plugin);
         $this->setDescription("Clears a player's inventory");
         $this->setPermission("castleraid.clearinv");
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.clearinv")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.clearinv")){
+            if($sender instanceof Player){
                 $sender->getInventory()->clearAll();
                 $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
                 $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
                 return true;
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
         return true;

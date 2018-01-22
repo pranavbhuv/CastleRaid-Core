@@ -28,33 +28,33 @@ use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class EventListener implements Listener {
+class EventListener implements Listener{
     private $main;
 
-    public function __construct(Loader $main) {
+    public function __construct(Loader $main){
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onDataPacket(DataPacketReceiveEvent $event): void {
+    public function onDataPacket(DataPacketReceiveEvent $event) : void{
         $packet = $event->getPacket();
-        if ($packet instanceof ServerSettingsRequestPacket) {
+        if($packet instanceof ServerSettingsRequestPacket){
             $packet = new ServerSettingsResponsePacket();
             $packet->formData = file_get_contents($this->main->getDataFolder() . "tsconfig.json");
             $packet->formId = 5928;
             $event->getPlayer()->dataPacket($packet);
-        } elseif ($packet instanceof ModalFormResponsePacket) {
+        }elseif($packet instanceof ModalFormResponsePacket){
             $formId = $packet->formId;
-            if ($formId !== 5928) {
+            if($formId !== 5928){
                 return;
             }
         }
     }
 
-    public function onJoin(PlayerJoinEvent $event): void {
+    public function onJoin(PlayerJoinEvent $event) : void{
         $player = $event->getPlayer();
         $player->addTitle(TextFormat::GREEN . TextFormat::BOLD . "CastleRaidPE", TextFormat::GOLD . "Kingdoms MCPE Server");
-        $player->sendPopup(TextFormat::GREEN . "CastleRaid\n". TextFormat::GRAY . "The Only Kingdoms Server");
+        $player->sendPopup(TextFormat::GREEN . "CastleRaid\n" . TextFormat::GRAY . "The Only Kingdoms Server");
         $player->sendMessage(TextFormat::GREEN . "                     -=CastleRaid=-              ");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GRAY . "   A Kingdoms Minecraft Bedrock Edition Server");
@@ -63,7 +63,7 @@ class EventListener implements Listener {
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " castleraid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GREEN . "                          -=-                       ");
-        switch ($player->getName()) {
+        switch($player->getName()){
             case "iiFlamiinBlaze":
                 $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
                 break;
@@ -75,25 +75,25 @@ class EventListener implements Listener {
         $player->setNameTag($player->getDisplayName() . "\n " . TextFormat::GREEN . "♥" . $h . "%");
     }
 
-    public function onPlayerLogin(PlayerLoginEvent $event): void {
+    public function onPlayerLogin(PlayerLoginEvent $event) : void{
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
 
-    public function onConsume(PlayerItemConsumeEvent $event): void {
+    public function onConsume(PlayerItemConsumeEvent $event) : void{
         $player = $event->getPlayer();
         $inv = $player->getInventory();
         $hand = $inv->getItemInHand();
-        if ($hand->getId() === 373 && $hand->getDamage() === 1) {
+        if($hand->getId() === 373 && $hand->getDamage() === 1){
             $player->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(3)->setDuration(2000));
             $inv->removeItem($hand);
         }
     }
 
-    public function onInteract(PlayerInteractEvent $event): void {
+    public function onInteract(PlayerInteractEvent $event) : void{
         $player = $event->getPlayer();
-        if ($event->getItem()->getId() === 130) {
+        if($event->getItem()->getId() === 130){
             $damage = $event->getItem()->getDamage();
-            switch ($damage) {
+            switch($damage){
                 case 101:
                     $tier1 = Item::get(Item::ENDER_CHEST, 101, 1);
                     $tier1win = rand(10000, 25000);
@@ -119,11 +119,11 @@ class EventListener implements Listener {
         }
     }
 
-    public function onEntityDamage(EntityDamageEvent $event): void {
+    public function onEntityDamage(EntityDamageEvent $event) : void{
         $player = $event->getEntity();
-        if ($player instanceof Player) {
+        if($player instanceof Player){
             $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
-            switch ($h) { // "Borrowed" from @Thunder33345!
+            switch($h){ // "Borrowed" from @Thunder33345!
                 case $h <= 100 && $h >= 80;
                     $thing = TextFormat::GREEN . "♥ " . $h . "%";
                     break;

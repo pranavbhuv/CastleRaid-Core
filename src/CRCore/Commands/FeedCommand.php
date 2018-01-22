@@ -18,24 +18,24 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class FeedCommand extends PluginCommand {
+class FeedCommand extends PluginCommand{
 
-    public function __construct(Loader $plugin) {
+    public function __construct(Loader $plugin){
         parent::__construct("feed", $plugin);
         $this->setDescription("Feeds a player");
         $this->setPermission("castleraid.feed");
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.feed")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.feed")){
+            if($sender instanceof Player){
                 $sender->setFood(20);
                 $sender->setSaturation(20);
                 $sender->sendMessage(TextFormat::GREEN . "You have been fed");
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
     }

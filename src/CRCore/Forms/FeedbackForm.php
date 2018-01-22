@@ -17,14 +17,14 @@ use pocketmine\form\Form;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class FeedbackForm extends CustomForm {
+class FeedbackForm extends CustomForm{
     private $data;
 
-    public function __construct(string $title, $elements) {
+    public function __construct(string $title, $elements){
         parent::__construct($title, $elements);
     }
 
-    public function onSubmit(Player $player): ?Form {
+    public function onSubmit(Player $player) : ?Form{
         $f = fopen(API::$main->getDataFolder() . "/feedback/" . $player->getName() . ".txt", "a");
         fwrite($f, $this->data[0]);
         fclose($f);
@@ -33,7 +33,7 @@ class FeedbackForm extends CustomForm {
         return $this;
     }
 
-    public function handleResponse(Player $player, $data): ?Form {
+    public function handleResponse(Player $player, $data) : ?Form{
         $this->data = $data;
         return parent::handleResponse($player, $data);
     }
