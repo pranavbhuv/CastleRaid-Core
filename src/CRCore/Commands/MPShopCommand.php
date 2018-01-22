@@ -44,9 +44,7 @@ class MPShopCommand extends PluginCommand {
                                     $itemID = 130;
                                     $inv = $sender->getInventory();
                                     $inv->addItem(Item::get($itemID, 101, 1)->setCustomName(TextFormat::RESET . TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "Money Pouch" . TextFormat::RESET . TextFormat::GRAY . " (Tap anywhere)" . PHP_EOL . PHP_EOL .
-
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Tier Level: " . TextFormat::GRAY . "1" . PHP_EOL .
-
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$10,000 - $25,000"));
                                     EconomyAPI::getInstance()->reduceMoney($sender, 20000);
                                 } else {
@@ -59,9 +57,7 @@ class MPShopCommand extends PluginCommand {
                                     $itemID = 130;
                                     $inv = $sender->getInventory();
                                     $inv->addItem(Item::get($itemID, 102, 1)->setCustomName(TextFormat::RESET . TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "Money Pouch" . TextFormat::RESET . TextFormat::GRAY . " (Tap anywhere)" . PHP_EOL . PHP_EOL .
-
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Tier Level: " . TextFormat::GRAY . "2" . PHP_EOL .
-
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$25,000 - $50,000"));
                                     EconomyAPI::getInstance()->reduceMoney($sender, 40000);
                                 } else {
@@ -74,9 +70,7 @@ class MPShopCommand extends PluginCommand {
                                     $itemID = 130;
                                     $inv = $sender->getInventory();
                                     $inv->addItem(Item::get($itemID, 103, 1)->setCustomName(TextFormat::RESET . TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "Money Pouch" . TextFormat::RESET . TextFormat::GRAY . " (Tap anywhere)" . PHP_EOL . PHP_EOL .
-
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Tier Level: " . TextFormat::GRAY . "3" . PHP_EOL .
-
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$50,000 - $100,000"));
                                     EconomyAPI::getInstance()->reduceMoney($sender, 80000);
                                 } else {
