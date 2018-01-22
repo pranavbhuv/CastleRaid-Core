@@ -14,16 +14,16 @@ namespace CRCore\Commands;
 
 use CRCore\API;
 use CRCore\Forms\FeedbackForm;
+use CRCore\Loader;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\form\element\Input;
 use pocketmine\Player;
-use pocketmine\plugin\Plugin;
 use pocketmine\utils\TextFormat;
 
 class FeedbackCommand extends PluginCommand{
 
-    public function __construct(string $name, Plugin $owner){
+    public function __construct(Loader $owner){
         parent::__construct("feedback", $owner);
         $this->setAliases(["error", "suggest", "fb", "bug"]);
         $this->setDescription("Give us feedback or report bugs!");
