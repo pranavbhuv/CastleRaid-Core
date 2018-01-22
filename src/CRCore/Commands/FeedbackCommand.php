@@ -23,7 +23,7 @@ use pocketmine\utils\TextFormat;
 
 class FeedbackCommand extends PluginCommand {
 
-    public function __construct(Loader $owner) {
+    public function __construct(Loader $owner){
         parent::__construct("feedback", $owner);
         $this->setAliases(["error", "suggest", "fb", "bug"]);
         $this->setDescription("Give us feedback or report bugs!");
