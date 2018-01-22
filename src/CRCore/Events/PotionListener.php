@@ -20,20 +20,20 @@ use pocketmine\event\player\PlayerItemHeldEvent;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat;
 
-class PotionListener implements Listener {
+class PotionListener implements Listener{
 
     private $main;
 
-    public function __construct(Loader $main) {
+    public function __construct(Loader $main){
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onConsume(PlayerItemConsumeEvent $event): void {
+    public function onConsume(PlayerItemConsumeEvent $event): void{
         $player = $event->getPlayer();
-        if ($event->getItem()->getId() === 373) {
+        if($event->getItem()->getId() === 373){
             $damage = $event->getItem()->getDamage();
-            switch ($damage) {
+            switch($damage){
                 case 100:
                     $player->addEffect(Effect::getEffect(Effect::SPEED)->setDuration(360 * 20)->setAmplifier(1));
                     $player->addEffect(Effect::getEffect(Effect::HASTE)->setDuration(360 * 20)->setAmplifier(2));
@@ -97,12 +97,12 @@ class PotionListener implements Listener {
         }
     }
 
-    public function onHeld(PlayerItemHeldEvent $event): void {
+    public function onHeld(PlayerItemHeldEvent $event): void{
         $player = $event->getPlayer();
-        if ($event->getItem()->getId() === 373) {
+        if($event->getItem()->getId() === 373){
             $damage = $event->getItem()->getDamage();
             $hand = $player->getInventory()->getItemInHand();
-            switch ($damage) {
+            switch($damage){
                 case 100:
                     $item = Item::get(Item::POTION, 100, 1);
                     $player->getInventory()->removeItem($item);
@@ -169,7 +169,7 @@ class PotionListener implements Listener {
                     break;
             }
 
-            if ($hand->hasCustomName()) {
+            if($hand->hasCustomName()){
                 $event->setCancelled();
             }
         }

@@ -16,14 +16,14 @@ use CRCore\Loader;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\Server;
 
-class BroadcastTask extends PluginTask {
+class BroadcastTask extends PluginTask{
 
 
-    public function __construct(Loader $main) {
+    public function __construct(Loader $main){
         parent::__construct($main);
     }
 
-    public function onRun(int $currentTick) {
+    public function onRun(int $currentTick){
         Server::getInstance()->broadcastMessage(API::getRandomBcast());
     }
 }

@@ -21,28 +21,28 @@ use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\utils\TextFormat;
 
-class FeedbackCommand extends PluginCommand {
+class FeedbackCommand extends PluginCommand{
 
-    public function __construct(string $name, Plugin $owner) {
+    public function __construct(string $name, Plugin $owner){
         parent::__construct("feedback", $owner);
         $this->setAliases(["error", "suggest", "fb", "bug"]);
         $this->setDescription("Give us feedback or report bugs!");
         $this->setPermission("castleraid.feedback");
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.feedback")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.feedback")){
+            if($sender instanceof Player){
                 $sender->sendForm($this->makeForm());
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
     }
 
-    public function makeForm(): FeedbackForm {
+    public function makeForm(): FeedbackForm{
         $f = new FeedbackForm(TextFormat::BLUE . "Feedback", [new Input("Write your feedback/suggestion/bug report here!", "Vaults don't work.")]);
         return $f;
     }

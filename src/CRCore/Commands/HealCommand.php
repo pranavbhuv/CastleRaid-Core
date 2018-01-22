@@ -18,24 +18,24 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class HealCommand extends PluginCommand {
+class HealCommand extends PluginCommand{
 
-    public function __construct(Loader $plugin) {
+    public function __construct(Loader $plugin){
         parent::__construct("heal", $plugin);
         $this->setDescription("Heals a player");
         $this->setPermission("castleraid.heal");
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.heal")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.heal")){
+            if($sender instanceof Player){
                 $sender->setHealth(20);
                 $sender->sendMessage(TextFormat::AQUA . "You have been healed!");
                 $sender->addTitle(TextFormat::DARK_RED . "You have been healed!");
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
     }

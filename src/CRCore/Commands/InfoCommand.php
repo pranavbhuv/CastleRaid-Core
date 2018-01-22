@@ -20,18 +20,18 @@ use pocketmine\item\WrittenBook;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class InfoCommand extends PluginCommand {
+class InfoCommand extends PluginCommand{
 
-    public function __construct(Loader $plugin) {
+    public function __construct(Loader $plugin){
         parent::__construct("info", $plugin);
         $this->setDescription("CastleRaid Core Info Command");
         $this->setAliases(["information"]);
         $this->setPermission("castleraid.info");
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.info")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.info")){
+            if($sender instanceof Player){
                 $book = Item::get(Item::WRITTEN_BOOK, 0, 1);
                 $book->setTitle(TextFormat::GREEN . TextFormat::UNDERLINE . "Information Booklet");
                 $book->setPageText(0, TextFormat::GREEN . TextFormat::UNDERLINE . "What's a Kingdom?" . TextFormat::BLACK . "\n - A kingdom, is your home, its like a factions. Except bigger! \n - Kingdoms, have many members and a custom world! \n - Each kingdom has a king, this king is who you shall fight for!");
@@ -42,10 +42,10 @@ class InfoCommand extends PluginCommand {
                 $sender->getInventory()->addItem($book);
                 $sender->sendMessage(TextFormat::GREEN . "You received an Information Book!");
                 return true;
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
         return true;

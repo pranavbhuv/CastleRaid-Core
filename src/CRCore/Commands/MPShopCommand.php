@@ -20,60 +20,60 @@ use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class MPShopCommand extends PluginCommand {
+class MPShopCommand extends PluginCommand{
 
     public $nomoney = TextFormat::RED . "You don't have enough money.";
 
-    public function __construct(Loader $plugin) {
+    public function __construct(Loader $plugin){
         parent::__construct("mpshop", $plugin);
         $this->setPermission("castleraid.mp");
         $this->setDescription("CastleRaid Core MoneyPouch Command");
         $this->setAliases(["mpshop"]);
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.mp")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.mp")){
+            if($sender instanceof Player){
                 $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-                $form = $api->createSimpleForm(function (Player $sender, array $data) {
-                    if (isset($data[0])) {
-                        switch ($data[0]) {
+                $form = $api->createSimpleForm(function (Player $sender, array $data){
+                    if(isset($data[0])){
+                        switch($data[0]){
                             case 0:
                                 $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                                if ($money >= 20000) {
+                                if($money >= 20000){
                                     $itemID = 130;
                                     $inv = $sender->getInventory();
                                     $inv->addItem(Item::get($itemID, 101, 1)->setCustomName(TextFormat::RESET . TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "Money Pouch" . TextFormat::RESET . TextFormat::GRAY . " (Tap anywhere)" . PHP_EOL . PHP_EOL .
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Tier Level: " . TextFormat::GRAY . "1" . PHP_EOL .
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$10,000 - $25,000"));
                                     EconomyAPI::getInstance()->reduceMoney($sender, 20000);
-                                } else {
+                                }else{
                                     $sender->sendMessage($this->nomoney);
                                 }
                                 break;
                             case 1:
                                 $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                                if ($money >= 40000) {
+                                if($money >= 40000){
                                     $itemID = 130;
                                     $inv = $sender->getInventory();
                                     $inv->addItem(Item::get($itemID, 102, 1)->setCustomName(TextFormat::RESET . TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "Money Pouch" . TextFormat::RESET . TextFormat::GRAY . " (Tap anywhere)" . PHP_EOL . PHP_EOL .
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Tier Level: " . TextFormat::GRAY . "2" . PHP_EOL .
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$25,000 - $50,000"));
                                     EconomyAPI::getInstance()->reduceMoney($sender, 40000);
-                                } else {
+                                }else{
                                     $sender->sendMessage($this->nomoney);
                                 }
                                 break;
                             case 2:
                                 $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                                if ($money >= 80000) {
+                                if($money >= 80000){
                                     $itemID = 130;
                                     $inv = $sender->getInventory();
                                     $inv->addItem(Item::get($itemID, 103, 1)->setCustomName(TextFormat::RESET . TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "Money Pouch" . TextFormat::RESET . TextFormat::GRAY . " (Tap anywhere)" . PHP_EOL . PHP_EOL .
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Tier Level: " . TextFormat::GRAY . "3" . PHP_EOL .
                                         TextFormat::DARK_GRAY . " *" . TextFormat::AQUA . " Amount to win: " . TextFormat::GRAY . "$50,000 - $100,000"));
                                     EconomyAPI::getInstance()->reduceMoney($sender, 80000);
-                                } else {
+                                }else{
                                     $sender->sendMessage($this->nomoney);
                                 }
                                 break;
@@ -87,10 +87,10 @@ class MPShopCommand extends PluginCommand {
                 $form->addButton(TextFormat::DARK_RED . "Tier 3 | $80k");
                 $form->sendToPlayer($sender);
                 return true;
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
         return true;

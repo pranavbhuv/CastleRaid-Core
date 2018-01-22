@@ -22,31 +22,31 @@ use pocketmine\item\Compass;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat;
 
-class RelicListener implements Listener {
+class RelicListener implements Listener{
 
     private $main;
 
-    public function __construct(Loader $main) {
+    public function __construct(Loader $main){
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onBreak(BlockBreakEvent $break): void {
+    public function onBreak(BlockBreakEvent $break): void{
         $loot = Item::get(Compass::COMPASS);
         $loot->setCustomName("Relic");
         $player = $break->getPlayer();
-        if ($break->getBlock()->getId() == Stone::STONE) {
-            if (mt_rand(1, 100) === 8) {
+        if($break->getBlock()->getId() == Stone::STONE){
+            if(mt_rand(1, 100) === 8){
                 $player->getInventory()->addItem($loot);
             }
         }
     }
 
-    public function onClick(PlayerInteractEvent $event): void {
+    public function onClick(PlayerInteractEvent $event): void{
         $player = $event->getPlayer();
         $pii = $player->getInventory();
         $pi = $player->getInventory()->getItemInHand();
-        if ($pi->getName() === "Relic") {
+        if($pi->getName() === "Relic"){
             $pii->removeItem(Item::COMPASS);
             $player->sendMessage(TextFormat::GRAY . "Opening your Relic...");
             $player->sendMessage(TextFormat::GREEN . "Opened!");

@@ -20,26 +20,26 @@ use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\item\Item;
 
-class QuestsCommand extends PluginCommand {
+class QuestsCommand extends PluginCommand{
 
     public $inv;
 
-    public function __construct(Loader $plugin) {
+    public function __construct(Loader $plugin){
         parent::__construct("quests", $plugin);
         $this->setDescription("Quests Command");
         $this->setPermission("castleraid.quests");
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if ($sender->hasPermission("castleraid.quests")) {
-            if ($sender instanceof Player) {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
+        if($sender->hasPermission("castleraid.quests")){
+            if($sender instanceof Player){
                 $handler = new Quests();
                 $ui = $handler->getQuestUI();
                 $ui->sendToPlayer($sender);
-            } else {
+            }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
-        } else {
+        }else{
             $sender->sendMessage(API::NO_PERMISSION);
         }
     }
