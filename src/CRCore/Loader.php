@@ -14,6 +14,7 @@ namespace CRCore;
 use CRCore\Commands\{
     ClearInventoryCommand,
     CustomPotionsCommand,
+    FeedbackCommand,
     FeedCommand,
     FlyCommand,
     HealCommand,
@@ -79,7 +80,8 @@ class Loader extends PluginBase{
             new MPShopCommand($this),
             new NickCommand($this),
             new FeedCommand($this),
-            new QuestsCommand($this)
+            new QuestsCommand($this),
+            new FeedbackCommand($this)
         ]);
 
         $quests = new Quests();
