@@ -42,7 +42,7 @@ class FeedbackCommand extends PluginCommand{
         }
     }
 
-    public function makeForm(): FeedbackForm{
+    public function makeForm() : FeedbackForm{
         $f = new FeedbackForm(TextFormat::BLUE . "Feedback", [new Input("Write your feedback/suggestion/bug report here!", "Vaults don't work.")]);
         return $f;
     }

@@ -29,5 +29,4 @@ class FakePlayerChatTask extends PluginTask{
     public function onRun(int $currentTick){
         $this->p->chat(API::getRandomChat());
     }
-
 }

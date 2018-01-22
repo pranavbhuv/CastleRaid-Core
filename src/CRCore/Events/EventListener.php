@@ -36,7 +36,7 @@ class EventListener implements Listener{
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onDataPacket(DataPacketReceiveEvent $event): void{
+    public function onDataPacket(DataPacketReceiveEvent $event) : void{
         $packet = $event->getPacket();
         if($packet instanceof ServerSettingsRequestPacket){
             $packet = new ServerSettingsResponsePacket();
@@ -51,7 +51,7 @@ class EventListener implements Listener{
         }
     }
 
-    public function onJoin(PlayerJoinEvent $event): void{
+    public function onJoin(PlayerJoinEvent $event) : void{
         $player = $event->getPlayer();
         $player->addTitle(TextFormat::GREEN . TextFormat::BOLD . "CastleRaidPE", TextFormat::GOLD . "Kingdoms MCPE Server");
         $player->sendPopup(TextFormat::GREEN . "CastleRaid\n" . TextFormat::GRAY . "The Only Kingdoms Server");
@@ -75,11 +75,11 @@ class EventListener implements Listener{
         $player->setNameTag($player->getDisplayName() . "\n " . TextFormat::GREEN . "♥" . $h . "%");
     }
 
-    public function onPlayerLogin(PlayerLoginEvent $event): void{
+    public function onPlayerLogin(PlayerLoginEvent $event) : void{
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
 
-    public function onConsume(PlayerItemConsumeEvent $event): void{
+    public function onConsume(PlayerItemConsumeEvent $event) : void{
         $player = $event->getPlayer();
         $inv = $player->getInventory();
         $hand = $inv->getItemInHand();
@@ -89,7 +89,7 @@ class EventListener implements Listener{
         }
     }
 
-    public function onInteract(PlayerInteractEvent $event): void{
+    public function onInteract(PlayerInteractEvent $event) : void{
         $player = $event->getPlayer();
         if($event->getItem()->getId() === 130){
             $damage = $event->getItem()->getDamage();
@@ -119,7 +119,7 @@ class EventListener implements Listener{
         }
     }
 
-    public function onEntityDamage(EntityDamageEvent $event): void{
+    public function onEntityDamage(EntityDamageEvent $event) : void{
         $player = $event->getEntity();
         if($player instanceof Player){
             $h = round($player->getHealth()) / $player->getMaxHealth() * 100;

@@ -24,7 +24,7 @@ class FeedbackForm extends CustomForm{
         parent::__construct($title, $elements);
     }
 
-    public function onSubmit(Player $player): ?Form{
+    public function onSubmit(Player $player) : ?Form{
         $f = fopen(API::$main->getDataFolder() . "/feedback/" . $player->getName() . ".txt", "a");
         fwrite($f, $this->data[0]);
         fclose($f);
@@ -33,7 +33,7 @@ class FeedbackForm extends CustomForm{
         return $this;
     }
 
-    public function handleResponse(Player $player, $data): ?Form{
+    public function handleResponse(Player $player, $data) : ?Form{
         $this->data = $data;
         return parent::handleResponse($player, $data);
     }

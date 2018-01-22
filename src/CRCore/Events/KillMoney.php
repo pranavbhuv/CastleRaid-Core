@@ -27,7 +27,7 @@ class KillMoney implements Listener{
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onDeath(PlayerDeathEvent $event){
+    public function onDeath(PlayerDeathEvent $event) : void{
         $player = $event->getPlayer();
         $ldc = $player->getLastDamageCause();
         if($ldc instanceof EntityDamageByEntityEvent){

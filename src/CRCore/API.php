@@ -33,17 +33,17 @@ class API{
     const QUEST_PREFIX = TextFormat::GREEN . "Quests " . TextFormat::AQUA . "> " . TextFormat::WHITE;
     const FEEDBACK_PREFIX = TextFormat::BLUE . "Feedback" . "> " . TextFormat::WHITE;
 
-    public static function getRandomName(): string{
+    public static function getRandomName() : string{
         $n = self::$names->getNested("names");
         return $n[array_rand($n)];
     }
 
-    public static function getRandomChat(): string{
+    public static function getRandomChat() : string{
         $c = self::$chat->getNested("chat");
         return $c[array_rand($c)];
     }
 
-    public static function getRandomBcast(): string{
+    public static function getRandomBcast() : string{
         $b = self::$msg->getAll()["broadcast"];
         return $b[array_rand($b)];
     }

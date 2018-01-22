@@ -28,7 +28,7 @@ class QuestListener implements Listener{
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onInteract(PlayerInteractEvent $event): void{
+    public function onInteract(PlayerInteractEvent $event) : void{
         $player = $event->getPlayer();
         $inv = $player->getInventory();
         if($event->getItem()->getId() === 54){

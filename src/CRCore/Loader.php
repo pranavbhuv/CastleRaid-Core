@@ -40,7 +40,7 @@ use pocketmine\{
 
 class Loader extends PluginBase{
 
-    public function onLoad(): void{
+    public function onLoad() : void{
         API::$main = $this;
 
         $this->saveDefaultConfig();
@@ -61,13 +61,12 @@ class Loader extends PluginBase{
         if(!is_dir($this->getDataFolder() . "/feedback")) @mkdir($this->getDataFolder() . "/feedback");
     }
 
-    public function onEnable(): void{
+    public function onEnable() : void{
         new EventListener($this);
         new PotionListener($this);
         new RelicListener($this);
 
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
-
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", [

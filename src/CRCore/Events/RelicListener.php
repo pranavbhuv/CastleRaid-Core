@@ -31,7 +31,7 @@ class RelicListener implements Listener{
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onBreak(BlockBreakEvent $break): void{
+    public function onBreak(BlockBreakEvent $break) : void{
         $loot = Item::get(Compass::COMPASS);
         $loot->setCustomName("Relic");
         $player = $break->getPlayer();
@@ -42,7 +42,7 @@ class RelicListener implements Listener{
         }
     }
 
-    public function onClick(PlayerInteractEvent $event): void{
+    public function onClick(PlayerInteractEvent $event) : void{
         $player = $event->getPlayer();
         $pii = $player->getInventory();
         $pi = $player->getInventory()->getItemInHand();
