@@ -12,17 +12,7 @@ declare(strict_types=1);
 namespace CRCore;
 
 use CRCore\Commands\{
-    ClearInventoryCommand,
-    CustomPotionsCommand,
-    FeedCommand,
-    FlyCommand,
-    HealCommand,
-    InfoCommand,
-    MenuCommand,
-    MPShopCommand,
-    NickCommand,
-    Quests\QuestsCommand,
-    Quests\Quests
+    ClearInventoryCommand, CustomPotionsCommand, FeedbackCommand, FeedCommand, FlyCommand, HealCommand, InfoCommand, MenuCommand, MPShopCommand, NickCommand, Quests\QuestsCommand, Quests\Quests
 };
 use CRCore\Events\{
     EventListener,
@@ -80,7 +70,8 @@ class Loader extends PluginBase {
             new MPShopCommand($this),
             new NickCommand($this),
             new FeedCommand($this),
-            new QuestsCommand($this)
+            new QuestsCommand($this),
+            new FeedbackCommand($this)
         ]);
         
         $quests = new Quests();
