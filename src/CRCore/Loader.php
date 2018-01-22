@@ -12,7 +12,18 @@ declare(strict_types=1);
 namespace CRCore;
 
 use CRCore\Commands\{
-    ClearInventoryCommand, CustomPotionsCommand, FeedbackCommand, FeedCommand, FlyCommand, HealCommand, InfoCommand, MenuCommand, MPShopCommand, NickCommand, Quests\QuestsCommand, Quests\Quests
+    ClearInventoryCommand,
+    CustomPotionsCommand,
+    FeedbackCommand,
+    FeedCommand,
+    FlyCommand,
+    HealCommand,
+    InfoCommand,
+    MenuCommand,
+    MPShopCommand,
+    NickCommand,
+    Quests\QuestsCommand,
+    Quests\Quests
 };
 use CRCore\Events\{
     EventListener,
