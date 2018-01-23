@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace CRCore\Commands;
 
-use CRCore\Loader;
 use CRCore\API;
+use CRCore\Loader;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;

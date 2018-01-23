@@ -26,11 +26,10 @@ class FeedbackForm extends CustomForm{
 
     public function onSubmit(Player $player) : ?Form{
         $f = fopen(API::$main->getDataFolder() . "/feedback/" . $player->getName() . ".txt", "a");
-        fwrite($f, $this->data[0]);
+        fwrite($f, $this->data[0]."\n");
         fclose($f);
         $player->sendMessage(API::FEEDBACK_PREFIX . TextFormat::GREEN . "Thanks for your feedback! Our developers will take a look to it ASAP.");
-
-        return $this;
+        return null;
     }
 
     public function handleResponse(Player $player, $data) : ?Form{

@@ -17,8 +17,6 @@ use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\Player;
-use pocketmine\utils\TextFormat;
-use pocketmine\item\Item;
 
 class QuestsCommand extends PluginCommand{
 

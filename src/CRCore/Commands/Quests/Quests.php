@@ -14,7 +14,7 @@ namespace CRCore\Commands\Quests;
 use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
-use jojoe77777\FormAPI;
+use jojoe77777\FormAPI\FormAPI;
 
 use CRCore\API;
 
@@ -65,6 +65,7 @@ class Quests{
 
     public function getQuestUI(){
         $ui = null;
+        /** @var FormAPI $api */
         $api = API::$main->getServer()->getPluginManager()->getPlugin("FormAPI");
         if($api !== null){
             $form = $api->createSimpleForm(function (Player $player, array $data){
