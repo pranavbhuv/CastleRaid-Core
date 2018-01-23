@@ -72,7 +72,7 @@ class EventListener implements Listener{
                 break;
         }
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
-        $player->setNameTag($player->getDisplayName() . "\n " . TextFormat::GREEN . "♥" . $h . "%");
+        $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . TextFormat::GREEN . "♥" . $h . "%");
     }
 
     public function onPlayerLogin(PlayerLoginEvent $event) : void{
