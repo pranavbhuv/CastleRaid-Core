@@ -28,7 +28,8 @@ class HudTask extends PluginTask{
 
     public function onRun(int $currentTick){
         foreach($this->plugin->getServer()->getOnlinePlayers() as $player){
-            $player->sendTip(TextFormat::GRAY . "-==+" . TextFormat::GREEN . "CastleRaid" . TextFormat::GRAY . "+==-" . PHP_EOL); //Edit this with the message you want for the hud Quiver
+            $player->sendTip(TextFormat::GRAY . "-==+" . TextFormat::GREEN . "CastleRaid" . TextFormat::GRAY . "+==-" . PHP_EOL .
+                             "There are " . TextFormat::YELLOW . count($this->plugin->getServer()->getOnlinePlayers()) . TextFormat::GRAY ." players online."); //Edit this with the message you want for the hud Quiver
         }
     }
 }
