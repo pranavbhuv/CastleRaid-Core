@@ -13,7 +13,7 @@ namespace CRCore\Commands;
 
 use CRCore\Loader;
 use CRCore\API;
-use jojoe77777\FormAPI;
+use jojoe77777\FormAPI\FormAPI;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
@@ -34,6 +34,7 @@ class CustomPotionsCommand extends PluginCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if($sender->hasPermission("castleraid.cp2")){
             if($sender instanceof Player){
+            	/** @var FormAPI $api */
                 $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
                 $form = $api->createSimpleForm(function (Player $sender, array $data){
                     if(isset($data[0])){

@@ -19,7 +19,8 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class KillMoney implements Listener{
+class KillMoneyListener implements Listener{
+    
     private $main;
 
     public function __construct(Loader $main){

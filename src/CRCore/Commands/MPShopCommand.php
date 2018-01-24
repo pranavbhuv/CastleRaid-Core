@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace CRCore\Commands;
 
-use CRCore\Loader;
 use CRCore\API;
+use CRCore\Loader;
+use jojoe77777\FormAPI\FormAPI;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
@@ -34,9 +35,10 @@ class MPShopCommand extends PluginCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if($sender->hasPermission("castleraid.mp")){
             if($sender instanceof Player){
-                $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-                $form = $api->createSimpleForm(function (Player $sender, array $data){
-                    if(isset($data[0])){
+            	/** @var FormAPI $api */
+            	$api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+            	$form = $api->createSimpleForm(function (Player $sender, array $data){
+            		if(isset($data[0])){
                         switch($data[0]){
                             case 0:
                                 $money = EconomyAPI::getInstance()->myMoney($sender->getName());
@@ -80,13 +82,13 @@ class MPShopCommand extends PluginCommand{
                         }
                     }
                 });
-                $form->setTitle("Money Pouch Shop");
-                $form->setContent("Money Pouches available below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
-                $form->addButton(TextFormat::DARK_AQUA . "Tier 1 | $20k");
-                $form->addButton(TextFormat::DARK_GREEN . "Tier 2 | $40k");
-                $form->addButton(TextFormat::DARK_RED . "Tier 3 | $80k");
-                $form->sendToPlayer($sender);
-                return true;
+            	$form->setTitle("Money Pouch Shop");
+            	$form->setContent("Money Pouches available below!\nTier 1: Win between $10,000 to $25,000\nTier 2: Win between $25,000 to $50,000\nTier 3: Win between $50,000 t0 $100,000");
+            	$form->addButton(TextFormat::DARK_AQUA . "Tier 1 | $20k");
+            	$form->addButton(TextFormat::DARK_GREEN . "Tier 2 | $40k");
+            	$form->addButton(TextFormat::DARK_RED . "Tier 3 | $80k");
+            	$form->sendToPlayer($sender);
+            	return true;
             }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
