@@ -62,6 +62,7 @@ class Loader extends PluginBase{
             API::$chat = new Config($this->getDataFolder() . "chat.json", Config::JSON);
 
         if(!is_dir($this->getDataFolder() . "/feedback")) @mkdir($this->getDataFolder() . "/feedback");
+        if(!is_dir($this->getDataFolder() . "/players")) @mkdir($this->getDataFolder() . "/players");
     }
 
     public function onEnable() : void{
