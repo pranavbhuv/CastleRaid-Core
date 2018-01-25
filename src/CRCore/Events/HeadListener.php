@@ -35,18 +35,32 @@ class HeadListener implements Listener{
             $killer = $ldc->getDamager();
             if($killer instanceof Player){
                 $item = Item::get(397, 0, 1);
-                $item->setCustomName($player->getName());
+                $nbt = new CompoundTag("", [new IntTag("head", 1), new StringTag("owner", $player->getName())]);
+                $item->setCustomBlockData($nbt);
+                $item->setCustomName($player->getName() . "'s Head");
                 $killer->getInventory()->addItem($item);
                 $killer->sendMessage(TextFormat::BOLD . TextFormat::GREEN . "+ You got " . $player . "'s head!");
             }
-
         }
     }
 
-    public function onTap(PlayerInteractEvent $event){
-        $player = $event->getItem()->getCustomName();
-        EconomyAPI::getInstance()->myMoney($player / 0.05);
+    public function onTap(PlayerInteractEvent $event) : void{
+        $item = $event->getItem();
+        $player = $event->getPlayer();
+        if($item->hasCustomBlockData()){
+            if($item->getCustomBlockData()->getInt("head") === 1){
+                $owner = $item->getCustomBlockData()->getString("owner");
+                $player->sendMessage("Redeemed $owner's head");
+                $player->getInventory()->removeItem($item);
+                $cash = EconomyAPI::getInstance()->myMoney($owner) * 0.05;
+                EconomyAPI::getInstance()->addMoney($player, $cash);
+                EcnonomyAPI::getInstance()->reduceMoney($owner, $cash);
+                
+            }
+        }
     }
+    
+    public function 
 
 
 }
