@@ -70,6 +70,9 @@ class EventListener implements Listener{
             case "QuiverlyRivalry":
                 $this->main->getServer()->broadcastMessage("Fucking Code nibba");
                 break;
+            case "PotatoeTrainYT":
+                $this->main->getServer()->broadcastMessage("THANK FUCK");
+                break;
         }
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
         $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . TextFormat::GREEN . "♥" . $h . "%");
