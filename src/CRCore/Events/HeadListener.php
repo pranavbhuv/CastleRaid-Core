@@ -16,6 +16,8 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
 
+use onebone\economyapi\EconomyAPI;
+
 class HeadListener implements Listener {
 
     private $main;
@@ -36,14 +38,16 @@ class HeadListener implements Listener {
                 $item = Item::get(397, 0, 1);
                 $item->setCustomName($player->getName());
                 $killer->getInventory()->addItem($item);
-                $killer->sendMessage(TextFormat::BOLD . TextFormat::GREEN . "+ You got ".$player."'s head!");
+                $killer->sendMessage(TextFormat::BOLD . TextFormat::GREEN . "+ You got " . $player . "'s head!");
             }
 
         }
     }
 
-    public function onTap(PlayerInteractEvent $event) {
-        $event->getNam
+    public function onTap(PlayerInteractEvent $event)
+    {
+        $player = $event->getItem()->getCustomName();
+        EconomyAPI::getInstance()->myMoney($player / 0.05);
     }
 
 
