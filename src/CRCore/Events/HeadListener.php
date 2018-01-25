@@ -15,26 +15,25 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
+use pocketmine\utils\TextFormat;
 
 use onebone\economyapi\EconomyAPI;
 
-class HeadListener implements Listener {
+class HeadListener implements Listener{
 
     private $main;
 
-    public function __construct(Loader $main)
-    {
+    public function __construct(Loader $main){
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onDeath(PlayerDeathEvent $event): void
-    {
+    public function onDeath(PlayerDeathEvent $event) : void{
         $player = $event->getPlayer();
         $ldc = $player->getLastDamageCause();
-        if ($ldc instanceof EntityDamageEvent) {
+        if($ldc instanceof EntityDamageEvent){
             $killer = $ldc->getDamager();
-            if ($killer instanceof Player) {
+            if($killer instanceof Player){
                 $item = Item::get(397, 0, 1);
                 $item->setCustomName($player->getName());
                 $killer->getInventory()->addItem($item);
@@ -44,8 +43,7 @@ class HeadListener implements Listener {
         }
     }
 
-    public function onTap(PlayerInteractEvent $event)
-    {
+    public function onTap(PlayerInteractEvent $event){
         $player = $event->getItem()->getCustomName();
         EconomyAPI::getInstance()->myMoney($player / 0.05);
     }
