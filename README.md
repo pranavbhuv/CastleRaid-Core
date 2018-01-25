@@ -5,6 +5,7 @@ The official CasteRaid Core made by the CR Dev Team!
 [Download file then import to PHPStorm](https://cdn.discordapp.com/attachments/394542043952578562/405748633678381056/Default.xml).
 
 ## Features
+heads
 | Name | Type | Description |
 | :---: | :---: | :---: |
 | [BroadcastTask](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/BroadcastTask.php) | Task | Broadcast a message every 4 minutes |
