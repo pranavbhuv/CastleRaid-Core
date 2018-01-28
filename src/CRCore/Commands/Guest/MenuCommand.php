@@ -30,7 +30,7 @@ class MenuCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.cp")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function (Player $sender, array $data){
