@@ -31,7 +31,7 @@ class InfoCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.info")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         $book = Item::get(Item::WRITTEN_BOOK, 0, 1);
         $book->setTitle(TextFormat::GREEN . TextFormat::UNDERLINE . "Information Booklet");
