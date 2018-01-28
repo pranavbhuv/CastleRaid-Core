@@ -2,6 +2,7 @@
 
 namespace CRCore\person;
 
+use CRCore\Loader;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerCreationEvent;
