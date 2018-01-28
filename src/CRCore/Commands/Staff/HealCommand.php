@@ -29,7 +29,7 @@ class HealCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.heal")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         $sender->setHealth(20);
         $sender->sendMessage(TextFormat::AQUA . "You have been healed!");
