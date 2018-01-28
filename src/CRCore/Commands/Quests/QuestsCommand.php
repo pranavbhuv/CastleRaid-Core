@@ -11,21 +11,19 @@ declare(strict_types=1);
 
 namespace CRCore\Commands\Quests;
 
+use CRCore\Commands\BaseCommand;
 use CRCore\Loader;
 use CRCore\API;
 
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 
-class QuestsCommand extends PluginCommand{
+class QuestsCommand extends BaseCommand{
 
     public $inv;
 
     public function __construct(Loader $plugin){
-        parent::__construct("quests", $plugin);
-        $this->setDescription("Quests Command");
-        $this->setPermission("castleraid.quests");
+        parent::__construct($plugin, "quest", "Quest Command", "/quest", ["quest"]);
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
