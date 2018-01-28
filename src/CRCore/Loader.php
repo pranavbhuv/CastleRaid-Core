@@ -43,7 +43,6 @@ use pocketmine\{
 
 class Loader extends PluginBase{
    
-    
     const CORE_VERSION = "v1.4.6";
     
     public function onLoad() : void{
