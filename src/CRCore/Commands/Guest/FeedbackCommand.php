@@ -31,7 +31,7 @@ class FeedbackCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.feedback")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         $sender->sendForm($this->makeForm());
     }
