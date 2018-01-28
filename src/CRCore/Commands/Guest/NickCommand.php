@@ -29,7 +29,7 @@ class NickCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.nick")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         if(!isset($args[0])){
             $sender->sendMessage("Please provide a nickname.");
