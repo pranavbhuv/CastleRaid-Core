@@ -19,7 +19,11 @@ class Person extends Player{
 
     /** @var Config $cfg */
     private $cfg;
-
+    
+    public function __construct(SourceInterface $interface, $clientID, string $ip, int $port){
+        parent::__construct($interface, $clientID, $ip, $port);
+    }
+    
     public function genCfg() : void{
         if(file_exists(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json")){
             $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON);
