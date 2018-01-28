@@ -12,16 +12,16 @@ declare(strict_types=1);
 namespace CRCore;
 
 use CRCore\Commands\{
-    ClearInventoryCommand,
-    CustomPotionsCommand,
-    FeedbackCommand,
-    FeedCommand,
-    FlyCommand,
-    HealCommand,
-    InfoCommand,
-    MenuCommand,
-    MPShopCommand,
-    NickCommand,
+    Staff\ClearInventoryCommand,
+    Guest\CustomPotionsCommand,
+    Guest\FeedbackCommand,
+    Staff\FeedCommand,
+    Staff\FlyCommand,
+    Staff\HealCommand,
+    Guest\InfoCommand,
+    Guest\MenuCommand,
+    Guest\MPShopCommand,
+    Guest\NickCommand,
     Quests\QuestsCommand,
     Quests\Quests
 };
