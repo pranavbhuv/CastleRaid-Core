@@ -29,7 +29,7 @@ class FlyCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.fly")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         if(!$sender->isCreative()){
             if(!$sender->getAllowFlight()){
