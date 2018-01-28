@@ -25,7 +25,7 @@ class Quests{
 
     private static $quests = [];
 
-     public static function registerQuests() : void{
+    public static function registerQuests() : void{
         $quests = [
             1 => [
                 'Needed-Items' => [Item::get(Item::DIAMOND, 0, 10)],
