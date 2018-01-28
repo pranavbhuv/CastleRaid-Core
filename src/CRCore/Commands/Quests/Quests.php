@@ -20,6 +20,8 @@ use CRCore\API;
 
 class Quests{
 
+    const QUEST_PREFIX = TextFormat::GREEN . "Quests " . TextFormat::AQUA . "> " . TextFormat::WHITE;
+
     private static $quests = [];
 
     public static function registerQuests(){
@@ -73,7 +75,7 @@ class Quests{
 
                     foreach($data as $value){
 
-                        if($value == 0) $player->sendMessage(API::QUEST_PREFIX . TextFormat::DARK_RED . " Exiting QuestUI...");
+                        if($value == 0) $player->sendMessage(Quests::QUEST_PREFIX . TextFormat::DARK_RED . " Exiting QuestUI...");
 
                         foreach(self::$quests as $id => $index){
 
@@ -84,10 +86,10 @@ class Quests{
                                         $player->getInventory()->removeItem($items);
                                         foreach($index['Rewarded-Items'] as $reward){
                                             $player->getInventory()->addItem($reward);
-                                            $player->sendMessage(API::QUEST_PREFIX . 'Finished quest ' . $index['Quest-Name'] . '!');
+                                            $player->sendMessage(Quests::QUEST_PREFIX . 'Finished quest ' . $index['Quest-Name'] . '!');
                                         }
                                     }else{
-                                        $player->sendMessage(API::QUEST_PREFIX . 'You dont have all the items needed to complete this quest!');
+                                        $player->sendMessage(Quests::QUEST_PREFIX . 'You dont have all the items needed to complete this quest!');
                                     }
                                 }
                             }
