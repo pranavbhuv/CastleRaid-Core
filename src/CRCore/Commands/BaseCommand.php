@@ -12,13 +12,12 @@ declare(strict_types=1);
 namespace CRCore\Commands;
 
 use CRCore\Loader;
-use CRCore\API;
 use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\plugin\Plugin;
+use pocketmine\utils\TextFormat;
 
-class BaseCommand extends Command implements PluginIdentifiableCommand{
+abstract class BaseCommand extends Command implements PluginIdentifiableCommand{
     
     const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
     
