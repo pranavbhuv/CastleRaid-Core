@@ -19,9 +19,11 @@ use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\plugin\Plugin;
 
 class BaseCommand extends Command implements PluginIdentifiableCommand{
-
+    
+    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
+    
     private $plugin;
-
+  
     public function __construct(Loader $plugin, $name, $description, $usageMessage, $aliases){
         parent::__construct($name, $description, $usageMessage, $aliases);
         $this->plugin = $plugin;
