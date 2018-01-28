@@ -29,7 +29,7 @@ class ClearInventoryCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.clearinv")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         $sender->getInventory()->clearAll();
         $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
