@@ -31,6 +31,8 @@ use CRCore\Events\{
     RelicListener,
     KillMoneyListener
 };
+
+use CRCore\Person\onPlayerCreation;
 use CRCore\Tasks\{
     BroadcastTask,
     FakePlayerTask,
@@ -70,6 +72,7 @@ class Loader extends PluginBase{
         new PotionListener($this);
         new RelicListener($this);
         new KillMoneyListener($this);
+        new onPlayerCreation($this);
 
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
