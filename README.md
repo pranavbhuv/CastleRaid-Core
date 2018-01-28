@@ -1,8 +1,8 @@
 # CastleRaid Core
-The official CasteRaid Core made by the CR Dev Team
+The official CasteRaid Core made by the CR Dev Team!
 
 # Formatting File Download for PHPStorm:
-[Download file here](https://cdn.discordapp.com/attachments/394542043952578562/405098979223797761/Default.xml)!
+[Download file then import to PHPStorm](https://cdn.discordapp.com/attachments/394542043952578562/405748633678381056/Default.xml).
 
 ## Features
 | Name | Type | Description |
