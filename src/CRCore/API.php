@@ -26,8 +26,7 @@ class API{
 
     /** @var Config $msg */
     public static $msg;
-
-    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
+    
     const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "Use this command in-game!";
     const CORE_VERSION = "v1.4.6";
     const QUEST_PREFIX = TextFormat::GREEN . "Quests " . TextFormat::AQUA . "> " . TextFormat::WHITE;
