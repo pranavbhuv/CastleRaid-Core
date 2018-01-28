@@ -20,6 +20,8 @@ use pocketmine\utils\TextFormat;
 
 class ClearInventoryCommand extends PluginCommand{
 
+    private $plugin;
+
     public function __construct(Loader $plugin){
         parent::__construct("clearinv", $plugin);
         $this->setDescription("Clears a player's inventory");
@@ -27,18 +29,14 @@ class ClearInventoryCommand extends PluginCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if($sender->hasPermission("castleraid.clearinv")){
-            if($sender instanceof Player){
-                $sender->getInventory()->clearAll();
-                $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
-                $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
-                return true;
-            }else{
-                $sender->sendMessage(API::NOT_PLAYER);
-            }
-        }else{
+        if(!$sender instanceof Player){
+            $sender->sendMessage(API::NOT_PLAYER);
+        }
+        if(!$sender->hasPermission("castleraid.clearinv")){
             $sender->sendMessage(API::NO_PERMISSION);
         }
-        return true;
+        $sender->getInventory()->clearAll();
+        $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
+        $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
     }
 }

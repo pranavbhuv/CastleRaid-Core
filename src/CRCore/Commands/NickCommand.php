@@ -28,25 +28,20 @@ class NickCommand extends PluginCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if($sender->hasPermission("castleraid.nick")){
-            if($sender instanceof Player){
-                if(!isset($args[0])){
-                    $sender->sendMessage("Please provide a nickname.");
-                    return false;
-                }
-                if($args[0] === "off"){
-                    $sender->setDisplayName($sender->getName());
-                }else{
-                    $sender->setDisplayName($args[0]);
-                    $sender->sendMessage(TextFormat::BOLD . TextFormat::GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::GRAY . "]" . TextFormat::RESET . TextFormat::GRAY . " You're now nicked as " . TextFormat::RED . "$args[0]" . TextFormat::GRAY . "!");
-                }
-                return true;
-            }else{
-                $sender->sendMessage(API::NOT_PLAYER);
-            }
-        }else{
+        if(!$sender instanceof Player){
+            $sender->sendMessage(API::NOT_PLAYER);
+        }
+        if(!$sender->hasPermission("castleraid.nick")){
             $sender->sendMessage(API::NO_PERMISSION);
         }
-        return true;
+        if(!isset($args[0])){
+            $sender->sendMessage("Please provide a nickname.");
+        }
+        if($args[0] === "off"){
+            $sender->setDisplayName($sender->getName());
+        }else{
+            $sender->setDisplayName($args[0]);
+            $sender->sendMessage(TextFormat::BOLD . TextFormat::GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::GRAY . "]" . TextFormat::RESET . TextFormat::GRAY . " You're now nicked as " . TextFormat::RED . "$args[0]" . TextFormat::GRAY . "!");
+        }
     }
 }

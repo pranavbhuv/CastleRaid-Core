@@ -27,26 +27,24 @@ class FlyCommand extends PluginCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if($sender->hasPermission("castleraid.fly")){
-            if($sender instanceof Player){
-                if(!$sender->isCreative()){
-                    if(!$sender->getAllowFlight()){
-                        $sender->setAllowFlight(true);
-                        $sender->setFlying(true);
-                        $sender->sendMessage(TextFormat::GREEN . "Fly mode enabled.");
-                    }else{
-                        $sender->setAllowFlight(false);
-                        $sender->setFlying(false);
-                        $sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
-                    }
-                }else{
-                    $sender->sendMessage(TextFormat::RED . "You are already in creative mode!");
-                }
+        if(!$sender instanceof Player){
+            $sender->sendMessage(API::NOT_PLAYER);
+        }
+        if(!$sender->hasPermission("castleraid.fly")){
+            $sender->sendMessage(API::NO_PERMISSION);
+        }
+        if(!$sender->isCreative()){
+            if(!$sender->getAllowFlight()){
+                $sender->setAllowFlight(true);
+                $sender->setFlying(true);
+                $sender->sendMessage(TextFormat::GREEN . "Fly mode enabled.");
             }else{
-                $sender->sendMessage(API::NOT_PLAYER);
+                $sender->setAllowFlight(false);
+                $sender->setFlying(false);
+                $sender->sendMessage(TextFormat::RED . "Fly mode disabled.");
             }
         }else{
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(TextFormat::RED . "You are already in creative mode!");
         }
     }
 }

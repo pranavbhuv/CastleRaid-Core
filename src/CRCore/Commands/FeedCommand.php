@@ -27,16 +27,14 @@ class FeedCommand extends PluginCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if($sender->hasPermission("castleraid.feed")){
-            if($sender instanceof Player){
-                $sender->setFood(20);
-                $sender->setSaturation(20);
-                $sender->sendMessage(TextFormat::GREEN . "You have been fed");
-            }else{
-                $sender->sendMessage(API::NOT_PLAYER);
-            }
-        }else{
+        if(!$sender instanceof Player){
+            $sender->sendMessage(API::NOT_PLAYER);
+        }
+        if(!$sender->hasPermission("castleraid.feed")){
             $sender->sendMessage(API::NO_PERMISSION);
         }
+        $sender->setFood(20);
+        $sender->setSaturation(20);
+        $sender->sendMessage(TextFormat::GREEN . "You have been fed");
     }
 }

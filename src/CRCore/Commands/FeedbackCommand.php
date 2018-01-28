@@ -31,15 +31,13 @@ class FeedbackCommand extends PluginCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if($sender->hasPermission("castleraid.feedback")){
-            if($sender instanceof Player){
-                $sender->sendForm($this->makeForm());
-            }else{
-                $sender->sendMessage(API::NOT_PLAYER);
-            }
-        }else{
+        if(!$sender instanceof Player){
+            $sender->sendMessage(API::NOT_PLAYER);
+        }
+        if(!$sender->hasPermission("castleraid.feedback")){
             $sender->sendMessage(API::NO_PERMISSION);
         }
+        $sender->sendForm($this->makeForm());
     }
 
     public function makeForm() : FeedbackForm{

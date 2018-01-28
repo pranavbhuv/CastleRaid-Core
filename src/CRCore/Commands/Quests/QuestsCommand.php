@@ -29,16 +29,14 @@ class QuestsCommand extends PluginCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if($sender->hasPermission("castleraid.quests")){
-            if($sender instanceof Player){
-                $handler = new Quests();
-                $ui = $handler->getQuestUI();
-                $ui->sendToPlayer($sender);
-            }else{
-                $sender->sendMessage(API::NOT_PLAYER);
-            }
-        }else{
+        if(!$sender instanceof Player){
+            $sender->sendMessage(API::NOT_PLAYER);
+        }
+        if(!$sender->hasPermission("castleraid.quests")){
             $sender->sendMessage(API::NO_PERMISSION);
         }
+        $handler = new Quests();
+        $ui = $handler->getQuestUI();
+        $ui->sendToPlayer($sender);
     }
 }
