@@ -31,7 +31,7 @@ class QuestsCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
         }
         if(!$sender->hasPermission("castleraid.quests")){
-            $sender->sendMessage(API::NO_PERMISSION);
+            $sender->sendMessage(parent::NO_PERMISSION);
         }
         $handler = new Quests();
         $ui = $handler->getQuestUI();
