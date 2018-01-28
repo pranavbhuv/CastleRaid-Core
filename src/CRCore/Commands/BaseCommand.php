@@ -30,15 +30,4 @@ class BaseCommand extends Command implements PluginIdentifiableCommand{
     public function getPlugin() : Plugin{
         return $this->plugin;
     }
-
-    public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if(!$sender->hasPermission($this->getPermission())){
-            $sender->sendMessage(API::NO_PERMISSION);
-        }
-        $result = $this->onExecute($sender, $args);
-        if(is_string($result)){
-            $sender->sendMessage($result);
-        }
-        return true;
-    }
 }
