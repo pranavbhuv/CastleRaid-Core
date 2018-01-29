@@ -7,11 +7,14 @@
  * @authors: QuiverlyRivarly and iiFlamiinBlaze
  * @contributors: Nick, Potatoe, and Jason.
  */
-
+declare(strict_types=1);
 namespace CRCore;
 
 use pocketmine\Player;
 use pocketmine\utils\Config;
+use pocketmine\network\SourceInterface;
+use onebone\economyapi\EconomyAPI;
+
 class Person extends Player{
   
     //TODO: Learn SQL.
