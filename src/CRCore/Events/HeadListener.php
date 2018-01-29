@@ -1,10 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: pacma
- * Date: 1/25/2018
- * Time: 7:14 PM
+ * -==+CastleRaid Core+==-
+ * Originally Created by QuiverlyRivarly
+ * Originally Created for CastleRaidPE
+ *
+ * @authors: QuiverlyRivarly and iiFlamiinBlaze
+ * @contributors: Nick, Potatoe, Jason and Nora.
  */
+declare(strict_types=1);
 
 namespace CRCore\Events;
 
@@ -59,8 +62,4 @@ class HeadListener implements Listener{
             }
         }
     }
-    
-    public function 
-
-
 }
