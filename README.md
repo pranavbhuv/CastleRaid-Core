@@ -5,7 +5,6 @@ The official CasteRaid Core made by the CR Dev Team!
 [Download file then import to PHPStorm](https://cdn.discordapp.com/attachments/394542043952578562/405748633678381056/Default.xml).
 
 ## Features
-heads
 | Name | Type | Description |
 | :---: | :---: | :---: |
 | [BroadcastTask](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/BroadcastTask.php) | Task | Broadcast a message every 4 minutes |
@@ -16,6 +15,7 @@ heads
 | [Heal](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/HealCommand.php) | Command | Heals a player |
 | [Info](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/InfoCommand.php) | Command | CastleRaid Core Info Command |
 | [KillMoney](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/KillMoney.php) | Event | Give a player money when they get a kill |
+| [Heads](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Events/HeadListener.php) | Event | Sell people's heads |
 | [MPShop](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/MPShop.php) | Command | CastleRaid Core MoneyPouch Command |
 | [Menu](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/MenuCommand.php) | Command | CastleRaid Core Menu Command |
 | [Nick](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/NickCommand.php) | Command | CastleRaid Core Nick Command |
