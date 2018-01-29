@@ -75,6 +75,7 @@ class Quests{
 
                     if ($value == 0) $player->sendMessage(Quests::QUEST_PREFIX . TextFormat::DARK_RED . " Exiting QuestUI...");
 
+
                     foreach (self::$quests as $id => $index) {
 
                         if ($value !== $id) return false;
@@ -82,11 +83,13 @@ class Quests{
                         foreach ($index['Needed-Items'] as $items)
 
                             if ($player->getInventory()->contains($items) == false) $player->sendMessage(Quests::QUEST_PREFIX . 'You dont have all the items needed to complete this quest!');
+
                         $player->getInventory()->removeItem($items);
 
                         foreach ($index['Rewarded-Items'] as $reward) {
                             $player->getInventory()->addItem($reward);
                             $player->sendMessage(Quests::QUEST_PREFIX . 'Finished quest ' . $index['Quest-Name'] . '!');
+
                         }
                     }
                 }
