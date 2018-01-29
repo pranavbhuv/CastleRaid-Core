@@ -28,6 +28,7 @@ use CRCore\Commands\{
 use CRCore\Events\{
     EventListener,
     PotionListener,
+    HeadListener,
     RelicListener,
     KillMoneyListener
 };
