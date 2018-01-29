@@ -12,14 +12,17 @@ namespace CRCore;
 
 use pocketmine\Player;
 use pocketmine\utils\Config;
-
 class Person extends Player{
-
+  
     //TODO: Learn SQL.
-
+  
     /** @var Config $cfg */
     private $cfg;
-
+    
+    public function __construct(SourceInterface $interface, $clientID, string $ip, int $port){
+        parent::__construct($interface, $clientID, $ip, $port);
+    }
+    
     public function genCfg() : void{
         if(file_exists(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json")){
             $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON);
@@ -27,11 +30,11 @@ class Person extends Player{
             $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON, ["mails" => []]);
         }
     }
-
+  
     public function getMoney() : float{
         return EconomyAPI::getInstance()->myMoney($this->getName());
     }
-
+  
     public function getMails() : array{
         return $this->cfg->get("mails");
     }
