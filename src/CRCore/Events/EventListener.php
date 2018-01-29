@@ -60,9 +60,9 @@ class EventListener implements Listener{
         $player->sendMessage(TextFormat::GRAY . "   A Kingdoms Minecraft Bedrock Edition Server");
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   VOTE:" . TextFormat::GRAY . " http://bit.do/castleraid");
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DO:" . TextFormat::GRAY . " /menu");
-        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " castleraid.buycraft.net");
+        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " craid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
-        $player->sendMessage(TextFormat::GREEN . "                          -=-                       ");
+        $player->sendMessage(TextFormat::GREEN . "                            -=-                       ");
         switch($player->getName()){
             case "iiFlamiinBlaze":
                 $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
