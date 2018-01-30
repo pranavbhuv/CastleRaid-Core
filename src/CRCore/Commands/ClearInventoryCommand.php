@@ -4,8 +4,7 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
