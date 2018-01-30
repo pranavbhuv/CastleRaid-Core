@@ -8,8 +8,9 @@
  * @contributors: Nick, Potatoe, and Jason.
  */
 declare(strict_types=1);
-namespace CRCore;
+namespace CRCore\Person;
 
+use CRCore\API;
 use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\network\SourceInterface;
@@ -40,5 +41,10 @@ class Person extends Player{
   
     public function getMails() : array{
         return $this->cfg->get("mails");
+    }
+
+    public function addMail(Mail $mail) : void{
+    	     $arr = [$mail->getSender(), $mail->getDate(), $mail->getMsg()];
+    	     array_push($this->cfg->get("mails"), $arr);
     }
 }

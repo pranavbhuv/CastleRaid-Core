@@ -12,8 +12,10 @@ namespace CRCore\Commands;
 
 use CRCore\API;
 use CRCore\Forms\MailForm;
+use CRCore\Forms\SeeMailForm;
+use CRCore\Forms\SendMailForm;
 use CRCore\Loader;
-use CRCore\Person;
+use CRCore\Person\Person;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\form\element\Input;
@@ -23,8 +25,8 @@ class MailCommand extends PluginCommand{
     private $sender;
 
     public function __construct(Loader $owner){
-        parent::__construct("mail", $owner);
-        $this->setAliases(["mails"]);
+        parent::__construct("seemails", $owner);
+        $this->setAliases(["seemail"]);
         $this->setDescription("Send mails and stuff.");
         $this->setPermission("castleraid.mail");
     }
@@ -33,7 +35,13 @@ class MailCommand extends PluginCommand{
         $this->sender = $sender;
         if($sender->hasPermission("castleraid.mail")){
             if($sender instanceof Person){
-                $sender->sendForm($this->makeForm());
+            	if($args[0] === "see"){
+	               $sender->sendForm($this->makeSeeForm());
+               }elseif($args[0] === "send"){
+            		$sender->sendForm($this->makeSendForm());
+               }
+
+
             }else{
                 $sender->sendMessage(API::NOT_PLAYER);
             }
@@ -42,15 +50,19 @@ class MailCommand extends PluginCommand{
         }
     }
 
-    public function makeForm() : MailForm{
+    public function makeSeeForm() : SeeMailForm{
         if($this->sender instanceof Person){
             $mails = [];
             foreach($this->sender->getMails() as $mail){
-                array_push($mails, $mail);
+                array_push($mails, new Button$mail);
             }
         }
-        $f = new MailForm(TextFormat::BLUE . "Mails", []);
+        $f = new SeeMailForm(TextFormat::BLUE . "Mails", );
         return $f;
+    }
+
+    public function makeSendForm() : SendMailForm{
+
     }
 
 }

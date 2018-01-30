@@ -12,18 +12,7 @@ declare(strict_types=1);
 namespace CRCore;
 
 use CRCore\Commands\{
-    ClearInventoryCommand,
-    CustomPotionsCommand,
-    FeedbackCommand,
-    FeedCommand,
-    FlyCommand,
-    HealCommand,
-    InfoCommand,
-    MenuCommand,
-    MPShopCommand,
-    NickCommand,
-    Quests\QuestsCommand,
-    Quests\Quests
+	ClearInventoryCommand, CustomPotionsCommand, FeedbackCommand, FeedCommand, FlyCommand, HealCommand, InfoCommand, MenuCommand, MPShopCommand, NickCommand, Quests\QuestsCommand, Quests\Quests, MailCommand
 };
 use CRCore\Events\{
     EventListener,
@@ -72,7 +61,6 @@ class Loader extends PluginBase{
         new PotionListener($this);
         new RelicListener($this);
         new KillMoneyListener($this);
-        new onPlayerCreation($this);
 
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
         //$this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
@@ -89,7 +77,8 @@ class Loader extends PluginBase{
             new NickCommand($this),
             new FeedCommand($this),
             new QuestsCommand($this),
-            new FeedbackCommand($this)
+            new FeedbackCommand($this),
+	       new MailCommand($this)
         ]);
 
         $quests = new Quests();
