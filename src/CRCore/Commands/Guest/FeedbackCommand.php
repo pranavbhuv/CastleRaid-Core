@@ -29,11 +29,14 @@ class FeedbackCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.feedback")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         $sender->sendForm($this->makeForm());
+        return true;
     }
 
     public function makeForm() : FeedbackForm{

@@ -29,12 +29,15 @@ class QuestsCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.quests")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         $handler = new Quests();
         $ui = $handler->getQuestUI();
         $ui->sendToPlayer($sender);
+        return true;
     }
 }

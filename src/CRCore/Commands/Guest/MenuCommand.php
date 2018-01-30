@@ -28,9 +28,11 @@ class MenuCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.cp")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function (Player $sender, array $data){
@@ -92,5 +94,6 @@ class MenuCommand extends BaseCommand{
         $form->addButton(TextFormat::WHITE . "Tutorial");
         $form->addButton(TextFormat::WHITE . "Information");
         $form->sendToPlayer($sender);
+        return true;
     }
 }

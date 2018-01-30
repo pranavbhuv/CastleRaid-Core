@@ -29,9 +29,11 @@ class InfoCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.info")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         $book = Item::get(Item::WRITTEN_BOOK, 0, 1);
         $book->setTitle(TextFormat::GREEN . TextFormat::UNDERLINE . "Information Booklet");
@@ -42,5 +44,6 @@ class InfoCommand extends BaseCommand{
         $book->setAuthor("CastleRaid Network");
         $sender->getInventory()->addItem($book);
         $sender->sendMessage(TextFormat::GREEN . "You received an Information Book!");
+        return true;
     }
 }

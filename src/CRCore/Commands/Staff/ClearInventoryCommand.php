@@ -27,12 +27,15 @@ class ClearInventoryCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.clearinv")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         $sender->getInventory()->clearAll();
         $sender->sendMessage(TextFormat::AQUA . "Your inventory has been cleared!");
         $sender->addTitle(TextFormat::DARK_RED . "Inventory cleared!");
+        return true;
     }
 }

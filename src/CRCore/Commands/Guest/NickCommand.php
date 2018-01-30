@@ -27,9 +27,11 @@ class NickCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.nick")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         if(!isset($args[0])){
             $sender->sendMessage("Please provide a nickname.");
@@ -40,5 +42,6 @@ class NickCommand extends BaseCommand{
             $sender->setDisplayName($args[0]);
             $sender->sendMessage(TextFormat::BOLD . TextFormat::GRAY . "[" . TextFormat::GREEN . "!" . TextFormat::GRAY . "]" . TextFormat::RESET . TextFormat::GRAY . " You're now nicked as " . TextFormat::RED . "$args[0]" . TextFormat::GRAY . "!");
         }
+        return true;
     }
 }

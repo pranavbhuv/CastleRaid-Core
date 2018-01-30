@@ -27,9 +27,11 @@ class FlyCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.fly")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         if(!$sender->isCreative()){
             if(!$sender->getAllowFlight()){
@@ -44,5 +46,6 @@ class FlyCommand extends BaseCommand{
         }else{
             $sender->sendMessage(TextFormat::RED . "You are already in creative mode!");
         }
+        return true;
     }
 }

@@ -27,12 +27,15 @@ class HealCommand extends BaseCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage(API::NOT_PLAYER);
+            return false;
         }
         if(!$sender->hasPermission("castleraid.heal")){
             $sender->sendMessage(parent::NO_PERMISSION);
+            return false;
         }
         $sender->setHealth(20);
         $sender->sendMessage(TextFormat::AQUA . "You have been healed!");
         $sender->addTitle(TextFormat::DARK_RED . "You have been healed!");
+        return true;
     }
 }
