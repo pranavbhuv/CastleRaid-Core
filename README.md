@@ -33,3 +33,4 @@ The official CasteRaid Core made by the CastleRaid Developer Team!
 | [PotatoeTrainYT](https://github.com/PotatoeTrainYT) | Senior Developer |
 | [jasonwynn10](https://github.com/jasonwynn10) | Developer |
 | [Angel](https://github.com/Teamblocket) | Developer |
+| [Nora](https://github.com/uselesswaifu) | Developer |
