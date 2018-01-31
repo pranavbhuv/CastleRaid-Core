@@ -16,9 +16,8 @@ use CRCore\Person\Person;
 use pocketmine\form\CustomForm;
 use pocketmine\form\Form;
 use pocketmine\Player;
+use pocketmine\Server;
 use pocketmine\utils\TextFormat;
-
-//TODO: Finish this.
 
 class SendMailForm extends CustomForm{
 	/** @var array $data */
@@ -36,8 +35,6 @@ class SendMailForm extends CustomForm{
 			$player->sendMessage(TextFormat::RED . "Player " . TextFormat::DARK_RED . $this->data[0] . TextFormat::RED . " has never been here." );
 			return null;
 		}
-
-		$player->addMail(new Mail($player, $this->data[0], date(), $this->data[1]));
 
 	}
 
