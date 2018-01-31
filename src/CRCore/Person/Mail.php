@@ -11,66 +11,43 @@ declare(strict_types=1);
 
 namespace CRCore\Person;
 
-use pocketmine\OfflinePlayer;
 use pocketmine\utils\TextFormat;
 
 class Mail{
 
-	public const prefix = TextFormat::GOLD . "Mail >> " . TextFormat::WHITE;
+    public const prefix = TextFormat::GOLD . "Mail >> " . TextFormat::WHITE;
 
-	/** @var Person $sender */
-	private $sender;
-	/** @var Person|OfflinePlayer $receiver */
-	private $receiver;
-	/** @var \DateTime $date */
-	private $date;
-	/** @var string $msg */
-	private $msg;
-	/** @var int $id */
-	private $id;
+    /** @var Person $sender */
+    private $sender;
+    /** @var string $date */
+    private $date;
+    /** @var string $msg */
+    private $msg;
+    /** @var int $id */
+    private $id;
 
-	public function __construct(Person $sender, $receiver, string $date, string $message, int $id){
-		$this->sender = $sender;
-		$this->receiver = $receiver;
-		$this->date = $date;
-		$this->msg = $message;
-		$this->id = $id;
-	}
+    public function __construct(Person $sender, string $date, string $message, int $id){
+        $this->sender = $sender;
+        $this->date = $date;
+        $this->msg = $message;
+        $this->id = $id;
+    }
 
-	/**
-	 * @return Person
-	 */
-	public function getSender() : Person{
-		return $this->sender;
-	}
+    public function getSender() : Person{
+        return $this->sender;
+    }
 
-	/**
-	 * @return Person|OfflinePlayer
-	 */
-	public function getReceiver(){
-		return $this->receiver;
-	}
+    public function getDate() : string{
+        return $this->date;
+    }
 
-	/**
-	 * @return \DateTime
-	 */
-	public function getDate() : \DateTime{
-		return $this->date;
-	}
+    public function getMsg() : string{
+        return $this->msg;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getMsg() : string{
-		return $this->msg;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getId() : int{
-		return $this->id;
-	}
+    public function getId() : int{
+        return $this->id;
+    }
 
 
 }

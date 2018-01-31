@@ -19,42 +19,43 @@ use pocketmine\utils\Config;
 
 class Person extends Player{
 
-	//TODO: Learn SQL.
+    //TODO: Learn SQL.
 
-	/** @var Config $cfg */
-	private $cfg;
+    /** @var Config $cfg */
+    public $cfg;
 
-	public function __construct(SourceInterface $interface, $clientID, string $ip, int $port){
-		parent::__construct($interface, $clientID, $ip, $port);
-	}
-
-	public function genCfg() : void{
-		if(file_exists(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json")){
-			$this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON);
-		}else{
-			$this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON, ["mails" => []]);
-		}
-	}
-
-	public function getMoney() : float{
-		return EconomyAPI::getInstance()->myMoney($this->getName());
-	}
-
-	public function getMails() : array{
-		return $this->cfg->get("mails");
-	}
-
-	public function getMailById(int $id) : ?Mail{
-		foreach($this->getMails() as $m){
-			if($m["id"] === $id){
-				return $m;
-			}
-		}
-		return null;
+    public function __construct(SourceInterface $interface, $clientID, string $ip, int $port){
+        parent::__construct($interface, $clientID, $ip, $port);
     }
 
-	public function addMail(Mail $mail) : void{
-		$arr = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
-		array_push($this->cfg->get("mails"), $arr);
-	}
+    public function genCfg() : void{
+        if(file_exists(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json")){
+            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON);
+        }else{
+            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON, ["mails" => []]);
+        }
+    }
+
+    public function getMoney() : float{
+        return EconomyAPI::getInstance()->myMoney($this->getName());
+    }
+
+    public function getMails() : array{
+        return $this->cfg->get("mails");
+    }
+
+    public function getMailById(int $id) : ?Mail{
+        foreach($this->getMails() as $m){
+            if($m["id"] === $id){
+                return $m;
+            }
+        }
+        return null;
+    }
+
+    public function addMail(Mail $mail) : void{
+        $mails = $this->cfg->get("mails");
+        $mails[$mail->getId()] = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
+        $this->cfg->save();
+    }
 }

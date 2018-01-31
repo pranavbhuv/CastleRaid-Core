@@ -12,24 +12,16 @@ declare(strict_types=1);
 namespace CRCore;
 
 use CRCore\Commands\{
-	ClearInventoryCommand, CustomPotionsCommand, FeedbackCommand, FeedCommand, FlyCommand, HealCommand, InfoCommand, MenuCommand, MPShopCommand, NickCommand, Quests\QuestsCommand, Quests\Quests, MailCommand
+    ClearInventoryCommand, CustomPotionsCommand, FeedbackCommand, FeedCommand, FlyCommand, HealCommand, InfoCommand, MailCommand, MenuCommand, MPShopCommand, NickCommand, Quests\Quests, Quests\QuestsCommand
 };
 use CRCore\Events\{
-    EventListener,
-    PotionListener,
-    RelicListener,
-    KillMoneyListener
+    EventListener, KillMoneyListener, PotionListener, RelicListener
 };
-
-use CRCore\Person\onPlayerCreation;
 use CRCore\Tasks\{
-    BroadcastTask,
-    FakePlayerTask,
-    HudTask
+    BroadcastTask, HudTask
 };
 use pocketmine\{
-    plugin\PluginBase,
-    utils\Config
+    plugin\PluginBase, utils\Config
 };
 
 class Loader extends PluginBase{
@@ -69,16 +61,16 @@ class Loader extends PluginBase{
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
             new CustomPotionsCommand($this),
+            new FeedbackCommand($this),
+            new FeedCommand($this),
             new FlyCommand($this),
             new HealCommand($this),
             new InfoCommand($this),
+            new MailCommand($this),
             new MenuCommand($this),
             new MPShopCommand($this),
             new NickCommand($this),
-            new FeedCommand($this),
-            new QuestsCommand($this),
-            new FeedbackCommand($this),
-	       new MailCommand($this)
+            new QuestsCommand($this)
         ]);
 
         $quests = new Quests();
