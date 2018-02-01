@@ -18,6 +18,7 @@ use CRCore\Commands\{
     Staff\FlyCommand,
     Staff\HealCommand,
     Guest\InfoCommand,
+    Guest\MailCommand,
     Guest\MenuCommand,
     Guest\MPShopCommand,
     Guest\NickCommand,
@@ -37,7 +38,8 @@ use CRCore\Tasks\{
     HudTask
 };
 use pocketmine\{
-    plugin\PluginBase, utils\Config
+    plugin\PluginBase,
+    utils\Config
 };
 
 class Loader extends PluginBase{
@@ -71,6 +73,7 @@ class Loader extends PluginBase{
         new PotionListener($this);
         new RelicListener($this);
         new KillMoneyListener($this);
+        new HeadListener($this);
 
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
         //$this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));

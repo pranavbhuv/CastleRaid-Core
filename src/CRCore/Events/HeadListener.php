@@ -11,15 +11,18 @@ declare(strict_types=1);
 namespace CRCore\Events;
 
 
-use pocketmine\event\entity\EntityDamageEvent;
+use CRCore\Loader;
+use onebone\economyapi\EconomyAPI;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\IntTag;
+use pocketmine\nbt\tag\StringTag;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
-
-use onebone\economyapi\EconomyAPI;
 
 class HeadListener implements Listener{
 
@@ -33,7 +36,7 @@ class HeadListener implements Listener{
     public function onDeath(PlayerDeathEvent $event) : void{
         $player = $event->getPlayer();
         $ldc = $player->getLastDamageCause();
-        if($ldc instanceof EntityDamageEvent){
+        if($ldc instanceof EntityDamageByEntityEvent){
             $killer = $ldc->getDamager();
             if($killer instanceof Player){
                 $item = Item::get(397, 0, 1);
@@ -57,7 +60,7 @@ class HeadListener implements Listener{
                 $cash = EconomyAPI::getInstance()->myMoney($owner) * 0.05;
                 EconomyAPI::getInstance()->addMoney($player, $cash);
                 EcnonomyAPI::getInstance()->reduceMoney($owner, $cash);
-                
+
             }
         }
     }
