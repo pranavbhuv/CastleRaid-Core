@@ -29,10 +29,10 @@ class Person extends Player{
     }
 
     public function genCfg() : void{
-        if(file_exists(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json")){
-            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON);
+        if(file_exists(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json")){
+            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json", Config::JSON);
         }else{
-            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . $this->getName() . ".json", Config::JSON, ["mails" => []]);
+            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json", Config::JSON, ["mails" => []]);
         }
     }
 
@@ -54,8 +54,8 @@ class Person extends Player{
     }
 
     public function addMail(Mail $mail) : void{
-        $mails = $this->cfg->get("mails");
-        $mails[$mail->getId()] = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
+        $this->cfg->set("mails"[$mail->getId()], ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()]);
+        //$mails[$mail->getId()] = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
         $this->cfg->save();
     }
 }

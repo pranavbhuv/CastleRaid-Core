@@ -53,6 +53,7 @@ class SendMailForm extends CustomForm{
             $player->sendMessage(Mail::prefix . TextFormat::GREEN . "Successfully sent mail to offline player " . TextFormat::GOLD . $this->data[0] . TextFormat::GREEN . "!");
             return null;
         }
+        $player->sendMessage("Oh god. One of our devs (Nick) wrote something wrong. Sorry.");
         return null;
     }
 
