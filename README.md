@@ -1,5 +1,5 @@
 # CastleRaid Core
-The official CasteRaid Core made by the CR Dev Team!
+The official CasteRaid Core made by the CastleRaid Developer Team!
 
 # Formatting File Download for PHPStorm:
 [Download file then import to PHPStorm](https://cdn.discordapp.com/attachments/394542043952578562/405748633678381056/Default.xml).
@@ -24,12 +24,13 @@ The official CasteRaid Core made by the CR Dev Team!
 | [Feed](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/FeedCommand.php) | Command | Feeds a player |
 | [Quests](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/Commands/QuestsCommand.php) | Command | Quest Command |
 
-## Credits
-| User | Level |
+## CastleRaid Developer Team
+| User | Contributor Level |
 | :---: | :---: |
-| [QuiverlyRivalry](https://github.com/QuiverlyRivalry) | Author |
-| [iiFlamiinBlaze](https://github.com/iiFlamiinBlaze) | Author |
-| [PotatoeTrainYT](https://github.com/PotatoeTrainYT) | Contributor |
-| [NickTehUnicorn](https://github.com/NickTehUnicorn) | Contributor |
-| [jasonwynn10](https://github.com/jasonwynn10) | Contributor |
-| [Angel](https://github.com/Teamblocket) | Contributor |
+| [QuiverlyRivalry](https://github.com/QuiverlyRivalry) | Server Owner |
+| [NickTehUnicorn](https://github.com/NickTehUnicorn) | Lead Developer |
+| [iiFlamiinBlaze](https://github.com/iiFlamiinBlaze) | Senior Developer |
+| [PotatoeTrainYT](https://github.com/PotatoeTrainYT) | Senior Developer |
+| [jasonwynn10](https://github.com/jasonwynn10) | Developer |
+| [Angel](https://github.com/Teamblocket) | Developer |
+| [Nora](https://github.com/uselesswaifu) | Developer |
