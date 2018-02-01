@@ -17,6 +17,8 @@ use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 
+use jojoe77777\FormAPI\FormAPI;
+
 class QuestsCommand extends BaseCommand{
 
     public $inv;
