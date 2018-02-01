@@ -4,28 +4,46 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
 namespace CRCore;
 
 use CRCore\Commands\{
-    ClearInventoryCommand, CustomPotionsCommand, FeedbackCommand, FeedCommand, FlyCommand, HealCommand, InfoCommand, MailCommand, MenuCommand, MPShopCommand, NickCommand, Quests\Quests, Quests\QuestsCommand
+    Staff\ClearInventoryCommand,
+    Guest\CustomPotionsCommand,
+    Guest\FeedbackCommand,
+    Staff\FeedCommand,
+    Staff\FlyCommand,
+    Staff\HealCommand,
+    Guest\InfoCommand,
+    Guest\MenuCommand,
+    Guest\MPShopCommand,
+    Guest\NickCommand,
+    Quests\QuestsCommand,
+    Quests\Quests
 };
 use CRCore\Events\{
-    EventListener, KillMoneyListener, PotionListener, RelicListener
+    EventListener,
+    PotionListener,
+    HeadListener,
+    RelicListener,
+    KillMoneyListener
 };
 use CRCore\Tasks\{
-    BroadcastTask, HudTask
+    BroadcastTask,
+    FakePlayerTask,
+    HudTask
 };
 use pocketmine\{
     plugin\PluginBase, utils\Config
 };
 
 class Loader extends PluginBase{
-
+   
+    const CORE_VERSION = "v1.4.6";
+    
     public function onLoad() : void{
         API::$main = $this;
 
