@@ -1,5 +1,5 @@
 name: CastleRaidCore
-version: 1.4.6
+version: 1.4.7
 author: CastleRaid Developer Team
 api: [3.0.0-ALPHA9, 3.0.0-ALPHA10]
 main: CRCore\Loader

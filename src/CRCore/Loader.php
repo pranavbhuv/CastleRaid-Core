@@ -25,9 +25,9 @@ use CRCore\Commands\{
     Quests\Quests
 };
 use CRCore\Events\{
+    AntiSpamListener,
     EventListener,
     PotionListener,
-    HeadListener,
     RelicListener,
     KillMoneyListener
 };
@@ -43,7 +43,7 @@ use pocketmine\{
 
 class Loader extends PluginBase{
    
-    const CORE_VERSION = "v1.4.6";
+    const CORE_VERSION = "v1.4.7";
     
     public function onLoad() : void{
         API::$main = $this;
@@ -71,6 +71,7 @@ class Loader extends PluginBase{
         new PotionListener($this);
         new RelicListener($this);
         new KillMoneyListener($this);
+        new AntiSpamListener($this);
 
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
         //$this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
