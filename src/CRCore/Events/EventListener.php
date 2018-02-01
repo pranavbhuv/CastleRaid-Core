@@ -19,6 +19,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
@@ -76,6 +77,13 @@ class EventListener implements Listener{
 
     public function onPlayerLogin(PlayerLoginEvent $event) : void{
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
+    }
+    
+    public function onCommandPreProcess(PlayerCommandPreprocessEvent $event) : void{
+        $message = $event->getMessage();
+        if($message{strlen($message) - 1} === "/"){
+            $event->setMessage("/" . substr($message, 0, -1));
+        }
     }
 
     public function onConsume(PlayerItemConsumeEvent $event) : void{
