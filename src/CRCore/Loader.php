@@ -11,16 +11,16 @@ declare(strict_types=1);
 namespace CRCore;
 
 use CRCore\Commands\{
-    ClearInventoryCommand,
-    CustomPotionsCommand,
-    FeedbackCommand,
-    FeedCommand,
-    FlyCommand,
-    HealCommand,
-    InfoCommand,
-    MenuCommand,
-    MPShopCommand,
-    NickCommand,
+    Staff\ClearInventoryCommand,
+    Guest\CustomPotionsCommand,
+    Guest\FeedbackCommand,
+    Staff\FeedCommand,
+    Staff\FlyCommand,
+    Staff\HealCommand,
+    Guest\InfoCommand,
+    Guest\MenuCommand,
+    Guest\MPShopCommand,
+    Guest\NickCommand,
     Quests\QuestsCommand,
     Quests\Quests
 };
@@ -42,7 +42,9 @@ use pocketmine\{
 };
 
 class Loader extends PluginBase{
-
+   
+    const CORE_VERSION = "v1.4.6";
+    
     public function onLoad() : void{
         API::$main = $this;
 
