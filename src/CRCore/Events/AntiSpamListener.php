@@ -25,7 +25,7 @@ class AntiSpamListener implements Listener{
     public function __construct(Loader $main){
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
-        $this->badwords = ["anal", "anus", "ass", "bastard", "bitch", "boob", "cock", "cum", "cunt", "dick", "dildo", "dyke", "fag", "faggot", "fuck", "fuk", "handjob", "homo", "jizz", "cunt", "kike", "kunt", "muff", "nigger", "penis", "piss", "poop", "pussy", "queer", "rape", "semen", "sex", "shit", "slut", "titties", "twat", "vagina", "vulva", "wank", "FUCK", "BITCH", "FAGGOT", "DICK", "CUNT", "ASS"];
+        $this->badwords = ["anal", "anus", "ass", "bastard", "bitch", "boob", "cock", "cum", "cunt", "dick", "dildo", "dyke", "fag", "faggot", "fuck", "fuk", "handjob", "homo", "jizz", "cunt", "kike", "kunt", "muff", "nigger", "penis", "piss", "poop", "pussy", "queer", "rape", "semen", "sex", "shit", "slut", "titties", "twat", "vagina", "vulva", "wank"];
         $this->links = [".cc", ".net", ".com", ".us", ".co", ".co.uk", ".ddns", ".ddns.net", ".cf", ".me", "leet", ".leet.cc", "lifeboat", "mineplex", "inpvp", ".tk", "discord.gg", "discord.io"];
     }
 
@@ -33,7 +33,7 @@ class AntiSpamListener implements Listener{
         $msg = $event->getMessage();
         $player = $event->getPlayer();
         foreach($this->badwords as $badwords){
-            if(strpos($msg, $badwords) !== false){
+            if(stripos($msg, $badwords) !== false){
                 $player->sendMessage(TextFormat::DARK_BLUE . "CRCore " . TextFormat::GREEN . Loader::CORE_VERSION . TextFormat::AQUA . " > " . TextFormat::RED . "No swearing!");
                 $event->setCancelled();
                 return;
@@ -45,7 +45,7 @@ class AntiSpamListener implements Listener{
         $msg = $event->getMessage();
         $player = $event->getPlayer();
         foreach($this->links as $links){
-            if(strpos($msg, $links) !== false){
+            if(stripos($msg, $links) !== false){
                 $player->sendMessage(TextFormat::DARK_BLUE . "CRCore " . TextFormat::GREEN . Loader::CORE_VERSION . TextFormat::AQUA . " > " . TextFormat::RED . "No advertising!");
                 $event->setCancelled(true);
                 return;
