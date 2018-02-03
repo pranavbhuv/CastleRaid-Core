@@ -44,9 +44,12 @@ use pocketmine\{
 class Loader extends PluginBase{
    
     const CORE_VERSION = "v1.4.6";
+   
+    public static $instance;
     
     public function onLoad() : void{
         API::$main = $this;
+        self::$instance = $this;
 
         $this->saveDefaultConfig();
         $this->saveResource("tsconfig.json");
@@ -92,5 +95,9 @@ class Loader extends PluginBase{
 
         $quests = new Quests();
         $quests->registerQuests();
+    }
+    
+    public static function getInstance() : self{
+        return self::$instance;
     }
 }
