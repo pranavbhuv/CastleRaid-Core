@@ -8,9 +8,9 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands\Quests;
+namespace CRCore\commands\quests;
 
-use CRCore\Commands\BaseCommand;
+use CRCore\commands\BaseCommand;
 use CRCore\Loader;
 use CRCore\API;
 

@@ -8,7 +8,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\events;
 
 use CRCore\Loader;
 

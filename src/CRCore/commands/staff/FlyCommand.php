@@ -8,10 +8,10 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands\Staff;
+namespace CRCore\commands\staff;
 
 use CRCore\API;
-use CRCore\Commands\BaseCommand;
+use CRCore\commands\BaseCommand;
 use CRCore\Loader;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;

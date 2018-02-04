@@ -8,7 +8,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Forms;
+namespace CRCore\forms;
 
 use CRCore\API;
 use pocketmine\form\CustomForm;
