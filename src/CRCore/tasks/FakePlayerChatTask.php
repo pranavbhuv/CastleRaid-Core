@@ -7,7 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Tasks;
+namespace CRCore\tasks;
 
 use CRCore\API;
 

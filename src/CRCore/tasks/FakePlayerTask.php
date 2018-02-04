@@ -8,7 +8,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Tasks;
+namespace CRCore\tasks;
 
 use CRCore\API;
 

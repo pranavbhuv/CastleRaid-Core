@@ -8,9 +8,9 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands\Staff;
+namespace CRCore\commands\staff;
 
-use CRCore\Commands\BaseCommand;
+use CRCore\commands\BaseCommand;
 use CRCore\Loader;
 use CRCore\API;
 use pocketmine\command\CommandSender;
