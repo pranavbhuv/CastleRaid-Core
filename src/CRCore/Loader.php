@@ -10,28 +10,28 @@ declare(strict_types=1);
 
 namespace CRCore;
 
-use CRCore\Commands\{
-    Staff\ClearInventoryCommand,
-    Guest\CustomPotionsCommand,
-    Guest\FeedbackCommand,
-    Staff\FeedCommand,
-    Staff\FlyCommand,
-    Staff\HealCommand,
-    Guest\InfoCommand,
-    Guest\MenuCommand,
-    Guest\MPShopCommand,
-    Guest\NickCommand,
-    Quests\QuestsCommand,
-    Quests\Quests
+use CRCore\commands\{
+    staff\ClearInventoryCommand,
+    guest\CustomPotionsCommand,
+    guest\FeedbackCommand,
+    staff\FeedCommand,
+    staff\FlyCommand,
+    staff\HealCommand,
+    guest\InfoCommand,
+    guest\MenuCommand,
+    guest\MPShopCommand,
+    guest\NickCommand,
+    quests\QuestsCommand,
+    quests\Quests
 };
-use CRCore\Events\{
+use CRCore\events\{
     EventListener,
     PotionListener,
     HeadListener,
     RelicListener,
     KillMoneyListener
 };
-use CRCore\Tasks\{
+use CRCore\tasks\{
     BroadcastTask,
     FakePlayerTask,
     HudTask
