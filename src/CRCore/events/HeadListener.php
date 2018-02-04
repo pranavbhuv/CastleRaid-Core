@@ -10,16 +10,17 @@ declare(strict_types=1);
 
 namespace CRCore\events;
 
-
-use pocketmine\event\entity\EntityDamageEvent;
+use CRCore\Loader;
+use onebone\economyapi\EconomyAPI;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
-use pocketmine\Player;
+use pocketmine\nbt\tag\{
+    CompoundTag, IntTag, StringTag
+};
+use pocketmine\tile\Skull;
 use pocketmine\utils\TextFormat;
-
-use onebone\economyapi\EconomyAPI;
 
 class HeadListener implements Listener{
 
@@ -32,18 +33,11 @@ class HeadListener implements Listener{
 
     public function onDeath(PlayerDeathEvent $event) : void{
         $player = $event->getPlayer();
-        $ldc = $player->getLastDamageCause();
-        if($ldc instanceof EntityDamageEvent){
-            $killer = $ldc->getDamager();
-            if($killer instanceof Player){
-                $item = Item::get(397, 0, 1);
-                $nbt = new CompoundTag("", [new IntTag("head", 1), new StringTag("owner", $player->getName())]);
-                $item->setCustomBlockData($nbt);
-                $item->setCustomName($player->getName() . "'s Head");
-                $killer->getInventory()->addItem($item);
-                $killer->sendMessage(TextFormat::BOLD . TextFormat::GREEN . "+ You got " . $player . "'s head!");
-            }
-        }
+        $item = Item::get(Item::SKULL, Skull::TYPE_HUMAN, 1);
+        $nbt = new CompoundTag("", [new IntTag("head", 1), new StringTag("owner", $player->getName())]);
+        $item->setCustomBlockData($nbt);
+        $item->setCustomName(TextFormat::YELLOW . $player->getName() . "'s Head");
+        $player->getLevel()->dropItem($player, $item);
     }
 
     public function onTap(PlayerInteractEvent $event) : void{
@@ -51,13 +45,14 @@ class HeadListener implements Listener{
         $player = $event->getPlayer();
         if($item->hasCustomBlockData()){
             if($item->getCustomBlockData()->getInt("head") === 1){
+                $event->setCancelled();
                 $owner = $item->getCustomBlockData()->getString("owner");
-                $player->sendMessage("Redeemed $owner's head");
                 $player->getInventory()->removeItem($item);
                 $cash = EconomyAPI::getInstance()->myMoney($owner) * 0.05;
+                $player->addTitle(TextFormat::AQUA . "Redeemed $owner's head", TextFormat::GOLD . "Received $$cash ");
                 EconomyAPI::getInstance()->addMoney($player, $cash);
-                EcnonomyAPI::getInstance()->reduceMoney($owner, $cash);
-                
+                EconomyAPI::getInstance()->reduceMoney($owner, $cash);
+
             }
         }
     }

@@ -72,6 +72,7 @@ class Loader extends PluginBase{
     public function onEnable() : void{
         new EventListener($this);
         new PotionListener($this);
+        new HeadListener($this);
         new RelicListener($this);
         new KillMoneyListener($this);
 
