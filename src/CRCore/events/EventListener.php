@@ -4,12 +4,11 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\events;
 
 use CRCore\Loader;
 use onebone\economyapi\EconomyAPI;
@@ -20,6 +19,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
@@ -60,9 +60,9 @@ class EventListener implements Listener{
         $player->sendMessage(TextFormat::GRAY . "   A Kingdoms Minecraft Bedrock Edition Server");
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   VOTE:" . TextFormat::GRAY . " http://bit.do/castleraid");
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DO:" . TextFormat::GRAY . " /menu");
-        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " castleraid.buycraft.net");
+        $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " craid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
-        $player->sendMessage(TextFormat::GREEN . "                          -=-                       ");
+        $player->sendMessage(TextFormat::GREEN . "                            -=-                       ");
         switch($player->getName()){
             case "iiFlamiinBlaze":
                 $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
@@ -77,6 +77,13 @@ class EventListener implements Listener{
 
     public function onPlayerLogin(PlayerLoginEvent $event) : void{
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
+    }
+    
+    public function onCommandPreProcess(PlayerCommandPreprocessEvent $event) : void{
+        $message = $event->getMessage();
+        if($message{strlen($message) - 1} === "/"){
+            $event->setMessage("/" . substr($message, 0, -1));
+        }
     }
 
     public function onConsume(PlayerItemConsumeEvent $event) : void{

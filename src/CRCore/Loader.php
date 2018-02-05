@@ -4,34 +4,34 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
 namespace CRCore;
 
-use CRCore\Commands\{
-    ClearInventoryCommand,
-    CustomPotionsCommand,
-    FeedbackCommand,
-    FeedCommand,
-    FlyCommand,
-    HealCommand,
-    InfoCommand,
-    MenuCommand,
-    MPShopCommand,
-    NickCommand,
-    Quests\QuestsCommand,
-    Quests\Quests
+use CRCore\commands\{
+    staff\ClearInventoryCommand,
+    guest\CustomPotionsCommand,
+    guest\FeedbackCommand,
+    staff\FeedCommand,
+    staff\FlyCommand,
+    staff\HealCommand,
+    guest\InfoCommand,
+    guest\MenuCommand,
+    guest\MPShopCommand,
+    guest\NickCommand,
+    quests\QuestsCommand,
+    quests\Quests
 };
-use CRCore\Events\{
+use CRCore\events\{
     EventListener,
     PotionListener,
+    HeadListener,
     RelicListener,
     KillMoneyListener
 };
-use CRCore\Tasks\{
+use CRCore\tasks\{
     BroadcastTask,
     FakePlayerTask,
     HudTask
@@ -42,9 +42,14 @@ use pocketmine\{
 };
 
 class Loader extends PluginBase{
-
+   
+    const CORE_VERSION = "v1.4.6";
+   
+    public static $instance;
+    
     public function onLoad() : void{
         API::$main = $this;
+        self::$instance = $this;
 
         $this->saveDefaultConfig();
         $this->saveResource("tsconfig.json");
@@ -67,6 +72,7 @@ class Loader extends PluginBase{
     public function onEnable() : void{
         new EventListener($this);
         new PotionListener($this);
+        new HeadListener($this);
         new RelicListener($this);
         new KillMoneyListener($this);
 
@@ -90,5 +96,9 @@ class Loader extends PluginBase{
 
         $quests = new Quests();
         $quests->registerQuests();
+    }
+    
+    public static function getInstance() : self{
+        return self::$instance;
     }
 }

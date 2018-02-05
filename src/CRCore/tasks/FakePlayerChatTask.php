@@ -4,11 +4,10 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Tasks;
+namespace CRCore\tasks;
 
 use CRCore\API;
 
