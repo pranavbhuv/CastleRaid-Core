@@ -37,7 +37,7 @@ class HeadListener implements Listener{
         $nbt = new CompoundTag("", [new IntTag("head", 1), new StringTag("owner", $player->getName())]);
         $item->setCustomBlockData($nbt);
         $item->setCustomName(TextFormat::YELLOW . $player->getName() . "'s Head");
-        $player->getLevel()->dropItem($player, $item);
+        $player->getLevel()->dropItem($player->getVector3(), $item);
     }
 
     public function onTap(PlayerInteractEvent $event) : void{
