@@ -17,6 +17,7 @@ use pocketmine\scheduler\PluginTask;
 
 class FakePlayerChatTask extends PluginTask{
 
+    /** @var Player $p */ 
     private $p;
 
     public function __construct(Plugin $owner, Player $player){
