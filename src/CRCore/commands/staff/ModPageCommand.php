@@ -20,7 +20,7 @@ use pocketmine\command\ConsoleCommandSender;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class ModPage extends BaseCommand{
+class ModPageCommand extends BaseCommand{
 
     public function __construct(Loader $plugin){
         parent::__construct($plugin, "modscreen", "Control Panel for Morderators", "/modscreen", ["ms"]);
@@ -65,7 +65,7 @@ class ModPage extends BaseCommand{
         return true;
     }
 
-    public function kickForm($player){
+    public function kickForm(Player $player) : void{
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createCustomForm(function (Player $event, array $data){
             $player = $event->getPlayer();
