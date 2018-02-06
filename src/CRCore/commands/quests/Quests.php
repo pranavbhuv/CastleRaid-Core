@@ -4,12 +4,11 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands\Quests;
+namespace CRCore\commands\Quests;
 
 use pocketmine\item\Item;
 use pocketmine\Player;
@@ -21,7 +20,7 @@ use CRCore\API;
 
 class Quests{
 
-    const QUEST_PREFIX = TextFormat::GREEN . "Quests " . TextFormat::AQUA . "> " . TextFormat::WHITE;
+    const QUEST_PREFIX = TextFormat::GREEN . "quests " . TextFormat::AQUA . "> " . TextFormat::WHITE;
 
     private static $quests = [];
 

@@ -4,12 +4,11 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\events;
 
 use CRCore\Loader;
 use onebone\economyapi\EconomyAPI;
@@ -20,6 +19,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
@@ -29,6 +29,7 @@ use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class EventListener implements Listener{
+
     private $main;
 
     public function __construct(Loader $main){
@@ -78,6 +79,13 @@ class EventListener implements Listener{
     public function onPlayerLogin(PlayerLoginEvent $event) : void{
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
+    
+    public function onCommandPreProcess(PlayerCommandPreprocessEvent $event) : void{
+        $message = $event->getMessage();
+        if($message{strlen($message) - 1} === "/"){
+            $event->setMessage("/" . substr($message, 0, -1));
+        }
+    }
 
     public function onConsume(PlayerItemConsumeEvent $event) : void{
         $player = $event->getPlayer();
@@ -123,7 +131,7 @@ class EventListener implements Listener{
         $player = $event->getEntity();
         if($player instanceof Player){
             $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
-            switch($h){ // "Borrowed" from @Thunder33345!
+            switch($h){
                 case $h <= 100 && $h >= 80;
                     $thing = TextFormat::GREEN . "♥ " . $h . "%";
                     break;

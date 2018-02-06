@@ -4,12 +4,11 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\events;
 
 use CRCore\Loader;
 
@@ -170,7 +169,7 @@ class PotionListener implements Listener{
             }
 
             if($hand->hasCustomName()){
-                $event->setCancelled();
+                $event->setCancelled(true);
             }
         }
     }

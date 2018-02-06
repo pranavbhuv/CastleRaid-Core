@@ -4,16 +4,15 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Jason.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands\Guest;
+namespace CRCore\commands\guest;
 
 use CRCore\API;
-use CRCore\Commands\BaseCommand;
-use CRCore\Forms\FeedbackForm;
+use CRCore\commands\BaseCommand;
+use CRCore\forms\FeedbackForm;
 use CRCore\Loader;
 use pocketmine\command\CommandSender;
 use pocketmine\form\element\Input;

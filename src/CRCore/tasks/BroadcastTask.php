@@ -4,12 +4,11 @@
  * Originally Created by QuiverlyRivarly
  * Originally Created for CastleRaidPE
  *
- * @authors: QuiverlyRivarly and iiFlamiinBlaze
- * @contributors: Nick, Potatoe, and Nice.
+ * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
 
-namespace CRCore\Tasks;
+namespace CRCore\tasks;
 
 use CRCore\API;
 use CRCore\Loader;
@@ -18,12 +17,14 @@ use pocketmine\Server;
 
 class BroadcastTask extends PluginTask{
 
+    private $main;
 
     public function __construct(Loader $main){
         parent::__construct($main);
+        $this->main = $main;
     }
 
     public function onRun(int $currentTick){
-        Server::getInstance()->broadcastMessage(API::getRandomBcast());
+        $this->main->getServer()->broadcastMessage(API::getRandomBcast());
     }
 }
