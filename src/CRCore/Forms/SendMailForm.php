@@ -38,8 +38,9 @@ class SendMailForm extends CustomForm{
         $person = API::$main->getServer()->getPlayer($this->data[0]);
         if($person instanceof Person){
             $person->addMail(new Mail($player, date("F j, Y, g:i a"), $this->data[1], count($person->getMails()) + 1));
+            $person->sendPopup("You got new mail biatch", "subtitle");
             $player->sendMessage(Mail::prefix . TextFormat::GREEN . "Successfully sent mail to player " . TextFormat::YELLOW . $this->data[0] . TextFormat::GREEN . "!");
-            $player->cfg->save();
+            $person->cfg->save();
             return null;
         }
         $offlineplayer = API::$main->getServer()->getOfflinePlayer($this->data[0]);
@@ -47,12 +48,14 @@ class SendMailForm extends CustomForm{
             $cfg = new Config(API::$main->getDataFolder() . "/players/" . $offlineplayer->getName() . ".json");
             $mail = new Mail($player, date("F j, Y, g:i a"), $this->data[1], count($cfg->get("mails")) + 1);
             $arr = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
-            array_push($cfg->get("mails"), $arr);
+            $mails = $cfg->get("mails");
+            array_push($mails, $arr);
+            $cfg->set("mails", $mails);
             $cfg->save();
             $player->sendMessage(Mail::prefix . TextFormat::GREEN . "Successfully sent mail to offline player " . TextFormat::GOLD . $this->data[0] . TextFormat::GREEN . "!");
             return null;
         }
-        $player->sendMessage("Oh god. One of our devs (Nick) wrote something wrong. Sorry.");
+        $player->sendMessage("Oh god. One of our devs (Nick) wrote something wrong. Sorry. Contact Unickorn#8830 on discord or @NickTehUnicorn on twitter. Or just leave a message to our discord.");
         return null;
     }
 

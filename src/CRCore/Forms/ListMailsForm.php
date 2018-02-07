@@ -39,11 +39,11 @@ class ListMailsForm extends MenuForm{
 	public function onSubmit(Player $player) : ?Form{
 		if(!$player instanceof Person) return null;
 
-		$id = substr($this->getSelectedOption()->getText(), 1, 2);
+		$id = $this->getSelectedOption()->getText(){1};
 		$m = $player->getMailById($id);
 
 		return new SeeMailForm("Showing mail with id " . TextFormat::BOLD . $m["id"], [new Label("From: " . TextFormat::GREEN . $m["sender"] . TextFormat::WHITE . "\n"
-		                                                                                         . "Date: " . TextFormat::GREEN . $m["date"] . TextFormat::WHITE . "\n"
+		                                                                                         . "Date & Time: " . TextFormat::AQUA . $m["date"] . TextFormat::WHITE . "\n\n"
 		                                                                                         . "Message: " . TextFormat::YELLOW . $m["message"])]);
 	}
 }

@@ -43,7 +43,7 @@ class API{
         return $b[array_rand($b)];
     }
   
-    public static function getRandomTextFormat() : TextFormat{
+    public static function getRandomTextFormat(){
         return array_rand([TextFormat::BLACK,
             TextFormat::DARK_BLUE,
             TextFormat::DARK_GREEN,

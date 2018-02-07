@@ -19,6 +19,7 @@ use CRCore\commands\{
     staff\HealCommand,
     guest\InfoCommand,
     guest\MenuCommand,
+    guest\MailCommand,
     guest\MPShopCommand,
     guest\NickCommand,
     quests\QuestsCommand,

@@ -43,7 +43,7 @@ class Person extends Player{
         return $this->cfg->get("mails");
     }
 
-    public function getMailById(int $id) : ?Mail{
+    public function getMailById(int $id) : ?array{
         foreach($this->getMails() as $m){
             if($m["id"] === $id){
                 return $m;
@@ -53,8 +53,10 @@ class Person extends Player{
     }
 
     public function addMail(Mail $mail) : void{
-        $this->cfg->set("mails"[$mail->getId()], ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()]);
-        //$mails[$mail->getId()] = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
+        $mails = $this->cfg->get("mails");
+        $nm = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
+        array_push($mails, $nm);
+        $this->cfg->set("mails", $mails);
         $this->cfg->save();
     }
 }
