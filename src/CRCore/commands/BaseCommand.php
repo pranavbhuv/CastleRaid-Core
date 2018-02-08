@@ -8,7 +8,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands;
+namespace CRCore\commands;
 
 use CRCore\Loader;
 use pocketmine\command\Command;

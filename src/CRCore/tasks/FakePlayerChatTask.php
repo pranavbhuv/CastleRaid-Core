@@ -7,7 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Tasks;
+namespace CRCore\tasks;
 
 use CRCore\API;
 
@@ -17,7 +17,7 @@ use pocketmine\scheduler\PluginTask;
 
 class FakePlayerChatTask extends PluginTask{
 
-    /** @var Player $p */
+    /** @var Player $p */ 
     private $p;
 
     public function __construct(Plugin $owner, Player $player){

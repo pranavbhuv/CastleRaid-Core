@@ -8,10 +8,10 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands\Guest;
+namespace CRCore\commands\guest;
 
 use CRCore\API;
-use CRCore\Commands\BaseCommand;
+use CRCore\commands\BaseCommand;
 use CRCore\Loader;
 use jojoe77777\FormAPI\FormAPI;
 use pocketmine\command\CommandSender;

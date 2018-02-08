@@ -8,16 +8,14 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\events;
 
 use CRCore\Loader;
 use pocketmine\block\Diamond;
 use pocketmine\block\Stone;
-use pocketmine\block\Block;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\item\Compass;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat;
 
@@ -30,11 +28,11 @@ class RelicListener implements Listener{
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
 
-    public function onBreak(BlockBreakEvent $break) : void{
-        $loot = Item::get(Compass::COMPASS);
+    public function onBreak(BlockBreakEvent $event) : void{
+        $loot = Item::get(Item::COMPASS);
         $loot->setCustomName("Relic");
-        $player = $break->getPlayer();
-        if($break->getBlock()->getId() == Stone::STONE){
+        $player = $event->getPlayer();
+        if($event->getBlock()->getId() == Stone::STONE){
             if(mt_rand(1, 100) === 8){
                 $player->getInventory()->addItem($loot);
             }

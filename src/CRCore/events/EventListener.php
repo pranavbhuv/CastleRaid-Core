@@ -8,7 +8,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\events;
 
 use CRCore\Loader;
 use onebone\economyapi\EconomyAPI;
@@ -29,6 +29,7 @@ use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class EventListener implements Listener{
+
     private $main;
 
     public function __construct(Loader $main){
@@ -130,7 +131,7 @@ class EventListener implements Listener{
         $player = $event->getEntity();
         if($player instanceof Player){
             $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
-            switch($h){ // "Borrowed" from @Thunder33345!
+            switch($h){
                 case $h <= 100 && $h >= 80;
                     $thing = TextFormat::GREEN . "♥ " . $h . "%";
                     break;

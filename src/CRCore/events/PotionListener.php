@@ -8,7 +8,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Events;
+namespace CRCore\events;
 
 use CRCore\Loader;
 
@@ -169,7 +169,7 @@ class PotionListener implements Listener{
             }
 
             if($hand->hasCustomName()){
-                $event->setCancelled();
+                $event->setCancelled(true);
             }
         }
     }

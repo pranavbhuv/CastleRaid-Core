@@ -8,9 +8,9 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Commands\Guest;
+namespace CRCore\commands\guest;
 
-use CRCore\Commands\BaseCommand;
+use CRCore\commands\BaseCommand;
 use CRCore\Loader;
 use CRCore\API;
 use jojoe77777\FormAPI\FormAPI;
