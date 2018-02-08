@@ -11,13 +11,14 @@ namespace CRCore\Commands\Guest;
 
 use CRCore\API;
 use CRCore\Commands\BaseCommand;
-use CRCore\Forms\ListMailsForm;
-use CRCore\Forms\SendMailForm;
+use CRCore\Forms\mail\DeleteAllMailsForm;
+use CRCore\Forms\mail\ListMailsForm;
+use CRCore\Forms\mail\SendMailForm;
 use CRCore\Loader;
+use CRCore\Person\Mail;
 use CRCore\Person\Person;
 use pocketmine\command\CommandSender;
 use pocketmine\form\element\Input;
-use pocketmine\form\FormIcon;
 use pocketmine\form\MenuOption;
 use pocketmine\utils\TextFormat;
 
@@ -46,6 +47,19 @@ class MailCommand extends BaseCommand{
         }
 
         switch($args[0]){
+            case "cleanup":
+            case "dl":
+            case "delete":
+            case "dlall":
+            case "deleteall":
+                $sender->cfg->reload();
+                if(empty($sender->getMails())){
+                    $sender->sendMessage(Mail::prefix . TextFormat::RED . "You have no mails to clean up!");
+                    return false;
+                }
+                $sender->sendForm($this->makeDeleteForm());
+                return true;
+                break;
             case "ls":
             case "see":
             case "list":
@@ -54,7 +68,7 @@ class MailCommand extends BaseCommand{
                     $sender->sendForm($this->makeListForm());
                     return true;
                 }else{
-                    $sender->sendMessage(TextFormat::RED . "You have no mails! #DontWorryIGotNoFriendsEither");
+                    $sender->sendMessage(Mail::prefix . TextFormat::RED . "You have no mails! #DontWorryIGotNoFriendsEither");
                     return true;
                 }
                 break;
@@ -70,12 +84,12 @@ class MailCommand extends BaseCommand{
 
     public function makeListForm() : ListMailsForm{
         if($this->sender instanceof Person){
-            $mails = [new MenuOption("Test", new FormIcon("http://www.iralovestolaugh.com/wp-content/uploads/2015/08/Orange-Star-Icon-300x277.png"))];
+            $mails = [];
             foreach($this->sender->getMails() as $m){
                 array_push($mails, new MenuOption("#" . $m["id"] . TextFormat::WHITE . " from " . TextFormat::DARK_AQUA . $m["sender"]));
             }
         }
-        $f = new ListMailsForm(TextFormat::BLUE . "Mails", "Pick the mail you want to see.", $mails);
+        $f = new ListMailsForm(TextFormat::BLUE . "Mails", TextFormat::YELLOW . "Pick the mail you want to see.", $mails);
         return $f;
     }
 
@@ -85,6 +99,11 @@ class MailCommand extends BaseCommand{
         $targetinput = new Input(TextFormat::GOLD . "Who is this mail to?", $names[array_rand($names)]);
         $messageinput = new Input(TextFormat::GOLD . "Enter your message here.", $msgshint[array_rand($msgshint)]);
         $f = new SendMailForm(TextFormat::DARK_RED . "Send Mail", [$targetinput, $messageinput]);
+        return $f;
+    }
+
+    public function makeDeleteForm() : DeleteAllMailsForm{
+        $f = new DeleteAllMailsForm(TextFormat::DARK_RED . "Cleanup Mailbox", TextFormat::RED . "Are you sure you want to delete all your mails?", TextFormat::RED . ["Yeah, delete them all please kthx.", "Yes"][mt_rand(0, 1)], TextFormat::DARK_GREEN . ["No", "Nope"][mt_rand(0, 1)]);
         return $f;
     }
 }

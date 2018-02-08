@@ -15,6 +15,7 @@ use onebone\economyapi\EconomyAPI;
 use pocketmine\network\SourceInterface;
 use pocketmine\Player;
 use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
 
 class Person extends Player{
 
@@ -58,5 +59,11 @@ class Person extends Player{
         array_push($mails, $nm);
         $this->cfg->set("mails", $mails);
         $this->cfg->save();
+    }
+
+    public function deleteAllMails() : void{
+        $this->cfg->set("mails", []);
+        $this->cfg->save();
+        $this->sendMessage(Mail::prefix . TextFormat::GREEN . "Your mailbox has been successfully cleared!");
     }
 }

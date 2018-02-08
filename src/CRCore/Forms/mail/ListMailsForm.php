@@ -7,7 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Forms;
+namespace CRCore\Forms\mail;
 
 use CRCore\Person\Person;
 use pocketmine\form\element\Label;
@@ -18,10 +18,6 @@ use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class ListMailsForm extends MenuForm{
-
-	public function __construct(string $title, string $text, $options){
-		parent::__construct($title, $text, $options);
-	}
 
 	/**
 	 * @return MenuOption

@@ -7,7 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Forms;
+namespace CRCore\Forms\mail;
 
 use CRCore\API;
 use CRCore\Person\Mail;
@@ -22,10 +22,6 @@ use pocketmine\utils\TextFormat;
 class SendMailForm extends CustomForm{
     /** @var array $data */
     private $data;
-
-    public function __construct(string $title, $elements){
-        parent::__construct($title, $elements);
-    }
 
     public function onSubmit(Player $player) : ?Form{
         if(!$player instanceof Person) return null;
