@@ -8,7 +8,6 @@
  */
 declare(strict_types=1);
 
-
 namespace CRCore\forms\mail;
 
 use CRCore\person\Person;
