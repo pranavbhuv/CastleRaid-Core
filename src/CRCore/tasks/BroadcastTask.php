@@ -17,12 +17,14 @@ use pocketmine\Server;
 
 class BroadcastTask extends PluginTask{
 
+    private $main;
 
     public function __construct(Loader $main){
         parent::__construct($main);
+        $this->main = $main;
     }
 
     public function onRun(int $currentTick){
-        Server::getInstance()->broadcastMessage(API::getRandomBcast());
+        $this->main->getServer()->broadcastMessage(API::getRandomBcast());
     }
 }

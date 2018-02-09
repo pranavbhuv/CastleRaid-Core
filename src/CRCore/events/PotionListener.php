@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace CRCore\events;
 
 use CRCore\Loader;
-
 use pocketmine\entity\Effect;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemConsumeEvent;
@@ -169,7 +168,7 @@ class PotionListener implements Listener{
             }
 
             if($hand->hasCustomName()){
-                $event->setCancelled();
+                $event->setCancelled(true);
             }
         }
     }

@@ -24,6 +24,7 @@ use CRCore\commands\{
     quests\QuestsCommand,
     quests\Quests
 };
+
 // Events
 use CRCore\events\{
     EventListener,
@@ -32,19 +33,24 @@ use CRCore\events\{
     RelicListener,
     KillMoneyListener
 };
+
 // Tasks
 use CRCore\tasks\{
     BroadcastTask,
     HudTask
 };
+
 // PocketMine
 use pocketmine\{
     plugin\PluginBase,
     utils\Config
 };
 class Loader extends PluginBase{
+
     const CORE_VERSION = "v1.4.6";
+
     public static $instance;
+
     public function onLoad() : void{
         API::$main = $this;
         self::$instance = $this;
@@ -67,13 +73,14 @@ class Loader extends PluginBase{
         $this->registerTasks();
         $quests = new Quests();
         $quests->registerQuests();
-        $this->getLogger()->notice("CRCore enabled!");
     }
+
     public function registerTasks() : void{
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
         //$this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new HudTask($this), 30);
     }
+
     public function registerEvents() : void{
         new EventListener($this);
         new PotionListener($this);
@@ -81,6 +88,7 @@ class Loader extends PluginBase{
         new RelicListener($this);
         new KillMoneyListener($this);
     }
+
     public function registerCommands() : void{
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
@@ -97,6 +105,7 @@ class Loader extends PluginBase{
             new FeedbackCommand($this)
         ]);
     }
+
     public static function getInstance() : self{
         return self::$instance;
     }
