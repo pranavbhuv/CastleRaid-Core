@@ -26,7 +26,7 @@ class MailCommand extends BaseCommand{
     private $sender;
 
     public function __construct(Loader $owner){
-        parent::__construct($owner, "mails", "Send mails and stuff.", "Usage: /mail list|send", ["mail"]);
+        parent::__construct($owner, "mails", "Send mails and stuff.", "Usage: /mail list|send|deleteall", ["mail"]);
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
