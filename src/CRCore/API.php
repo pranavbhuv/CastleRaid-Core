@@ -26,7 +26,7 @@ class API{
     /** @var Config $msg */
     public static $msg;
     
-    const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "Use this command in-game!";
+    const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . " Use this command in-game!";
 
     public static function getRandomName() : string{
         $n = self::$names->getNested("names");
@@ -42,24 +42,9 @@ class API{
         $b = self::$msg->getAll()["broadcast"];
         return $b[array_rand($b)];
     }
-  
-    public static function getRandomTextFormat(){
-        return array_rand([TextFormat::BLACK,
-            TextFormat::DARK_BLUE,
-            TextFormat::DARK_GREEN,
-            TextFormat::DARK_AQUA,
-            TextFormat::DARK_RED,
-            TextFormat::DARK_PURPLE,
-            TextFormat::GOLD,
-            TextFormat::GRAY,
-            TextFormat::DARK_GRAY,
-            TextFormat::BLUE,
-            TextFormat::GREEN,
-            TextFormat::AQUA,
-            TextFormat::RED,
-            TextFormat::LIGHT_PURPLE,
-            TextFormat::YELLOW,
-            TextFormat::WHITE]);
 
+    public static function getRandomColor() : string{
+        $ltr = "abcdef";
+        return TextFormat::ESCAPE . mt_rand(0, 1) == 1 ? $ltr[mt_rand(0, strlen($ltr) - 1)] : strval(mt_rand(0, 9));
     }
 }
