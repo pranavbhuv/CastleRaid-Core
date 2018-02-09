@@ -6,9 +6,9 @@
  *
  * @authors: CastleRaid Developer Team
  */
+declare(strict_types=1);
 
 namespace CRCore\forms\mail;
-
 
 use pocketmine\form\CustomForm;
 use pocketmine\form\Form;
