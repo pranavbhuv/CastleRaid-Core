@@ -26,7 +26,7 @@ class API{
     /** @var Config $msg */
     public static $msg;
     
-    const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "Use this command in-game!";
+    const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . " Use this command in-game!";
 
     public static function getRandomName() : string{
         $n = self::$names->getNested("names");
@@ -41,5 +41,10 @@ class API{
     public static function getRandomBcast() : string{
         $b = self::$msg->getAll()["broadcast"];
         return $b[array_rand($b)];
+    }
+
+    public static function getRandomColor() : string{
+        $ltr = "abcdef";
+        return TextFormat::ESCAPE . (mt_rand(0, 1) == 1 ? $ltr[mt_rand(0, strlen($ltr) - 1)] : strval(mt_rand(0, 9)));
     }
 }
