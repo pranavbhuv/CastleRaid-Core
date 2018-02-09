@@ -45,6 +45,6 @@ class API{
 
     public static function getRandomColor() : string{
         $ltr = "abcdef";
-        return TextFormat::ESCAPE . mt_rand(0, 1) == 1 ? $ltr[mt_rand(0, strlen($ltr) - 1)] : strval(mt_rand(0, 9));
+        return TextFormat::ESCAPE . (mt_rand(0, 1) == 1 ? $ltr[mt_rand(0, strlen($ltr) - 1)] : strval(mt_rand(0, 9)));
     }
 }

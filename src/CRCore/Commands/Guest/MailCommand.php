@@ -86,7 +86,7 @@ class MailCommand extends BaseCommand{
         if($this->sender instanceof Person){
             $mails = [];
             foreach($this->sender->getMails() as $m){
-                array_push($mails, new MenuOption("#" . $m["id"] . TextFormat::WHITE . " from " . TextFormat::DARK_AQUA . $m["sender"]));
+                array_push($mails, new MenuOption(API::getRandomColor() . "#" . $m["id"] . TextFormat::WHITE . " from " . TextFormat::DARK_AQUA . $m["sender"]));
             }
         }
         $f = new ListMailsForm(TextFormat::BLUE . "Mails", TextFormat::YELLOW . "Pick the mail you want to see.", $mails);
@@ -98,7 +98,7 @@ class MailCommand extends BaseCommand{
         $msgshint = ["I hate you.", "You're ugly.", "Do you even lift?", "It is wednesday my dude.", "Follow me on Twitter.", "I'll have what she's having.", "You have failed this city.", "Hello darkness my old friend", "NO! DON'T TOUCH THAT!", "May the force be with you.", "Frankly, my dear, I don't give a damn.", "FR E SH A VOCA DO"];
         $targetinput = new Input(TextFormat::GOLD . "Who is this mail to?", $names[array_rand($names)]);
         $messageinput = new Input(TextFormat::GOLD . "Enter your message here.", $msgshint[array_rand($msgshint)]);
-        $f = new SendMailForm(TextFormat::DARK_RED . "Send Mail", [$targetinput, $messageinput]);
+        $f = new SendMailForm(API::getRandomColor() . "Send Mail", [$targetinput, $messageinput]);
         return $f;
     }
 

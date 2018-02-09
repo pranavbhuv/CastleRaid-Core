@@ -34,7 +34,7 @@ class SendMailForm extends CustomForm{
         $person = API::$main->getServer()->getPlayer($this->data[0]);
         if($person instanceof Person){
             $person->addMail(new Mail($player, date("F j, Y, g:i a"), $this->data[1], count($person->getMails()) + 1));
-            $person->sendPopup("You got new mail biatch", "subtitle");
+            $person->sendPopup(TextFormat::YELLOW . "You got a new mail from " . API::getRandomColor() . $player->getName(), TextFormat::GREEN . "Use /mail list!");
             $player->sendMessage(Mail::prefix . TextFormat::GREEN . "Successfully sent mail to player " . TextFormat::YELLOW . $this->data[0] . TextFormat::GREEN . "!");
             $person->cfg->save();
             return null;

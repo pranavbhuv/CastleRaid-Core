@@ -34,8 +34,8 @@ class ListMailsForm extends MenuForm{
 	 */
 	public function onSubmit(Player $player) : ?Form{
 		if(!$player instanceof Person) return null;
-
-		$id = $this->getSelectedOption()->getText(){1};
+		$id = preg_replace("/[^0-9]/", '', explode(" from", explode("#", $this->getSelectedOption()->getText())[1])[0]);
+		var_dump($id);
 		$m = $player->getMailById($id);
 
 		return new SeeMailForm("Showing mail with id " . TextFormat::BOLD . $m["id"], [new Label("From: " . TextFormat::GREEN . $m["sender"] . TextFormat::WHITE . "\n"
