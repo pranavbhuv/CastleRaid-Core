@@ -7,7 +7,9 @@
  * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
+
 namespace CRCore;
+
 // Commands
 use CRCore\commands\{
     staff\ClearInventoryCommand,
@@ -22,7 +24,8 @@ use CRCore\commands\{
     guest\MPShopCommand,
     guest\NickCommand,
     quests\QuestsCommand,
-    quests\Quests
+    quests\Quests,
+    guest\MailCommand
 };
 
 // Events
@@ -45,6 +48,7 @@ use pocketmine\{
     plugin\PluginBase,
     utils\Config
 };
+
 class Loader extends PluginBase{
 
     const CORE_VERSION = "v1.4.6";
@@ -71,6 +75,7 @@ class Loader extends PluginBase{
         $this->registerCommands();
         $this->registerEvents();
         $this->registerTasks();
+        
         $quests = new Quests();
         $quests->registerQuests();
     }
@@ -102,7 +107,8 @@ class Loader extends PluginBase{
             new NickCommand($this),
             new FeedCommand($this),
             new QuestsCommand($this),
-            new FeedbackCommand($this)
+            new FeedbackCommand($this),
+            new MailCommand($this)
         ]);
     }
 
