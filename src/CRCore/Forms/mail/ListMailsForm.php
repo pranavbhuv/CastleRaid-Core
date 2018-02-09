@@ -7,9 +7,9 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Forms\mail;
+namespace CRCore\forms\mail;
 
-use CRCore\Person\Person;
+use CRCore\person\Person;
 use pocketmine\form\element\Label;
 use pocketmine\form\Form;
 use pocketmine\form\MenuForm;

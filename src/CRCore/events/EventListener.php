@@ -12,7 +12,7 @@ namespace CRCore\events;
 
 use CRCore\API;
 use CRCore\Loader;
-use CRCore\Person\Person;
+use CRCore\person\Person;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\entity\Effect;
 use pocketmine\event\entity\EntityDamageEvent;

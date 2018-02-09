@@ -7,11 +7,11 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Forms\mail;
+namespace CRCore\forms\mail;
 
 use CRCore\API;
-use CRCore\Person\Mail;
-use CRCore\Person\Person;
+use CRCore\person\Mail;
+use CRCore\person\Person;
 use pocketmine\form\CustomForm;
 use pocketmine\form\Form;
 use pocketmine\OfflinePlayer;

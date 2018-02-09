@@ -7,7 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Commands\Guest;
+namespace CRCore\commands\guest;
 
 use CRCore\API;
 use CRCore\Commands\BaseCommand;
@@ -15,8 +15,8 @@ use CRCore\Forms\mail\DeleteAllMailsForm;
 use CRCore\Forms\mail\ListMailsForm;
 use CRCore\Forms\mail\SendMailForm;
 use CRCore\Loader;
-use CRCore\Person\Mail;
-use CRCore\Person\Person;
+use CRCore\person\Mail;
+use CRCore\person\Person;
 use pocketmine\command\CommandSender;
 use pocketmine\form\element\Input;
 use pocketmine\form\MenuOption;

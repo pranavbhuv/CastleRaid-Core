@@ -9,9 +9,9 @@
 declare(strict_types=1);
 
 
-namespace CRCore\Forms\mail;
+namespace CRCore\forms\mail;
 
-use CRCore\Person\Person;
+use CRCore\person\Person;
 use pocketmine\form\Form;
 use pocketmine\form\ModalForm;
 use pocketmine\Player;

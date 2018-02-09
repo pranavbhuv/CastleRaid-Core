@@ -8,7 +8,7 @@
  */
 declare(strict_types=1);
 
-namespace CRCore\Person;
+namespace CRCore\person;
 
 use CRCore\API;
 use onebone\economyapi\EconomyAPI;

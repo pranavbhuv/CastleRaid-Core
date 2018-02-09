@@ -7,7 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 
-namespace CRCore\Forms\mail;
+namespace CRCore\forms\mail;
 
 
 use pocketmine\form\CustomForm;
