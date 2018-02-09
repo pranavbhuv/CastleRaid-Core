@@ -16,6 +16,7 @@ The official CasteRaid Core made by the CastleRaid Developer Team!
 | [Info](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/guest/InfoCommand.php) | Command | CastleRaid Core Info Command |
 | [KillMoney](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/events/KillMoneyListener.php) | Event | Give a player money when they get a kill |
 | [Heads](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/events/HeadListener.php) | Event | Sell people's heads |
+| [Mails](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/MailCommand.php) | Command | Send and receive mails. |
 | [MPShop](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/guest/MPShopCommand.php) | Command | CastleRaid Core MoneyPouch Command |
 | [Menu](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/guest/MenuCommand.php) | Command | CastleRaid Core Menu Command |
 | [Nick](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/guest/NickCommand.php) | Command | CastleRaid Core Nick Command |
