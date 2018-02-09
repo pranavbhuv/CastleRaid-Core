@@ -6,6 +6,7 @@
  *
  * @authors: CastleRaid Developer Team
  */
+declare(strict_types=1);
 
 namespace CRCore\forms\mail;
 
@@ -19,19 +20,10 @@ use pocketmine\utils\TextFormat;
 
 class ListMailsForm extends MenuForm{
 
-	/**
-	 * @return MenuOption
-	 * @throws \InvalidStateException
-	 */
 	public function getSelectedOption() : MenuOption{
 		return parent::getSelectedOption();
 	}
 
-	/**
-	 * @param Player $player
-	 * @return null|Form
-	 * @throws \InvalidStateException
-	 */
 	public function onSubmit(Player $player) : ?Form{
 		if(!$player instanceof Person) return null;
 		$id = preg_replace("/[^0-9]/", '', explode(" from", explode("#", $this->getSelectedOption()->getText())[1])[0]);
