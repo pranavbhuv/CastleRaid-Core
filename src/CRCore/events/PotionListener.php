@@ -169,7 +169,7 @@ class PotionListener implements Listener{
             }
 
             if($hand->hasCustomName()){
-                $event->setCancelled(true);
+                $event->setCancelled();
             }
         }
     }
