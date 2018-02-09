@@ -6,6 +6,7 @@
  *
  * @authors: CastleRaid Developer Team
  */
+declare(strict_types=1);
 
 namespace CRCore\commands\guest;
 
@@ -23,6 +24,7 @@ use pocketmine\form\MenuOption;
 use pocketmine\utils\TextFormat;
 
 class MailCommand extends BaseCommand{
+    
     private $sender;
 
     public function __construct(Loader $owner){
@@ -36,7 +38,7 @@ class MailCommand extends BaseCommand{
             return false;
         }
 
-        if(!$sender->hasPermission("castleraid.feedback")){
+        if(!$sender->hasPermission("castleraid.mail")){
             $sender->sendMessage(parent::NO_PERMISSION);
             return false;
         }
