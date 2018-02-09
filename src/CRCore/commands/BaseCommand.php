@@ -18,7 +18,7 @@ use pocketmine\utils\TextFormat;
 
 abstract class BaseCommand extends Command implements PluginIdentifiableCommand{
     
-    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command";
+    const NO_PERMISSION = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . " You don't have permission to use this command";
     
     private $plugin;
   

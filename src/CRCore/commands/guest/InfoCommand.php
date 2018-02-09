@@ -34,6 +34,7 @@ class InfoCommand extends BaseCommand{
             $sender->sendMessage(parent::NO_PERMISSION);
             return false;
         }
+        /** @var WrittenBook $book */
         $book = Item::get(Item::WRITTEN_BOOK, 0, 1);
         $book->setTitle(TextFormat::GREEN . TextFormat::UNDERLINE . "Information Booklet");
         $book->setPageText(0, TextFormat::GREEN . TextFormat::UNDERLINE . "What's a Kingdom?" . TextFormat::BLACK . "\n - A kingdom, is your home, its like a factions. Except bigger! \n - Kingdoms, have many members and a custom world! \n - Each kingdom has a king, this king is who you shall fight for!");

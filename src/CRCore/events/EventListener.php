@@ -10,11 +10,14 @@ declare(strict_types=1);
 
 namespace CRCore\events;
 
+use CRCore\API;
 use CRCore\Loader;
+use CRCore\Person\Person;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\entity\Effect;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerCreationEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerJoinEvent;
@@ -23,13 +26,14 @@ use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\item\Item;
 use pocketmine\network\mcpe\protocol\ModalFormResponsePacket;
+use pocketmine\network\mcpe\protocol\PlayerListPacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsRequestPacket;
 use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
+use pocketmine\network\mcpe\protocol\types\PlayerListEntry;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class EventListener implements Listener{
-
     private $main;
 
     public function __construct(Loader $main){
@@ -74,6 +78,15 @@ class EventListener implements Listener{
         }
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
         $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . TextFormat::GREEN . "♥" . $h . "%");
+
+        $pk = new PlayerListPacket();
+        $pk->type = PlayerListPacket::TYPE_ADD;
+        $pk->entries[] = PlayerListEntry::createAdditionEntry($player->getUniqueId(), $player->getId(), $player->getName(), $player->getSkin(), $player->getXuid());
+        foreach(API::$main->getServer()->getOnlinePlayers() as $p){
+            $p->dataPacket($pk);
+        }
+
+        if($player instanceof Person) $player->genCfg();
     }
 
     public function onPlayerLogin(PlayerLoginEvent $event) : void{
@@ -131,7 +144,7 @@ class EventListener implements Listener{
         $player = $event->getEntity();
         if($player instanceof Player){
             $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
-            switch($h){
+            switch($h){ // "Borrowed" from @Thunder33345!
                 case $h <= 100 && $h >= 80;
                     $thing = TextFormat::GREEN . "♥ " . $h . "%";
                     break;
@@ -153,5 +166,9 @@ class EventListener implements Listener{
             }
             $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . $thing);
         }
+    }
+
+    public function onCreation(PlayerCreationEvent $e) : void{
+		$e->setPlayerClass(Person::class);
     }
 }

@@ -7,9 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
-
 namespace CRCore;
-
 // Commands
 use CRCore\commands\{
     staff\ClearInventoryCommand,
@@ -19,13 +17,13 @@ use CRCore\commands\{
     staff\FlyCommand,
     staff\HealCommand,
     guest\InfoCommand,
+    guest\MailCommand,
     guest\MenuCommand,
     guest\MPShopCommand,
     guest\NickCommand,
     quests\QuestsCommand,
     quests\Quests
 };
-
 // Events
 use CRCore\events\{
     EventListener,
@@ -34,30 +32,22 @@ use CRCore\events\{
     RelicListener,
     KillMoneyListener
 };
-
 // Tasks
 use CRCore\tasks\{
     BroadcastTask,
-    FakePlayerTask,
     HudTask
 };
-
-// Pocketmine
+// PocketMine
 use pocketmine\{
     plugin\PluginBase,
     utils\Config
 };
-
 class Loader extends PluginBase{
-
     const CORE_VERSION = "v1.4.6";
-
     public static $instance;
-
     public function onLoad() : void{
         API::$main = $this;
         self::$instance = $this;
-
         $this->saveDefaultConfig();
         $this->saveResource("tsconfig.json");
         $this->saveResource("names.json");
@@ -71,23 +61,19 @@ class Loader extends PluginBase{
             API::$chat = new Config($this->getDataFolder() . "chat.json", Config::JSON);
         if(!is_dir($this->getDataFolder() . "/feedback")) @mkdir($this->getDataFolder() . "/feedback");
     }
-
     public function onEnable() : void{
         $this->registerCommands();
         $this->registerEvents();
         $this->registerTasks();
         $quests = new Quests();
         $quests->registerQuests();
-
         $this->getLogger()->notice("CRCore enabled!");
     }
-
     public function registerTasks() : void{
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
         //$this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new HudTask($this), 30);
     }
-
     public function registerEvents() : void{
         new EventListener($this);
         new PotionListener($this);
@@ -95,7 +81,6 @@ class Loader extends PluginBase{
         new RelicListener($this);
         new KillMoneyListener($this);
     }
-
     public function registerCommands() : void{
         $this->getServer()->getCommandMap()->registerAll("CRCore", [
             new ClearInventoryCommand($this),
@@ -103,6 +88,7 @@ class Loader extends PluginBase{
             new FlyCommand($this),
             new HealCommand($this),
             new InfoCommand($this),
+            new MailCommand($this),
             new MenuCommand($this),
             new MPShopCommand($this),
             new NickCommand($this),
@@ -111,7 +97,6 @@ class Loader extends PluginBase{
             new FeedbackCommand($this)
         ]);
     }
-
     public static function getInstance() : self{
         return self::$instance;
     }
