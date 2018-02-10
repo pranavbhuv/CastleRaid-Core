@@ -1,7 +1,7 @@
 name: CastleRaidCore
 version: 1.4.6
 author: CastleRaid Developer Team
-api: [3.0.0-ALPHA9, 3.0.0-ALPHA10, 3.0.0-ALPHA11]
+api: [3.0.0-ALPHA10, 3.0.0-ALPHA11]
 main: CRCore\Loader
 permissions:
  castleraid.nick:
@@ -14,6 +14,12 @@ permissions:
   default: true
  castleraid.info:
   default: true
+ castleraid.quests:
+  default: true
+ castleraid.feedback:
+  default: true
+ castleraid.mail:
+  default: true
  castleraid.heal:
   default: op
  castleraid.fly:
@@ -22,7 +28,3 @@ permissions:
   default: op
  castleraid.feed:
   default: op
- castleraid.quests:
-  default: true
- castleraid.feedback:
-  default: true

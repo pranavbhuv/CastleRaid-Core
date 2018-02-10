@@ -12,7 +12,6 @@ namespace CRCore\person;
 
 use CRCore\API;
 use onebone\economyapi\EconomyAPI;
-use pocketmine\network\SourceInterface;
 use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
@@ -24,10 +23,6 @@ class Person extends Player{
     /** @var Config $cfg */
     public $cfg;
 
-    public function __construct(SourceInterface $interface, $clientID, string $ip, int $port){
-        parent::__construct($interface, $clientID, $ip, $port);
-    }
-
     public function genCfg() : void{
         if(file_exists(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json")){
             $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json", Config::JSON);
@@ -37,7 +32,15 @@ class Person extends Player{
     }
 
     public function getMoney() : float{
-        return EconomyAPI::getInstance()->myMoney($this->getName());
+        return EconomyAPI::getInstance()->myMoney($this);
+    }
+
+    public function addMoney(float $amount) : void{
+        EconomyAPI::getInstance()->addMoney($this, $amount);
+    }
+
+    public function reduceMoney(float $amount) : void{
+        EconomyAPI::getInstance()->reduceMoney($this, $amount);
     }
 
     public function getMails() : array{

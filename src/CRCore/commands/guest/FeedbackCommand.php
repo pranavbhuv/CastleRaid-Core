@@ -14,9 +14,9 @@ use CRCore\API;
 use CRCore\commands\BaseCommand;
 use CRCore\forms\FeedbackForm;
 use CRCore\Loader;
+use CRCore\person\Person;
 use pocketmine\command\CommandSender;
 use pocketmine\form\element\Input;
-use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class FeedbackCommand extends BaseCommand{
@@ -26,7 +26,7 @@ class FeedbackCommand extends BaseCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if(!$sender instanceof Player){
+        if(!$sender instanceof Person){
             $sender->sendMessage(API::NOT_PLAYER);
             return false;
         }
@@ -39,7 +39,7 @@ class FeedbackCommand extends BaseCommand{
     }
 
     public function makeForm() : FeedbackForm{
-        $f = new FeedbackForm(TextFormat::BLUE . "Feedback", [new Input("Write your feedback/suggestion/bug report here!", "Vaults don't work.")]);
+        $f = new FeedbackForm(TextFormat::BLUE . "Feedback", [new Input("Write your feedback/suggestion/bug report here!\n", "Vaults don't work.")]);
         return $f;
     }
 }

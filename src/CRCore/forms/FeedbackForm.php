@@ -22,13 +22,9 @@ class FeedbackForm extends CustomForm{
 
     const FEEDBACK_PREFIX = TextFormat::BLUE . "Feedback" . "> " . TextFormat::WHITE;
 
-    public function __construct(string $title, $elements){
-        parent::__construct($title, $elements);
-    }
-
     public function onSubmit(Player $player) : ?Form{
         $f = fopen(API::$main->getDataFolder() . "/feedback/" . $player->getName() . ".txt", "a");
-        fwrite($f, $this->data[0]."\n");
+        fwrite($f, $this->data[0] . "\n");
         fclose($f);
         $player->sendMessage(FeedbackForm::FEEDBACK_PREFIX . TextFormat::GREEN . "Thanks for your feedback! Our developers will take a look to it ASAP.");
         return null;

@@ -13,7 +13,6 @@ namespace CRCore\events;
 use CRCore\API;
 use CRCore\Loader;
 use CRCore\person\Person;
-use onebone\economyapi\EconomyAPI;
 use pocketmine\entity\Effect;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
@@ -69,14 +68,7 @@ class EventListener implements Listener{
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " craid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GREEN . "                            -=-                       ");
-        switch($player->getName()){
-            case "iiFlamiinBlaze":
-                $this->main->getServer()->broadcastMessage("Blazes are love, blazes are life!");
-                break;
-            case "QuiverlyRivalry":
-                $this->main->getServer()->broadcastMessage("Fucking Code nibba");
-                break;
-        }
+
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
         $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . TextFormat::GREEN . "♥" . $h . "%");
 
@@ -105,13 +97,14 @@ class EventListener implements Listener{
         $player = $event->getPlayer();
         $inv = $player->getInventory();
         $hand = $inv->getItemInHand();
-        if($hand->getId() === 373 && $hand->getDamage() === 1){
+        if($hand->getId() === Item::POTION && $hand->getDamage() === 1){
             $player->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(3)->setDuration(2000));
             $inv->removeItem($hand);
         }
     }
 
     public function onInteract(PlayerInteractEvent $event) : void{
+        /** @var Person $player */
         $player = $event->getPlayer();
         if($event->getItem()->getId() === 130){
             $damage = $event->getItem()->getDamage();
@@ -119,21 +112,21 @@ class EventListener implements Listener{
                 case 101:
                     $tier1 = Item::get(Item::ENDER_CHEST, 101, 1);
                     $tier1win = rand(10000, 25000);
-                    EconomyAPI::getInstance()->addMoney($player, $tier1win);
+                    $player->addMoney($tier1win);
                     $player->addTitle(TextFormat::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier1win);
                     $player->getInventory()->removeItem($tier1);
                     break;
                 case 102:
                     $tier2 = Item::get(Item::ENDER_CHEST, 102, 1);
                     $tier2win = rand(25000, 50000);
-                    EconomyAPI::getInstance()->addMoney($player, $tier2win);
+                    $player->addMoney($tier2win);
                     $player->addTitle(TextFormat::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier2win);
                     $player->getInventory()->removeItem($tier2);
                     break;
                 case 103:
                     $tier3 = Item::get(Item::ENDER_CHEST, 103, 1);
                     $tier3win = rand(50000, 100000);
-                    EconomyAPI::getInstance()->addMoney($player, $tier3win);
+                    $player->addMoney($tier3win);
                     $player->addTitle(TextFormat::BOLD . TextFormat::DARK_GRAY . "(" . TextFormat::GREEN . "!" . TextFormat::DARK_GRAY . ") " . TextFormat::RESET . TextFormat::GRAY . "You have won:", TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "$" . $tier3win);
                     $player->getInventory()->removeItem($tier3);
                     break;

@@ -25,7 +25,6 @@ use CRCore\commands\{
     guest\NickCommand,
     quests\QuestsCommand,
     quests\Quests,
-    guest\MailCommand
 };
 
 // Events
@@ -108,7 +107,6 @@ class Loader extends PluginBase{
             new FeedCommand($this),
             new QuestsCommand($this),
             new FeedbackCommand($this),
-            new MailCommand($this)
         ]);
     }
 
