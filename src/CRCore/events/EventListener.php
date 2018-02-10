@@ -72,12 +72,12 @@ class EventListener implements Listener{
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
         $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . TextFormat::GREEN . "♥" . $h . "%");
 
-        $pk = new PlayerListPacket();
+        /*$pk = new PlayerListPacket();
         $pk->type = PlayerListPacket::TYPE_ADD;
         $pk->entries[] = PlayerListEntry::createAdditionEntry($player->getUniqueId(), $player->getId(), $player->getName(), $player->getSkin(), $player->getXuid());
         foreach(API::$main->getServer()->getOnlinePlayers() as $p){
             $p->dataPacket($pk);
-        }
+        }*/
 
         if($player instanceof Person) $player->genCfg();
     }
