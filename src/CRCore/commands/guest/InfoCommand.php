@@ -12,7 +12,6 @@ namespace CRCore\commands\guest;
 
 use CRCore\commands\BaseCommand;
 use CRCore\Loader;
-use CRCore\API;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\item\WrittenBook;
@@ -27,7 +26,7 @@ class InfoCommand extends BaseCommand{
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
-            $sender->sendMessage(API::NOT_PLAYER);
+            $sender->sendMessage('Only In-Game');
             return false;
         }
         if(!$sender->hasPermission("castleraid.info")){
