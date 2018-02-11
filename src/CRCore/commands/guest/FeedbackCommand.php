@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace CRCore\commands\guest;
 
-use CRCore\API;
+
 use CRCore\commands\BaseCommand;
 use CRCore\forms\FeedbackForm;
 use CRCore\Loader;
@@ -27,7 +27,7 @@ class FeedbackCommand extends BaseCommand{
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
-            $sender->sendMessage(API::NOT_PLAYER);
+            $sender->sendMessage('Only In-Game');
             return false;
         }
         if(!$sender->hasPermission("castleraid.feedback")){
