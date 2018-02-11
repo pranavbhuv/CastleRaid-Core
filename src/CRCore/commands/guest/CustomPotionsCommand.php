@@ -12,7 +12,6 @@ namespace CRCore\commands\guest;
 
 use CRCore\commands\BaseCommand;
 use CRCore\Loader;
-use CRCore\API;
 use jojoe77777\FormAPI\FormAPI;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\CommandSender;
@@ -30,7 +29,7 @@ class CustomPotionsCommand extends BaseCommand{
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
-            $sender->sendMessage(API::NOT_PLAYER);
+            $sender->sendMessage('Only In-Game');
             return false;
         }
         if(!$sender->hasPermission("castleraid.cp2")){
