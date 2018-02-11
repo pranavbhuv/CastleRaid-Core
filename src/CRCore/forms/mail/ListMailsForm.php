@@ -14,18 +14,14 @@ use CRCore\person\Person;
 use pocketmine\form\element\Label;
 use pocketmine\form\Form;
 use pocketmine\form\MenuForm;
-use pocketmine\form\MenuOption;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class ListMailsForm extends MenuForm{
 
-	public function getSelectedOption() : MenuOption{
-		return parent::getSelectedOption();
-	}
-
 	public function onSubmit(Player $player) : ?Form{
 		if(!$player instanceof Person) return null;
+		/** @noinspection PhpUnhandledExceptionInspection */
 		$id = preg_replace("/[^0-9]/", '', explode(" from", explode("#", $this->getSelectedOption()->getText())[1])[0]);
 		$m = $player->getMailById(intval($id));
 

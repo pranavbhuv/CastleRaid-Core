@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace CRCore\events;
 
-use CRCore\API;
 use CRCore\Loader;
 use CRCore\person\Person;
 use pocketmine\entity\Effect;

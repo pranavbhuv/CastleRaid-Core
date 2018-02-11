@@ -33,6 +33,7 @@ class MenuCommand extends BaseCommand{
             $sender->sendMessage(parent::NO_PERMISSION);
             return false;
         }
+        /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function (Player $sender, array $data){
             if(isset($data[0])){

@@ -85,8 +85,8 @@ class MailCommand extends BaseCommand{
     }
 
     public function makeListForm() : ListMailsForm{
+	    $mails = [];
         if($this->sender instanceof Person){
-            $mails = [];
             foreach($this->sender->getMails() as $m){
                 array_push($mails, new MenuOption(API::getRandomColor() . "#" . $m["id"] . TextFormat::WHITE . " from " . TextFormat::DARK_AQUA . $m["sender"]));
             }

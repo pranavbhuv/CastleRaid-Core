@@ -13,7 +13,6 @@ namespace CRCore\tasks;
 use CRCore\API;
 use CRCore\Loader;
 use pocketmine\scheduler\PluginTask;
-use pocketmine\Server;
 
 class BroadcastTask extends PluginTask{
 

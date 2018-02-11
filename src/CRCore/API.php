@@ -28,6 +28,8 @@ class API{
     
     const NOT_PLAYER = TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . " Use this command in-game!";
 
+    const QUEST_PREFIX = "";
+
     public static function getRandomName() : string{
         $n = self::$names->getNested("names");
         return $n[array_rand($n)];
