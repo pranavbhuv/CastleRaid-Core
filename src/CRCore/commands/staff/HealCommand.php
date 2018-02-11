@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace CRCore\commands\staff;
 
 use CRCore\Loader;
-use CRCore\API;
 use CRCore\commands\BaseCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
@@ -25,7 +24,7 @@ class HealCommand extends BaseCommand{
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
-            $sender->sendMessage(API::NOT_PLAYER);
+            $sender->sendMessage('Only In-Game');
             return false;
         }
         if(!$sender->hasPermission("castleraid.heal")){
