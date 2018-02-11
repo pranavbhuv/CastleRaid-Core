@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace CRCore\commands\staff;
 
-use CRCore\API;
 use CRCore\commands\BaseCommand;
 use CRCore\Loader;
 use pocketmine\command\CommandSender;
@@ -25,7 +24,7 @@ class FlyCommand extends BaseCommand{
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
-            $sender->sendMessage(API::NOT_PLAYER);
+            $sender->sendMessage('Only In-Game');
             return false;
         }
         if(!$sender->hasPermission("castleraid.fly")){
