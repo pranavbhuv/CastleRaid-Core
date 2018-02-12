@@ -161,7 +161,7 @@ class EventListener implements Listener{
         }
     }
 
-    public function onCreation(PlayerCreationEvent $e) : void{
-        $e->setPlayerClass(Person::class);
+    public function onCreation(PlayerCreationEvent $event) : void{
+        $event->setPlayerClass(Person::class);
     }
 }
