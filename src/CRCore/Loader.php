@@ -38,8 +38,7 @@ use CRCore\events\{
 
 // Tasks
 use CRCore\tasks\{
-    BroadcastTask,
-    HudTask
+    BroadcastTask
 };
 
 // PocketMine
