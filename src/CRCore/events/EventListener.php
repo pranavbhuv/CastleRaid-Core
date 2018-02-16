@@ -67,6 +67,7 @@ class EventListener implements Listener{
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " craid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GREEN . "                            -=-                       ");
+        $this->getServer()->getCommandMap()->dispatch($player, "gl");
 
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
         $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . TextFormat::GREEN . "♥" . $h . "%");
