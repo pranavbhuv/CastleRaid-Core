@@ -26,7 +26,7 @@ class MailCommand extends BaseCommand{
     private $sender;
 
     public function __construct(Loader $owner){
-        parent::__construct($owner, "mails", "Send mails and stuff.", TextFormat::RED . "Usage: /mail list|send|deleteall", ["mail"]);
+        parent::__construct($owner, "mails", "Send mails and stuff.", TextFormat::RED . "Usage: /mail list|send|deleteall", ["mail", "m"]);
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
@@ -82,9 +82,9 @@ class MailCommand extends BaseCommand{
     public function sendListForm(Person $person) : void{
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Person $person, array $data){
+        $form = $api->createSimpleForm(function (Person $person, string $data){
             if(!isset($data)) return;
-            var_dump($data);
+            $this->sendSeeForm($person, intval($data));
         });
         $form->setTitle(TextFormat::BLUE . "Mails");
         $form->setContent(TextFormat::YELLOW . "Pick the mail you want to see.");
@@ -148,4 +148,18 @@ class MailCommand extends BaseCommand{
         $form->setButton2(TextFormat::DARK_GREEN . ["No", "Nope"][mt_rand(0, 1)]);
         $form->sendToPlayer($person);
     }
+
+    public function sendSeeForm(Person $person, int $mailid) : void{
+        $m = $person->getMailById($mailid);
+        /** @var FormAPI $api */
+        $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
+        $form = $api->createSimpleForm(function (Person $player, array $data){
+        });
+        $form->setTitle("Showing mail with id " . TextFormat::BOLD . $m["id"]);
+        $form->setContent("From: " . TextFormat::GREEN . $m["sender"] . TextFormat::WHITE . "\n"
+                                . "Date & Time: " . TextFormat::AQUA . $m["date"] . TextFormat::WHITE . "\n\n"
+                                . "Message: " . TextFormat::YELLOW . $m["message"]);
+        $form->sendToPlayer($person);
+    }
+
 }
