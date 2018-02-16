@@ -7,9 +7,7 @@
  * @authors: CastleRaid Developer Team
  */
 declare(strict_types=1);
-
 namespace CRCore\events;
-
 use CRCore\Loader;
 use CRCore\person\Person;
 use pocketmine\entity\Effect;
@@ -30,16 +28,12 @@ use pocketmine\network\mcpe\protocol\ServerSettingsResponsePacket;
 use pocketmine\network\mcpe\protocol\types\PlayerListEntry;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
-
 class EventListener implements Listener{
-
     private $main;
-
     public function __construct(Loader $main){
         $this->main = $main;
         $main->getServer()->getPluginManager()->registerEvents($this, $main);
     }
-
     public function onDataPacket(DataPacketReceiveEvent $event) : void{
         $packet = $event->getPacket();
         if($packet instanceof ServerSettingsRequestPacket){
@@ -54,7 +48,6 @@ class EventListener implements Listener{
             }
         }
     }
-
     public function onJoin(PlayerJoinEvent $event) : void{
         $player = $event->getPlayer();
         $player->addTitle(TextFormat::GREEN . TextFormat::BOLD . "CastleRaidPE", TextFormat::GOLD . "Kingdoms MCPE Server");
@@ -67,32 +60,27 @@ class EventListener implements Listener{
         $player->sendMessage(TextFormat::BOLD . TextFormat::AQUA . "   DONATE:" . TextFormat::GRAY . " craid.buycraft.net");
         $player->sendMessage(TextFormat::GRAY . "                                             ");
         $player->sendMessage(TextFormat::GREEN . "                            -=-                       ");
-        $this->getServer()->getCommandMap()->dispatch($player, "gl");
-
+        $event->getPlayer()->getServer()->getCommandMap()->dispatch($player, "gl");
+        //$this->getServer()->getCommandMap()->dispatch($player, "gl");
         $h = round($player->getHealth()) / $player->getMaxHealth() * 100;
         $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . TextFormat::GREEN . "♥" . $h . "%");
-
         /*$pk = new PlayerListPacket();
         $pk->type = PlayerListPacket::TYPE_ADD;
         $pk->entries[] = PlayerListEntry::createAdditionEntry($player->getUniqueId(), $player->getId(), $player->getName(), $player->getSkin(), $player->getXuid());
         foreach(API::$main->getServer()->getOnlinePlayers() as $p){
             $p->dataPacket($pk);
         }*/
-
         if($player instanceof Person) $player->genCfg();
     }
-
     public function onPlayerLogin(PlayerLoginEvent $event) : void{
         $event->getPlayer()->teleport($this->main->getServer()->getDefaultLevel()->getSafeSpawn());
     }
-
     public function onCommandPreProcess(PlayerCommandPreprocessEvent $event) : void{
         $message = $event->getMessage();
         if($message{strlen($message) - 1} === "/"){
             $event->setMessage("/" . substr($message, 0, -1));
         }
     }
-
     public function onConsume(PlayerItemConsumeEvent $event) : void{
         $player = $event->getPlayer();
         $inv = $player->getInventory();
@@ -102,7 +90,6 @@ class EventListener implements Listener{
             $inv->removeItem($hand);
         }
     }
-
     public function onInteract(PlayerInteractEvent $event) : void{
         /** @var Person $player */
         $player = $event->getPlayer();
@@ -133,7 +120,6 @@ class EventListener implements Listener{
             }
         }
     }
-
     public function onEntityDamage(EntityDamageEvent $event) : void{
         $player = $event->getEntity();
         if($player instanceof Player){
@@ -161,7 +147,6 @@ class EventListener implements Listener{
             $player->setNameTag($player->getDisplayName() . "\n{kingdom}\n " . $thing);
         }
     }
-
     public function onCreation(PlayerCreationEvent $event) : void{
         $event->setPlayerClass(Person::class);
     }
