@@ -43,7 +43,7 @@ class MenuCommand extends BaseCommand{
                         $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command);
                         break;
                     case 1:
-                        $command1 = "mpshop";
+                        $command1 = "mp";
                         $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command1);
                         break;
                     case 2:
