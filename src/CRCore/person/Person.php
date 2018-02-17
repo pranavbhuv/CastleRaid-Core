@@ -44,6 +44,7 @@ class Person extends Player{
     }
 
     public function getMails() : array{
+        $this->cfg->reload();
         return $this->cfg->get("mails");
     }
 
