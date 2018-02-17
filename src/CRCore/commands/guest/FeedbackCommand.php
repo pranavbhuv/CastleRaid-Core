@@ -12,12 +12,10 @@ namespace CRCore\commands\guest;
 
 use CRCore\API;
 use CRCore\commands\BaseCommand;
-use CRCore\forms\FeedbackForm;
 use CRCore\Loader;
 use CRCore\person\Person;
 use jojoe77777\FormAPI\FormAPI;
 use pocketmine\command\CommandSender;
-use pocketmine\form\element\Input;
 use pocketmine\utils\TextFormat;
 
 class FeedbackCommand extends BaseCommand{
