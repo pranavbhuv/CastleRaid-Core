@@ -153,10 +153,10 @@ class MailCommand extends BaseCommand{
         $m = $person->getMailById($mailid);
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Person $player, array $data){
+        $form = $api->createCustomForm(function (Person $player, array $data){
         });
         $form->setTitle("Showing mail with id " . TextFormat::BOLD . $m["id"]);
-        $form->setContent("From: " . TextFormat::GREEN . $m["sender"] . TextFormat::WHITE . "\n"
+        $form->addLabel("From: " . TextFormat::GREEN . $m["sender"] . TextFormat::WHITE . "\n"
                                 . "Date & Time: " . TextFormat::AQUA . $m["date"] . TextFormat::WHITE . "\n\n"
                                 . "Message: " . TextFormat::YELLOW . $m["message"]);
         $form->sendToPlayer($person);
