@@ -82,7 +82,7 @@ class MailCommand extends BaseCommand{
     public function sendListForm(Person $person) : void{
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Person $person, string $data){
+        $form = $api->createSimpleForm(function (Person $person, ?string $data){
             if(!isset($data)) return;
             $this->sendSeeForm($person, intval($data));
         });
@@ -99,7 +99,7 @@ class MailCommand extends BaseCommand{
         $msgshint = ["I hate you.", "You're ugly.", "Do you even lift?", "It is wednesday my dude.", "Follow me on Twitter.", "I'll have what she's having.", "You have failed this city.", "Hello darkness my old friend", "NO! DON'T TOUCH THAT!", "May the force be with you.", "Frankly, my dear, I don't give a damn.", "FR E SH A VOCA DO"];
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createCustomForm(function (Person $player, array $data){
+        $form = $api->createCustomForm(function (Person $player, ?array $data){
             if(!isset($data)) return;
 
             if(!file_exists(API::$main->getDataFolder() . "/players/" . strtolower($data[0]) . ".json")){
@@ -137,7 +137,7 @@ class MailCommand extends BaseCommand{
     public function sendDeleteForm(Person $person) : void{
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createModalForm(function (Person $player, bool $data){
+        $form = $api->createModalForm(function (Person $player, ?bool $data){
             if(!isset($data)) return;
             if($data != true) return;
             $player->deleteAllMails();
@@ -153,7 +153,7 @@ class MailCommand extends BaseCommand{
         $m = $person->getMailById($mailid);
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createCustomForm(function (Person $player, array $data){
+        $form = $api->createCustomForm(function (Person $player, ?array $data){
         });
         $form->setTitle("Showing mail with id " . TextFormat::BOLD . $m["id"]);
         $form->addLabel("From: " . TextFormat::GREEN . $m["sender"] . TextFormat::WHITE . "\n"

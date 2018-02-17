@@ -35,50 +35,49 @@ class MenuCommand extends BaseCommand{
         }
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Player $sender, array $data){
-            if(isset($data[0])){
-                switch($data[0]){
-                    case 0:
-                        $command = "shopui";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command);
-                        break;
-                    case 1:
-                        $command1 = "mp";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command1);
-                        break;
-                    case 2:
-                        $command2 = "cpshop";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command2);
-                        break;
-                    case 3:
-                        $command3 = "combine";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command3);
-                        break;
-                    case 4:
-                        $command4 = "k";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command4);
-                        break;
-                    case 5:
-                        $command5 = "warpme";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command5);
-                        break;
-                    case 6:
-                        $command6 = "celist";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command6);
-                        break;
-                    case 7:
-                        $command7 = "ah";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command7);
-                        break;
-                    case 8:
-                        $command8 = "tutorial";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command8);
-                        break;
-                    case 9:
-                        $command9 = "information";
-                        $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command9);
-                        break;
-                }
+        $form = $api->createSimpleForm(function (Player $sender, ?int $data){
+            if(!isset($data)) return;
+            switch($data){
+                case 0:
+                    $command = "shopui";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command);
+                    break;
+                case 1:
+                    $command1 = "mp";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command1);
+                    break;
+                case 2:
+                    $command2 = "cpshop";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command2);
+                    break;
+                case 3:
+                    $command3 = "combine";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command3);
+                    break;
+                case 4:
+                    $command4 = "k";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command4);
+                    break;
+                case 5:
+                    $command5 = "warpme";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command5);
+                    break;
+                case 6:
+                    $command6 = "celist";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command6);
+                    break;
+                case 7:
+                    $command7 = "ah";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command7);
+                    break;
+                case 8:
+                    $command8 = "tutorial";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command8);
+                    break;
+                case 9:
+                    $command9 = "information";
+                    $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command9);
+                    break;
             }
         });
         $form->setTitle("Server Menu");

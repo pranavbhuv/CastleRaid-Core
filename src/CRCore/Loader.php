@@ -80,8 +80,6 @@ class Loader extends PluginBase{
 
     public function registerTasks() : void{
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
-        //$this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new HudTask($this), 30);
     }
 
     public function registerEvents() : void{

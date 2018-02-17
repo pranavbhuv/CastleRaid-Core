@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace CRCore\commands\guest;
 
+use CRCore\API;
 use CRCore\commands\BaseCommand;
 use CRCore\Loader;
-use CRCore\API;
 use jojoe77777\FormAPI\FormAPI;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\CommandSender;
@@ -39,76 +39,75 @@ class CustomPotionsCommand extends BaseCommand{
         }
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Player $sender, array $data){
-            if(isset($data[0])){
-                switch($data[0]){
-                    case 0:
-                        $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                        if($money >= 25000){
-                            $itemID = 373;
-                            $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 100, 1)->setCustomName("Raiding Potion \n \n*Todo\n *Todo"));
-                            EconomyAPI::getInstance()->reduceMoney($sender, 25000);
-                        }else{
-                            $sender->sendMessage($this->nomoney);
-                        }
-                        break;
-                    case 1:
-                        $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                        if($money >= 40000){
-                            $itemID = 373;
-                            $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 101, 1)->setCustomName("Kingdom Potion\n \n*Todo\n *Todo"));
-                            EconomyAPI::getInstance()->reduceMoney($sender, 40000);
-                        }else{
-                            $sender->sendMessage($this->nomoney);
-                        }
-                        break;
-                    case 2:
-                        $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                        if($money >= 15000){
-                            $itemID = 373;
-                            $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 102, 1)->setCustomName("Farming Potion"));
-                            EconomyAPI::getInstance()->reduceMoney($sender, 15000);
-                        }else{
-                            $sender->sendMessage($this->nomoney);
-                        }
-                        break;
-                    case 3;
-                        $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                        if($money >= 30000){
-                            $itemID = 373;
-                            $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 103, 1)->setCustomName("PvP Potion"));
-                            EconomyAPI::getInstance()->reduceMoney($sender, 30000);
-                        }else{
-                            $sender->sendMessage($this->nomoney);
-                        }
-                        break;
-                    case 4;
-                        $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                        if($money >= 30000){
-                            $itemID = 373;
-                            $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 104, 1)->setCustomName("Getaway Potion"));
-                            EconomyAPI::getInstance()->reduceMoney($sender, 30000);
-                        }else{
-                            $sender->sendMessage($this->nomoney);
-                        }
-                        break;
-                    case 5;
-                        $money = EconomyAPI::getInstance()->myMoney($sender->getName());
-                        if($money >= 50000){
-                            $itemID = 373;
-                            $inv = $sender->getInventory();
-                            $inv->addItem(Item::get($itemID, 105, 1)->setCustomName("Kings Potion"));
-                            EconomyAPI::getInstance()->reduceMoney($sender, 50000);
-                        }else{
-                            $sender->sendMessage($this->nomoney);
-                        }
-                        break;
-                }
+        $form = $api->createSimpleForm(function (Player $sender, ?int $data){
+            if(!isset($data)) return;
+            switch($data){
+                case 0:
+                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                    if($money >= 25000){
+                        $itemID = 373;
+                        $inv = $sender->getInventory();
+                        $inv->addItem(Item::get($itemID, 100, 1)->setCustomName("Raiding Potion \n \n*Todo\n *Todo"));
+                        EconomyAPI::getInstance()->reduceMoney($sender, 25000);
+                    }else{
+                        $sender->sendMessage($this->nomoney);
+                    }
+                    break;
+                case 1:
+                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                    if($money >= 40000){
+                        $itemID = 373;
+                        $inv = $sender->getInventory();
+                        $inv->addItem(Item::get($itemID, 101, 1)->setCustomName("Kingdom Potion\n \n*Todo\n *Todo"));
+                        EconomyAPI::getInstance()->reduceMoney($sender, 40000);
+                    }else{
+                        $sender->sendMessage($this->nomoney);
+                    }
+                    break;
+                case 2:
+                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                    if($money >= 15000){
+                        $itemID = 373;
+                        $inv = $sender->getInventory();
+                        $inv->addItem(Item::get($itemID, 102, 1)->setCustomName("Farming Potion"));
+                        EconomyAPI::getInstance()->reduceMoney($sender, 15000);
+                    }else{
+                        $sender->sendMessage($this->nomoney);
+                    }
+                    break;
+                case 3;
+                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                    if($money >= 30000){
+                        $itemID = 373;
+                        $inv = $sender->getInventory();
+                        $inv->addItem(Item::get($itemID, 103, 1)->setCustomName("PvP Potion"));
+                        EconomyAPI::getInstance()->reduceMoney($sender, 30000);
+                    }else{
+                        $sender->sendMessage($this->nomoney);
+                    }
+                    break;
+                case 4;
+                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                    if($money >= 30000){
+                        $itemID = 373;
+                        $inv = $sender->getInventory();
+                        $inv->addItem(Item::get($itemID, 104, 1)->setCustomName("Getaway Potion"));
+                        EconomyAPI::getInstance()->reduceMoney($sender, 30000);
+                    }else{
+                        $sender->sendMessage($this->nomoney);
+                    }
+                    break;
+                case 5;
+                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                    if($money >= 50000){
+                        $itemID = 373;
+                        $inv = $sender->getInventory();
+                        $inv->addItem(Item::get($itemID, 105, 1)->setCustomName("Kings Potion"));
+                        EconomyAPI::getInstance()->reduceMoney($sender, 50000);
+                    }else{
+                        $sender->sendMessage($this->nomoney);
+                    }
+                    break;
             }
         });
         $form->setTitle("Custom Potions Shop");
