@@ -81,7 +81,7 @@ class Loader extends PluginBase{
         ];
         /** @var PluginCommand $cmds */
 	    foreach($commands as $cmds)
-        	$cmds->setPermissionMessage(TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command");
+        	$cmds->setPermissionMessage(TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command"); // sets the no permision message also use <permission> in the message to get the commands permission
 
         $this->getServer()->getCommandMap()->registerAll("CRCore", $commands);
 
