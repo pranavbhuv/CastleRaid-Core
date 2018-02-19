@@ -33,12 +33,9 @@ use CRCore\events\{
 };
 use CRCore\tasks\{
     BroadcastTask,
-    FakePlayerTask,
-    HudTask
 };
 use pocketmine\{
-    plugin\PluginBase,
-    utils\Config
+	command\PluginCommand, plugin\PluginBase, utils\Config, utils\TextFormat
 };
 
 class Loader extends PluginBase{
@@ -48,7 +45,6 @@ class Loader extends PluginBase{
     public static $instance;
     
     public function onLoad() : void{
-        API::$main = $this;
         self::$instance = $this;
 
         $this->saveDefaultConfig();
@@ -57,14 +53,6 @@ class Loader extends PluginBase{
         $this->saveResource("chat.json");
         $this->saveResource("config.json");
 
-        if(file_exists($this->getDataFolder() . "config.json") == true)
-            API::$msg = new Config($this->getDataFolder() . "config.json", Config::JSON);
-
-        if(file_exists($this->getDataFolder() . "names.json") == true)
-            API::$names = new Config($this->getDataFolder() . "names.json", Config::JSON);
-
-        if(file_exists($this->getDataFolder() . "chat.json") == true)
-            API::$chat = new Config($this->getDataFolder() . "chat.json", Config::JSON);
 
         if(!is_dir($this->getDataFolder() . "/feedback")) @mkdir($this->getDataFolder() . "/feedback");
     }
@@ -76,22 +64,26 @@ class Loader extends PluginBase{
         new KillMoneyListener($this);
 
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BroadcastTask($this), 2400);
-        //$this->getServer()->getScheduler()->scheduleRepeatingTask(new FakePlayerTask($this), mt_rand(2400, 8400));
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new HudTask($this), 30);
 
-        $this->getServer()->getCommandMap()->registerAll("CRCore", [
-            new ClearInventoryCommand($this),
-            new CustomPotionsCommand($this),
-            new FlyCommand($this),
-            new HealCommand($this),
-            new InfoCommand($this),
-            new MenuCommand($this),
-            new MPShopCommand($this),
-            new NickCommand($this),
-            new FeedCommand($this),
-            new QuestsCommand($this),
-            new FeedbackCommand($this)
-        ]);
+        $commands = [
+	        new ClearInventoryCommand('clearinventory', $this),
+	        new CustomPotionsCommand('custompotion', $this),
+	        new FlyCommand('fly', $this),
+	        new HealCommand('heal', $this),
+	        new InfoCommand('info', $this),
+	        new MenuCommand('menu', $this),
+	        new MPShopCommand('mpshop', $this),
+	        new NickCommand('nick', $this),
+	        new FeedCommand('feed', $this),
+	        new QuestsCommand('quest', $this),
+	        new FeedbackCommand('feedback', $this)
+
+        ];
+        /** @var PluginCommand $cmds */
+	    foreach($commands as $cmds)
+        	$cmds->setPermissionMessage(TextFormat::BOLD . TextFormat::GRAY . "(" . TextFormat::RED . "!" . TextFormat::GRAY . ")" . TextFormat::RED . "You don't have permission to use this command");
+
+        $this->getServer()->getCommandMap()->registerAll("CRCore", $commands);
 
         $quests = new Quests();
         $quests->registerQuests();
