@@ -10,29 +10,38 @@ declare(strict_types=1);
 
 namespace CRCore\commands\quests;
 
-use CRCore\commands\BaseCommand;
-use CRCore\Loader;
-
 use pocketmine\command\CommandSender;
+use pocketmine\command\PluginCommand;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 
-class QuestsCommand extends BaseCommand{
+class QuestsCommand extends PluginCommand{
 
-    public $inv;
-
-    public function __construct(Loader $plugin){
-        parent::__construct($plugin, "quest", "Quest Command", "/quest", ["quest"]);
+	/**
+	 * QuestsCommand constructor.
+	 * @param string $name
+	 * @param Plugin $owner
+	 */
+    public function __construct (string $name, Plugin $owner){
+	    parent::__construct($name, $owner);
+	    $this->setDescription("Quest Command");
+	    $this->setPermission("castleraid.quests");
     }
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args){
+	/**
+	 * @param CommandSender $sender
+	 * @param string $commandLabel
+	 * @param array $args
+	 * @return bool|mixed
+	 */
+	public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player){
             $sender->sendMessage('Only In-Game');
             return false;
         }
-        if(!$sender->hasPermission("castleraid.quests")){
-            $sender->sendMessage(parent::NO_PERMISSION);
-            return false;
-        }
+
+        if(!$this->testPermission($sender)) return true;
+
         $handler = new Quests();
         $ui = $handler->getQuestUI();
         $ui->sendToPlayer($sender);
