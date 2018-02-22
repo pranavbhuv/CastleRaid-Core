@@ -102,7 +102,7 @@ class MailCommand extends BaseCommand{
         $form = $api->createCustomForm(function (Person $player, ?array $data){
             if(!isset($data)) return;
 
-            if(!file_exists(API::$main->getDataFolder() . "/players/" . strtolower($data[0]) . ".json")){
+            if(!file_exists(API::$main->getDataFolder() . "players/" . strtolower($data[0]) . ".json")){
                 $player->sendMessage(Mail::prefix . TextFormat::RED . "Player " . TextFormat::DARK_RED . $data[0] . TextFormat::RED . " has never been here.");
                 return;
             }
@@ -115,7 +115,7 @@ class MailCommand extends BaseCommand{
                 return;
             }
             if($person instanceof OfflinePlayer){
-                $cfg = new Config(API::$main->getDataFolder() . "/players/" . $person->getName() . ".json");
+                $cfg = new Config(API::$main->getDataFolder() . "players/" . $person->getName() . ".json");
                 $mail = new Mail($player, date("F j, Y, g:i a"), $data[1], count($cfg->get("mails")) + 1);
                 $arr = ["id" => $mail->getId(), "sender" => $mail->getSender()->getName(), "date" => $mail->getDate(), "message" => $mail->getMsg()];
                 $mails = $cfg->get("mails");

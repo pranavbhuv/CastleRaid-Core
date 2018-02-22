@@ -24,10 +24,10 @@ class Person extends Player{
     public $cfg;
 
     public function genCfg() : void{
-        if(file_exists(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json")){
-            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json", Config::JSON);
+        if(file_exists(API::$main->getDataFolder() . "players/" . strtolower($this->getName()) . ".json")){
+            $this->cfg = new Config(API::$main->getDataFolder() . "players/" . strtolower($this->getName()) . ".json", Config::JSON);
         }else{
-            $this->cfg = new Config(API::$main->getDataFolder() . "/players/" . strtolower($this->getName()) . ".json", Config::JSON, ["mails" => []]);
+            $this->cfg = new Config(API::$main->getDataFolder() . "players/" . strtolower($this->getName()) . ".json", Config::JSON, ["mails" => []]);
         }
     }
 
