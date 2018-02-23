@@ -24,6 +24,8 @@ class BroadcastTask extends PluginTask{
     }
 
     public function onRun(int $currentTick){
-        $this->main->getServer()->broadcastMessage(API::getRandomBcast());
+        if(count($this->main->getServer()->getOnlinePlayers()) > 0){
+            $this->main->getServer()->broadcastMessage(API::getRandomBcast());
+        }
     }
 }
