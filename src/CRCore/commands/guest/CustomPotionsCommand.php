@@ -25,7 +25,7 @@ class CustomPotionsCommand extends BaseCommand{
     public $nomoney = TextFormat::RED . "You don't have enough money.";
 
     public function __construct(Loader $plugin){
-        parent::__construct($plugin, "cpshop", "CPShop Command", "/cpshop", ["cpshop"]);
+        parent::__construct($plugin, "cpshop", "CPShop Command", "/cpshop", ["cp"]);
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
@@ -33,7 +33,7 @@ class CustomPotionsCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
             return false;
         }
-        if(!$sender->hasPermission("castleraid.cp2")){
+        if(!$sender->hasPermission("castleraid.cp")){
             $sender->sendMessage(parent::NO_PERMISSION);
             return false;
         }

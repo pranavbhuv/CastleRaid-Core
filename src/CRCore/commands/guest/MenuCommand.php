@@ -21,7 +21,7 @@ use pocketmine\utils\TextFormat;
 class MenuCommand extends BaseCommand{
 
     public function __construct(Loader $plugin){
-        parent::__construct($plugin, "menu", "Control Panel", "/menu", ["cp"]);
+        parent::__construct($plugin, "menu", "Control Panel", "/menu", ["m"]);
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
@@ -29,7 +29,7 @@ class MenuCommand extends BaseCommand{
             $sender->sendMessage(API::NOT_PLAYER);
             return false;
         }
-        if(!$sender->hasPermission("castleraid.cp")){
+        if(!$sender->hasPermission("castleraid.menu")){
             $sender->sendMessage(parent::NO_PERMISSION);
             return false;
         }
@@ -75,23 +75,23 @@ class MenuCommand extends BaseCommand{
                     $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command8);
                     break;
                 case 9:
-                    $command9 = "information";
+                    $command9 = "info";
                     $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender, $command9);
                     break;
             }
         });
         $form->setTitle("Server Menu");
         $form->setContent("List of buttons.");
-        $form->addButton(TextFormat::WHITE . "Shop");
-        $form->addButton(TextFormat::WHITE . "Money Pouch Shop");
-        $form->addButton(TextFormat::WHITE . "Custom Potion Shop");
-        $form->addButton(TextFormat::WHITE . "Combiner");
-        $form->addButton(TextFormat::WHITE . "Kingdom Menu");
-        $form->addButton(TextFormat::WHITE . "Kingdom Teleporter");
-        $form->addButton(TextFormat::WHITE . "CE List");
-        $form->addButton(TextFormat::WHITE . "Auction House");
-        $form->addButton(TextFormat::WHITE . "Tutorial");
-        $form->addButton(TextFormat::WHITE . "Information");
+        $form->addButton(TextFormat::DARK_AQUA . "Shop");
+        $form->addButton(TextFormat::DARK_AQUA . "Money Pouch Shop");
+        $form->addButton(TextFormat::DARK_AQUA . "Custom Potion Shop");
+        $form->addButton(TextFormat::DARK_AQUA . "Combiner");
+        $form->addButton(TextFormat::DARK_AQUA . "Kingdom Menu");
+        $form->addButton(TextFormat::DARK_AQUA . "Kingdom Teleporter");
+        $form->addButton(TextFormat::DARK_AQUA . "CE List");
+        $form->addButton(TextFormat::DARK_AQUA . "Auction House");
+        $form->addButton(TextFormat::DARK_AQUA . "Tutorial");
+        $form->addButton(TextFormat::DARK_AQUA . "Information");
         $form->sendToPlayer($sender);
         return true;
     }

@@ -32,7 +32,7 @@ class NickCommand extends BaseCommand{
             $sender->sendMessage(parent::NO_PERMISSION);
             return false;
         }
-        if(!isset($args[0])){
+        if(!isset($args)){
             $sender->sendMessage("Please provide a nickname.");
         }
         if($args[0] === "off"){
