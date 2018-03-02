@@ -45,12 +45,13 @@ class HeadListener implements Listener{
         $item = $event->getItem();
         /** @var Person $player */
         $player = $event->getPlayer();
-        if($item->hasCustomBlockData()){
+        if($item->hasCustomBlockData() && $item->getId() === Item::SKULL){
             if($item->getCustomBlockData()->getInt("head") === 1){
                 $event->setCancelled();
                 $owner = $item->getCustomBlockData()->getString("owner");
                 $player->getInventory()->removeItem($item);
                 $cash = round(EconomyAPI::getInstance()->myMoney($owner) * 0.05);
+                if($cash >= 100000) $cash = 100000;
                 $player->addTitle(TextFormat::AQUA . "Redeemed $owner's head", TextFormat::GOLD . "Received $$cash ");
                 $player->addMoney($cash);
                 EconomyAPI::getInstance()->reduceMoney($owner, $cash);

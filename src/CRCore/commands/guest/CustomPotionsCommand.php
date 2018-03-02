@@ -13,10 +13,13 @@ namespace CRCore\commands\guest;
 use CRCore\API;
 use CRCore\commands\BaseCommand;
 use CRCore\Loader;
+use CRCore\person\Person;
 use jojoe77777\FormAPI\FormAPI;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\StringTag;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
@@ -29,7 +32,7 @@ class CustomPotionsCommand extends BaseCommand{
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){
-        if(!$sender instanceof Player){
+        if(!$sender instanceof Person){
             $sender->sendMessage(API::NOT_PLAYER);
             return false;
         }
@@ -39,73 +42,68 @@ class CustomPotionsCommand extends BaseCommand{
         }
         /** @var FormAPI $api */
         $api = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Player $sender, ?int $data){
+        $form = $api->createSimpleForm(function (Player $player, ?int $data){
             if(!isset($data)) return;
+            if(!$player instanceof Person) return;
             switch($data){
-                case 0:
-                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                case 0: //meta 100
+                    $money = EconomyAPI::getInstance()->myMoney($player->getName());
                     if($money >= 25000){
-                        $itemID = 373;
-                        $inv = $sender->getInventory();
-                        $inv->addItem(Item::get($itemID, 100, 1)->setCustomName("Raiding Potion \n \n*Todo\n *Todo"));
-                        EconomyAPI::getInstance()->reduceMoney($sender, 25000);
+                        $nbt = new CompoundTag("", [new StringTag("type", "raiding")]);
+                        $player->getInventory()->addItem(Item::get(Item::POTION)->setCustomBlockData($nbt));
+                        $player->reduceMoney(25000);
                     }else{
-                        $sender->sendMessage($this->nomoney);
+                        $player->sendMessage($this->nomoney);
                     }
                     break;
-                case 1:
-                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                case 1: //101
+                    $money = EconomyAPI::getInstance()->myMoney($player->getName());
                     if($money >= 40000){
-                        $itemID = 373;
-                        $inv = $sender->getInventory();
-                        $inv->addItem(Item::get($itemID, 101, 1)->setCustomName("Kingdom Potion\n \n*Todo\n *Todo"));
-                        EconomyAPI::getInstance()->reduceMoney($sender, 40000);
+                        $nbt = new CompoundTag("", [new StringTag("type", "kingdom")]);
+                        $player->getInventory()->addItem(Item::get(Item::POTION)->setCustomBlockData($nbt));
+                        $player->reduceMoney(40000);
                     }else{
-                        $sender->sendMessage($this->nomoney);
+                        $player->sendMessage($this->nomoney);
                     }
                     break;
-                case 2:
-                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                case 2: //102
+                    $money = EconomyAPI::getInstance()->myMoney($player->getName());
                     if($money >= 15000){
-                        $itemID = 373;
-                        $inv = $sender->getInventory();
-                        $inv->addItem(Item::get($itemID, 102, 1)->setCustomName("Farming Potion"));
-                        EconomyAPI::getInstance()->reduceMoney($sender, 15000);
+                        $nbt = new CompoundTag("", [new StringTag("type", "farming")]);
+                        $player->getInventory()->addItem(Item::get(Item::POTION)->setCustomBlockData($nbt));
+                        $player->reduceMoney(15000);
                     }else{
-                        $sender->sendMessage($this->nomoney);
+                        $player->sendMessage($this->nomoney);
                     }
                     break;
-                case 3;
-                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                case 3; #103
+                    $money = EconomyAPI::getInstance()->myMoney($player->getName());
                     if($money >= 30000){
-                        $itemID = 373;
-                        $inv = $sender->getInventory();
-                        $inv->addItem(Item::get($itemID, 103, 1)->setCustomName("PvP Potion"));
-                        EconomyAPI::getInstance()->reduceMoney($sender, 30000);
+                        $nbt = new CompoundTag("", [new StringTag("type", "pvp")]);
+                        $player->getInventory()->addItem(Item::get(Item::POTION)->setCustomBlockData($nbt));
+                        $player->reduceMoney(30000);
                     }else{
-                        $sender->sendMessage($this->nomoney);
+                        $player->sendMessage($this->nomoney);
                     }
                     break;
-                case 4;
-                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                case 4; #104
+                    $money = EconomyAPI::getInstance()->myMoney($player->getName());
                     if($money >= 30000){
-                        $itemID = 373;
-                        $inv = $sender->getInventory();
-                        $inv->addItem(Item::get($itemID, 104, 1)->setCustomName("Getaway Potion"));
-                        EconomyAPI::getInstance()->reduceMoney($sender, 30000);
+                        $nbt = new CompoundTag("", [new StringTag("type", "getaway")]);
+                        $player->getInventory()->addItem(Item::get(Item::POTION)->setCustomBlockData($nbt));
+                        $player->reduceMoney(30000);
                     }else{
-                        $sender->sendMessage($this->nomoney);
+                        $player->sendMessage($this->nomoney);
                     }
                     break;
-                case 5;
-                    $money = EconomyAPI::getInstance()->myMoney($sender->getName());
+                case 5; #105
+                    $money = EconomyAPI::getInstance()->myMoney($player->getName());
                     if($money >= 50000){
-                        $itemID = 373;
-                        $inv = $sender->getInventory();
-                        $inv->addItem(Item::get($itemID, 105, 1)->setCustomName("Kings Potion"));
-                        EconomyAPI::getInstance()->reduceMoney($sender, 50000);
+                        $nbt = new CompoundTag("", [new StringTag("type", "kings")]);
+                        $player->getInventory()->addItem(Item::get(Item::POTION)->setCustomBlockData($nbt));
+                        $player->reduceMoney(50000);
                     }else{
-                        $sender->sendMessage($this->nomoney);
+                        $player->sendMessage($this->nomoney);
                     }
                     break;
             }
