@@ -1,0 +1,7 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/QuiverlyRivalry/CastleRaid-Core
+branches:
+- master
+projects:
+  CastleRaid-Core:
+    path: ""
+...
