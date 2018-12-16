@@ -12,7 +12,7 @@ OPEN SOURCE FOR ANYONE WANTING TO CONTINUE THIS SERVER
 | [BroadcastTask](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/tasks/BroadcastTask.php) | Task | Broadcast a message every 4 minutes |
 | [ClearInventory](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/staff/ClearInventoryCommand.php) | Command | Clears a player's inventory |
 | [CustomPotions](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/guest/CustomPotionsCommand.php) | Command | CastleRaid Core CustomPot Command |
-| [FakePlayer](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/tasks/FakePlayerTask.php) | Task | Undefined |
+| [FakePlayer](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/tasks/FakePlayerTask.php) | Task | Spawns Fake Players to make server Look popular. |
 | [Fly](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/staff/FlyCommand.php) | Command | Allows you to fly in survival |
 | [Heal](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/staff/HealCommand.php) | Command | Heals a player |
 | [Info](https://github.com/QuiverlyRivalry/Core/blob/master/src/CRCore/commands/guest/InfoCommand.php) | Command | CastleRaid Core Info Command |
