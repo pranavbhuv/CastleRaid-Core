@@ -29,9 +29,9 @@ use CRCore\commands\{
 
 // Events
 use CRCore\events\{
+    AntiSpamListener,
     EventListener,
     PotionListener,
-    HeadListener,
     RelicListener,
     KillMoneyListener
 };
@@ -84,6 +84,7 @@ class Loader extends PluginBase{
     }
 
     public function registerEvents() : void{
+        new AntiSpamListener($this);
         new EventListener($this);
         new PotionListener($this);
         new HeadListener($this);
